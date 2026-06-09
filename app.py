@@ -408,3 +408,29 @@ def dinamik_ucp600_kural_motoru(self):
 
 # Sınıfın metodunu güncelle
 YapayZekaDisTicaretDenetleyici.ucp600_kural_motoru = dinamik_ucp600_kural_motoru
+# --- HUKUK MOTORU GELİŞMİŞ DİNAMİK YAMA (Final Versiyon) ---
+def dinamik_ucp600_kural_motoru(self):
+    # 1. Metinleri birleştir
+    kusat_text = self.depo["KUSAT"]["metin"] if self.depo["KUSAT"] else ""
+    fatura_text = self.depo["FATURA"]["metin"] if self.depo["FATURA"] else ""
+    konsimento_text = self.depo["KONSIMENTO"]["metin"] if self.depo["KONSIMENTO"] else ""
+    
+    # 2. Hukuk Motorunu Çalıştır
+    try:
+        from hukuk_motoru import analiz_et
+        analiz_sonuclari = analiz_et(self.depo)
+    except ImportError:
+        analiz_sonuclari = [("SİSTEM", "Hata", "AKTİF DEĞİL", "hukuk_motoru.py bulunamadı.")]
+
+    # 3. Analiz verilerini raporlama şablonuna dağıt
+    # Tabloyu güncelle
+    self.analiz_verisi["ucp_tablosu"] = [item for item in analiz_sonuclari if item[0] != "Art 16"]
+    
+    # REZERV MEKTUBUNU "Zorunlu Alanlar" kısmına enjekte et (Markdown'da en görünür yerlerden biri)
+    mektuplar = [item[3] for item in analiz_sonuclari if item[0] == "Art 16"]
+    if mektuplar:
+        uyari_metni = f"🔴 **REZERV BİLDİRİMİ (UCP 600 Art 16):** {mektuplar[0].replace('[DİKKAT: UCP 600 MADDE 16 GEREĞİ BİLDİRİM]', '').strip()}"
+        self.analiz_verisi["zorunlu_alanlar"].insert(0, uyari_metni)
+
+# Sınıfın metodunu güncelle
+YapayZekaDisTicaretDenetleyici.ucp600_kural_motoru = dinamik_ucp600_kural_motoru
