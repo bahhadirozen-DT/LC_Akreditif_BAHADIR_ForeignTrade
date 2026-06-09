@@ -379,3 +379,32 @@ def dinamik_ucp600_kural_motoru(self):
 # Sınıfın orijinal metodunu, yeni dinamik metodumuzla değiştiriyoruz
 YapayZekaDisTicaretDenetleyici.ucp600_kural_motoru = dinamik_ucp600_kural_motoru
 # ------------------------------------------------
+# --- HUKUK MOTORU GELİŞMİŞ DİNAMİK YAMA ---
+def dinamik_ucp600_kural_motoru(self):
+    # 1. Metinleri birleştir
+    kusat_text = self.depo["KUSAT"]["metin"] if self.depo["KUSAT"] else ""
+    fatura_text = self.depo["FATURA"]["metin"] if self.depo["FATURA"] else ""
+    konsimento_text = self.depo["KONSIMENTO"]["metin"] if self.depo["KONSIMENTO"] else ""
+    
+    # 2. Hukuk Motorunu Çalıştır
+    try:
+        from hukuk_motoru import analiz_et
+        # Motorun döndürdüğü listeyi al
+        analiz_sonuclari = analiz_et(self.depo)
+    except ImportError:
+        analiz_sonuclari = [("SİSTEM", "Hata", "AKTİF DEĞİL", "hukuk_motoru.py bulunamadı.")]
+
+    # 3. Analiz verilerini raporlama şablonuna dağıt
+    # Tablo verilerini ayır
+    self.analiz_verisi["ucp_tablosu"] = [item for item in analiz_sonuclari if item[0] != "Art 16"]
+    
+    # Eğer mektup/uyarı varsa, bunu raporun genel metinlerine ekle
+    mektuplar = [item[3] for item in analiz_sonuclari if item[0] == "Art 16"]
+    if mektuplar:
+        # Mektubu Vade Analizi veya Finansal Durum gibi görünebilir bir alana enjekte ediyoruz
+        self.analiz_verisi["vade_analizi"].append(f"\n{mektuplar[0]}")
+    
+    # Mevcut diğer verileri koru (manuel müdahale yok, sadece hukuk motoru verisiyle zenginleştir)
+
+# Sınıfın metodunu güncelle
+YapayZekaDisTicaretDenetleyici.ucp600_kural_motoru = dinamik_ucp600_kural_motoru
