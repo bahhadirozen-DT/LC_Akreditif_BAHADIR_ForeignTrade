@@ -350,9 +350,6 @@ class YapayZekaDisTicaretDenetleyici:
             self.word_raporu_olustur()
 
 
-if __name__ == "__main__":
-    motor = YapayZekaDisTicaretDenetleyici()
-    motor.baslat()
 # --- HUKUK MOTORU GELİŞMİŞ DİNAMİK YAMA (NİHAİ) ---
 def dinamik_ucp600_kural_motoru(self):
     # 1. Hukuk Motorunu Çalıştır
@@ -369,10 +366,13 @@ def dinamik_ucp600_kural_motoru(self):
     # 3. Rezerv bildirimini enjekte et (Art 16)
     mektuplar = [item[3] for item in analiz_sonuclari if item[0] == "Art 16"]
     if mektuplar:
-        # Metni temizle ve zorunlu alanlar listesinin en başına ekle
-        # Bu sayede markdown_raporu_olustur metodu bunu 5. Bölümde listeleyecektir
         uyari = f"🔴 {mektuplar[0].replace('[DİKKAT: UCP 600 MADDE 16 GEREĞİ BİLDİRİM]', '').strip()}"
         self.analiz_verisi["zorunlu_alanlar"].insert(0, uyari)
 
-# Sınıfın orijinal metodunu, bu tek ve güncel yamayla değiştiriyoruz
+# YAMA İŞLEMİNİ BURADA YAPIYORUZ (Motor başlatılmadan önce)
 YapayZekaDisTicaretDenetleyici.ucp600_kural_motoru = dinamik_ucp600_kural_motoru
+
+# ŞİMDİ MOTORU BAŞLATABİLİRİZ
+if __name__ == "__main__":
+    motor = YapayZekaDisTicaretDenetleyici()
+    motor.baslat()
