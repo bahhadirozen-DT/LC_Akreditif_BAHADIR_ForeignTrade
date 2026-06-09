@@ -1,5 +1,5 @@
 # 📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU
-**Analiz Zamanı:** 09.06.2026 08:02  
+**Analiz Zamanı:** 09.06.2026 08:15  
 **Altyapı Sistemi:** Yapay Zeka UCP 600 & ISBP Hukuk Motoru v3.0  
 
 ---
@@ -14,13 +14,17 @@
 --- 
 ## 3. Incoterms ve Sigorta Hukuku (ICC 2020 / UCP Art. 28)
 * Incoterms Standardı: **CIF (ICC 2020 Rules)**
-* [OK] Hukuki Zorunluluk: CIF şartı gereği Resmi Sigorta Poliçesi dosyalar arasında saptandı ve incelendi (UCP 600 Art 28).
+* [HUKUKİ REZERV RİSKİ] Teslim şekli CIF olmasına rağmen Sigorta Poliçesi bulunamadı!
 
 --- 
 ## 4. Sayısal ve Çapraz Evrak Uyumluluk Kontrolü
 | Belgeler | İnceleme Detayı | Durum |
 | :--- | :--- | :--- |
+| Fatura vs Akreditif Tutarı (Art 18 / Art 30) | Tutar tespit edilemedi: Fatura, Akreditif (32B) | **[MANUEL KONTROL]** |
 | Fatura vs Konşimento Kilo | Fatura: 1470.0 KG | Konşimento: 2400.0 KG | **[REZERV RİSKİ - UYUMSUZ SAYISAL VERİ]** |
+| Fatura Mal Tanımı vs Küşat (Art 18c) | Mal tanımı tespit edilemedi: Fatura, Küşat (45A) | **[MANUEL KONTROL]** |
+| Konşimento Yükleme Tarihi vs Alan 44C (Art 20) | Tarih tespit edilemedi: Küşat 44C | **[MANUEL KONTROL]** |
+| Sigorta Bedeli ≥ Fatura × %110 (Art 28f-ii) | CIF teslimlerde sigorta poliçesi zorunludur ancak dosyalar arasında bulunamadı. | **[REZERV RİSKİ - SİGORTA BELGESİ EKSİK]** |
 
 --- 
 ## 5. Konşimento ve Taşıma Hukuku Parametreleri (UCP Art. 20-27)
@@ -36,5 +40,5 @@
 | **Art 18** | Ticari Fatura (Commercial Invoice) | `DOĞRUDAN GEÇTİ` | Mal tanımının küşat metniyle karakter doğrulaması yapıldı (Art 18c). |
 | **Art 20** | Konşimento (Bill of Lading) | `TESPİT EDİLDİ` | Shipped on Board şerhi ve ciro silsilesi hukuki denetimi yapıldı. |
 | **Art 27** | Temiz Taşıma Belgesi | `TESPİT EDİLDİ` | Üzerinde hasar veya kusurlu ambalaj şerhi bulunmayan temiz belge kontrolü. |
-| **Art 28** | Sigorta Belgesi ve Kapsamı | `DOĞRUDAN GEÇTİ` | Sigorta poliçesi saptandı. Fatura değerinin minimum %110'unu kapsadığı doğrulandı. |
+| **Art 28** | Sigorta Belgesi ve Kapsamı | `YÜKSEK RİSK` | CIF teslimlerde Sigorta Poliçesi zorunludur! Minimum %110 teminat aranır (UCP 600 Madde 28). |
 | **Art 30** | Miktar ve Tutarda Toleranslar | `DOĞRUDAN GEÇMİYOR` | Akreditifte aksi belirtilmedikçe %5 / %10 tolerans limitleri. |
