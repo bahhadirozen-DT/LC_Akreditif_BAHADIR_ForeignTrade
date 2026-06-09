@@ -8,7 +8,7 @@ on:
       - 'DisTicaretRepo/YuklenenDosyalar/**'
   workflow_dispatch:
 
-# GitHub Actions'ın repoya yazma yetkisini açıkça tanımlıyoruz
+# GitHub Actions'ın repoya yazma yetkisini tanımlıyoruz
 permissions:
   contents: write
 
@@ -20,7 +20,7 @@ jobs:
     - name: Depoyu Bulut Sunucusuna Çek
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0 # Tüm geçmişi çek (rebase için gerekli)
+        fetch-depth: 0 
 
     - name: Python Ortamını Hazırla
       uses: actions/setup-python@v5
@@ -46,12 +46,12 @@ jobs:
         # Değişiklikleri hazırla
         git add DisTicaretRepo/Raporlar/*
         
-        # Değişiklik kontrolü
-        if ! git diff --quiet || ! git diff --staged --quiet; then
+        # Değişiklik kontrolü (Rapor klasöründe bir şey değişti mi?)
+        if ! git diff --staged --quiet; then
           git commit -m "🤖 Otomatik Analiz Raporu Güncellendi [skip ci]"
           
-          # Çakışmaları önlemek için rebase ile güncellemeleri çek
-          git pull --rebase origin main
+          # Çakışmaları yönet: Uzaktakini çek, çakışma olursa senin ürettiğin raporu (ours) baskın tut
+          git pull --rebase origin main || (git checkout --ours DisTicaretRepo/Raporlar/* && git add DisTicaretRepo/Raporlar/* && git rebase --continue)
           
           # Push işlemini gerçekleştir
           git push origin main
