@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Akreditif Analiz Raporu</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; padding: 25px; color: #333; background-color: #fafafa; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #1a365d; border-bottom: 3px solid #2b6cb0; padding-bottom: 10px; }
+        h2 { color: #2c5282; margin-top: 25px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #e2e8f0; padding: 12px; text-align: left; }
+        th { background-color: #ebf8ff; color: #2b6cb0; }
+        tr:nth-child(even) { background-color: #f7fafc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AKREDİTİF GELİŞMİŞ UZMAN DENETİM RAPORU</h1>
+        <p><b>Rapor Üretim Tarihi:</b> 09.06.2026 00:36</p>
+        
+        <h2>1. Kritik Süreler ve Vade Analizi</h2>
+        <ul><li>En Geç Yükleme Tarihi (Alan 44C): **15.07.2026**</li><li>Bankaya İbraz Süresi: **05.08.2026** (UCP 600 Madde 14c'ye tam uyumlu).</li></ul>
+        
+        <h2>2. Finansal Vade ve Ödeme Takvimi</h2>
+        <ul><li><span style='color:#742a2a; font-weight:bold;'>[KRİTİK UYARI]</span> Akreditif metninde ödeme vadesi alanı tetiklenemedi. Manuel poliçe/vade kontrolü gereklidir.</li></ul>
+        
+        <h2>3. Incoterms ve Sigorta Denetimi</h2>
+        <ul><li>Teslim Şekli Doğrulandı: **CIF**</li></ul>
+        
+        <h2>4. Çapraz Evrak Uyumluluk Kontrolü</h2>
+        <table>
+            <tr><th>Belgeler</th><th>Detaylı İnceleme Kriteri</th><th>Durum</th></tr>
+            <tr><td><b>Fatura vs Küşat</b></td><td>Mal tanımı karakter bazlı eşleşme testi yapıldı.</td><td><b>UYUMLU</b></td></tr>
+        </table>
+        
+        <h2>5. Zorunlu UCP 600 Parametreleri</h2>
+        <ul><li><span style='color:red;'>[RİSK]</span> 'UCP 600' tabi kural metni Swift mesajında açıkça saptanamadı.</li></ul>
+        
+        <h2>6. UCP 600 Maddeleri ve Uzman Yorum Tablosu</h2>
+        <table>
+            <tr><th>Madde</th><th>Açıklama</th><th>Sistem Durumu</th><th>Bulgu</th></tr>
+            <tr><td><b>Art 14</b></td><td>Belgelerin İncelenmesi Standartları</td><td><code>TESPİT EDİLDİ</code></td><td>21 günlük ibraz sınırı uygulandı.</td></tr><tr><td><b>Art 15</b></td><td>Uyumlu İbraz (Complying Presentation)</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Manuel evrak doğrulaması önerilir.</td></tr><tr><td><b>Art 17</b></td><td>Orijinal Belgeler ve Suretler</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Orijinal kaşe/ıslak imza kontrolü yapılmalı.</td></tr><tr><td><b>Art 18</b></td><td>Ticari Fatura (Commercial Invoice)</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Mal tanımının uyumu kritiktir.</td></tr><tr><td><b>Art 20</b></td><td>Konşimento (Bill of Lading)</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Shipped on Board ibaresini arayın.</td></tr><tr><td><b>Art 27</b></td><td>Temiz Taşıma Belgesi</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Hasar veya kirli şerhi bulunmamalı.</td></tr><tr><td><b>Art 30</b></td><td>Miktar ve Tutarda Toleranslar</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>%5/%10 tolerans limitlerini kontrol edin.</td></tr>
+        </table>
+    </div>
+</body>
+</html>
