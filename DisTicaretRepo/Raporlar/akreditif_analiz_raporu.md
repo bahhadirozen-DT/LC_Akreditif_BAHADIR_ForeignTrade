@@ -1,5 +1,5 @@
 # AKREDITIF GELISMIS HUKUKI VE SAYISAL UZMAN DENETiM RAPORU
-**Analiz Zamani:** 09.06.2026 13:39  
+**Analiz Zamani:** 09.06.2026 17:04  
 **Altyapi Sistemi:** Yapay Zeka UCP 600 & ISBP Hukuk Motoru v4.0  
 
 ---
