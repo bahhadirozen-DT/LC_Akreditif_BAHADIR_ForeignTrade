@@ -1,4 +1,33 @@
 {
+  "akreditif_kurallari": {
+    "mevzuat_adi": "UCP 600",
+    "yayinlayan_kurum": "Milletlerarasi Ticaret Odasi (ICC)",
+    "kapsam": "Uluslararasi ticari akreditifler ve uygulanabildigi olcude teminat akreditifleri (Standby L/C)",
+    "temel_ilkeler": [
+      "Bankalar belgelerle islem yapar, mallar, hizmetler veya ifa ile degil (Madde 5).",
+      "Akreditifler, aksi belirtilmedikce donulemezdir (Madde 3).",
+      "Akreditifler, yapildiklari satim sozlesmelerinden bagimsizdir (Madde 4)."
+    ]
+  },
+  "pratik_isleyis_detaylari": {
+    "vesaik_ibraz_suresi": "Aksi belirtilmedikce, yukleme tarihinden itibaren en fazla 21 takvim gunu (Madde 14)",
+    "sure_uzatimlari": "Bitis tarihi resmi tatile denk gelirse, sure bir sonraki is gunune uzar (Madde 29)",
+    "kismen_yukleme": "Aksi belirtilmedikce kismen yukleme (Partial Shipment) serbesttir (Madde 31)",
+    "miktar_ve_tutar_toleransi": "Akreditif tutarinda, mal miktarinda veya birim fiyatta %10 tolerans serbesttir (Madde 30)"
+  },
+  "belge_standartlari": {
+    "fatura": "Mal bedelini gosterir, amir adina duzenlenmelidir, diger belgelerdeki mal tanimi ile birebir uyumlu olmalidir.",
+    "konosamento_ozellikleri": {
+      "kurallar": "Tasimanin deniz yoluyla yapildigini kanitlamali, yukleme kayitli olmali ve 'temiz' (clean) olmalidir (Madde 19)",
+      "teslimat": "Navlun odenmis (prepaid) veya odenecek (collect) seklini gostermelidir."
+    },
+    "sigorta_belgeleri": "Aksi belirtilmedikce akreditif tutarinin en az %110'u kadar olmali, akreditif para biriminde duzenlenmelidir (Madde 28)."
+  },
+  "banka_surecleri": {
+    "amir_banka_sorumlulugu": "Belgelerin uygun ibraz edilmesi durumunda kesin odeme taahhudu (Madde 7)",
+    "gorevli_banka_sureci": "Belgeleri inceleyip iştira eden (negotiation) veya odemeyi gerceklestiren banka (Madde 12)",
+    "rezerv_uygulamasi": "Belgelerde kural disi veya eksiklik olmasi durumunda bankalarin ibrazi reddetme hakki (Madde 16)"
+  },
   "zorunlu_kurallar": [
     {"madde": "Art 1", "anahtar": "UCP 600", "aciklama": "UCP 600 kurallarına tabi olduğu açıkça yazılmalıdır."},
     {"madde": "Art 3", "anahtar": "IRREVOCABLE", "aciklama": "Akreditif gayrikabili rücu (dönülemez) olmalıdır."}
