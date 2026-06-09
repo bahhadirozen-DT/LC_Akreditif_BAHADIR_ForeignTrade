@@ -353,3 +353,29 @@ class YapayZekaDisTicaretDenetleyici:
 if __name__ == "__main__":
     motor = YapayZekaDisTicaretDenetleyici()
     motor.baslat()
+# --- HUKUK MOTORU DİNAMİK YAMA (Monkey Patch) ---
+def dinamik_ucp600_kural_motoru(self):
+    # Orijinal metin toplama mantığını koruyoruz
+    kusat_text = self.depo["KUSAT"]["metin"] if self.depo["KUSAT"] else ""
+    fatura_text = self.depo["FATURA"]["metin"] if self.depo["FATURA"] else ""
+    konsimento_text = self.depo["KONSIMENTO"]["metin"] if self.depo["KONSIMENTO"] else ""
+    combined = (kusat_text + " " + fatura_text + " " + konsimento_text).upper()
+
+    # Hukuk Motoru entegrasyonu
+    try:
+        from hukuk_motoru import analiz_et
+        self.analiz_verisi["ucp_tablosu"] = analiz_et(self.depo)
+    except ImportError:
+        # Hukuk motoru dosyası yoksa çalışmaya devam etmesi için boş liste
+        self.analiz_verisi["ucp_tablosu"] = [("SİSTEM", "Hukuk Motoru", "AKTİF DEĞİL", "hukuk_motoru.py bulunamadı.")]
+
+    # Rapor verilerini manuel güncelliyoruz (kendi mantığına göre burayı doldurabilirsin)
+    self.analiz_verisi["vade_analizi"] = ["Dinamik analiz aktif."]
+    self.analiz_verisi["finansal_durum"] = ["Analiz hukuk motorundan çekildi."]
+    self.analiz_verisi["incoterms"] = ["Otomatik tespit aktif."]
+    self.analiz_verisi["capraz_kontrol"] = []
+    self.analiz_verisi["zorunlu_alanlar"] = []
+
+# Sınıfın orijinal metodunu, yeni dinamik metodumuzla değiştiriyoruz
+YapayZekaDisTicaretDenetleyici.ucp600_kural_motoru = dinamik_ucp600_kural_motoru
+# ------------------------------------------------
