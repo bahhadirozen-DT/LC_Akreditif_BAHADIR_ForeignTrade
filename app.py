@@ -355,12 +355,13 @@ def dinamik_ucp600_kural_motoru(self):
     # 1. Hukuk Motorunu Çalıştır
     try:
         from hukuk_motoru import analiz_et
+        # Depo sözlüğünün tamamını gönderiyoruz; 
+        # hukuk_motoru.py içinde buna nasıl erişildiğini kontrol etmelisiniz.
         analiz_sonuclari = analiz_et(self.depo)
-    except ImportError:
-        analiz_sonuclari = [("SİSTEM", "Hata", "AKTİF DEĞİL", "hukuk_motoru.py bulunamadı.")]
+    except Exception as e:
+        analiz_sonuclari = [("SİSTEM", "Hata", "AKTİF DEĞİL", f"Hukuk motoru hatası: {str(e)}")]
 
     # 2. Analiz verilerini raporlama şablonuna dağıt
-    # Tabloyu güncelle (Art 16 hariç, çünkü o artık rezerv uyarısı olarak gidecek)
     self.analiz_verisi["ucp_tablosu"] = [item for item in analiz_sonuclari if item[0] != "Art 16"]
     
     # 3. Rezerv bildirimini enjekte et (Art 16)
@@ -369,7 +370,7 @@ def dinamik_ucp600_kural_motoru(self):
         uyari = f"🔴 {mektuplar[0].replace('[DİKKAT: UCP 600 MADDE 16 GEREĞİ BİLDİRİM]', '').strip()}"
         self.analiz_verisi["zorunlu_alanlar"].insert(0, uyari)
 
-# YAMA İŞLEMİNİ BURADA YAPIYORUZ (Motor başlatılmadan önce)
+# YAMA İŞLEMİNİ BURADA YAPIYORUZ
 YapayZekaDisTicaretDenetleyici.ucp600_kural_motoru = dinamik_ucp600_kural_motoru
 
 # ŞİMDİ MOTORU BAŞLATABİLİRİZ
