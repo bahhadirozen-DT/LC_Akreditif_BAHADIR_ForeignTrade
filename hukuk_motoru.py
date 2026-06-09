@@ -1,47 +1,35 @@
+import json
 import re
 from datetime import datetime, timedelta
 
 def analiz_et(depo):
+    # 1. Kural kütüphanesini yükle
+    try:
+        with open('kurallar.json', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except:
+        data = {"kritik_kontroller": []}
+    
     rapor = []
     
-    # 1. KUSAT (Akreditif) Analizi
-    kusat_metni = depo["KUSAT"]["metin"].upper() if depo.get("KUSAT") else ""
-    
-    # Yükleme Tarihi (44C) yakalama (Örnek format: 15.07.2026)
-    tarih_desen = r"(\d{2}\.\d{2}\.\d{4})"
-    yukleme_tarihi_match = re.search(tarih_desen, kusat_metni)
-    
-    # 2. ISBP 821 & UCP 600 Kural Motoru
-    
-    # Fatura Kontrolü
-    if depo.get("FATURA"):
-        fatura_metni = depo["FATURA"]["metin"].upper()
-        rapor.append(("ISBP 821 P15", "Fatura Tutarı", "ANALİZ", "Fatura tutarı akreditif limitiyle karşılaştırıldı."))
-        
-        if "SIGNATURE" not in fatura_metni and "KAŞE" not in fatura_metni:
-            rapor.append(("ISBP 821 P22", "İmza/Kaşe", "REZERV", "Faturada imza veya kaşe saptanamadı."))
+    # 2. JSON Tabanlı Denetim ve Uzman Yorumu
+    for kural in data["kritik_kontroller"]:
+        for evrak_tipi, icerik in depo.items():
+            if kural["anahtar"] in icerik["metin"].upper():
+                rapor.append((kural["madde"], kural["aciklama"], "OK", f"Doğrulandı: {kural['aciklama']}"))
 
-    # Konşimento ve 14c İbraz Süresi Kontrolü
-    if depo.get("KONSIMENTO"):
-        bl_metni = depo["KONSIMENTO"]["metin"].upper()
-        
-        # P180: Taşıma belgesi kontrolü
-        if "BILL OF LADING" in bl_metni:
-            rapor.append(("ISBP 821 P180", "Taşıma Belgesi", "ONAY", "Konşimento türü uygun."))
-        
-        # 14c Hesaplayıcı: 21 Gün Kuralı
-        if yukleme_tarihi_match:
-            yukleme_tarihi = datetime.strptime(yukleme_tarihi_match.group(1), "%d.%m.%Y")
-            ibraz_son_tarihi = yukleme_tarihi + timedelta(days=21)
-            rapor.append((
-                "UCP 600 Art 14c", 
-                "İbraz Süresi (21 Gün)", 
-                "BİLGİ", 
-                f"Yükleme sonrası 21 günlük yasal ibraz süresi {ibraz_son_tarihi.strftime('%d.%m.%Y')} tarihinde dolmaktadır."
-            ))
+    # 3. Hibrit Python Hesaplamaları (Art 14c ve Kilo)
+    if depo.get("KUSAT"):
+        tarih_match = re.search(r"(\d{2}\.\d{2}\.\d{4})", depo["KUSAT"]["metin"])
+        if tarih_match:
+            yukleme_tarihi = datetime.strptime(tarih_match.group(1), "%d.%m.%Y")
+            ibraz_son = yukleme_tarihi + timedelta(days=21)
+            rapor.append(("Art 14c", "21 Gün Kuralı", "BİLGİ", f"Yasal ibraz son tarih: {ibraz_son.strftime('%d.%m.%Y')}"))
 
-        # P28: Yükleme tarihi vs Akreditif süresi
-        if "LATEST SHIPMENT DATE" in kusat_metni:
-             rapor.append(("ISBP 821 P28", "Yükleme Tarihi", "KONTROL", "Konşimentodaki sevk tarihi akreditif vadesiyle uyumlu."))
+    if depo.get("FATURA") and depo.get("KONSIMENTO"):
+        f_kilo = re.search(r"(\d+)\s*KG", depo["FATURA"]["metin"].upper())
+        b_kilo = re.search(r"(\d+)\s*KG", depo["KONSIMENTO"]["metin"].upper())
+        if f_kilo and b_kilo and f_kilo.group(1) != b_kilo.group(1):
+            rapor.append(("ISBP A14", "Veri Uyumu", "REZERV", "Fatura ve Konşimento kilo uyuşmazlığı saptandı!"))
 
     return rapor
