@@ -1,0 +1,42 @@
+name: Yapay Zeka Akreditif Denetim Motoru
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'DisTicaretRepo/YuklenenDosyalar/**' # Sadece bu klasöre dosya atıldığında çalışır
+  workflow_dispatch: # İstediğinde arayüzden manuel tetiklemek için button ekler
+
+jobs:
+  analiz_ve_raporlama:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Depoyu Bulut Sunucusuna Çek
+      uses: actions/checkout@v4
+
+    - name: Python Ortamını Hazırla
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Bağımlılıkları ve Tesseract OCR Motorunu Kur
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tesseract-ocr tesseract-ocr-tur tesseract-ocr-eng
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Akreditif Analiz Motorunu Tetikle
+      run: |
+        python app.py
+
+    - name: Üretilen Raporları Repoya Geri Yükle ve Güncelle
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Yapah Zeka Otomasyonu"
+        git add DisTicaretRepo/Raporlar/*
+        # Eğer değişen bir rapor yoksa hata vermeden geçmesi için kontrol
+        git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Otomatik Analiz Raporu Güncellendi [skip ci]"
+        git push
