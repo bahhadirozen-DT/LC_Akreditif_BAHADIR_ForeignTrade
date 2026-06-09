@@ -353,7 +353,7 @@ class YapayZekaDisTicaretDenetleyici:
 if __name__ == "__main__":
     motor = YapayZekaDisTicaretDenetleyici()
     motor.baslat()
-# --- HUKUK MOTORU GELİŞMİŞ DİNAMİK YAMA (NİHAİ VE TEMİZ) ---
+# --- HUKUK MOTORU GELİŞMİŞ DİNAMİK YAMA (NİHAİ) ---
 def dinamik_ucp600_kural_motoru(self):
     # 1. Hukuk Motorunu Çalıştır
     try:
@@ -363,34 +363,14 @@ def dinamik_ucp600_kural_motoru(self):
         analiz_sonuclari = [("SİSTEM", "Hata", "AKTİF DEĞİL", "hukuk_motoru.py bulunamadı.")]
 
     # 2. Analiz verilerini raporlama şablonuna dağıt
-    # Tabloyu güncelle (Art 16 hariç)
+    # Tabloyu güncelle (Art 16 hariç, çünkü o artık rezerv uyarısı olarak gidecek)
     self.analiz_verisi["ucp_tablosu"] = [item for item in analiz_sonuclari if item[0] != "Art 16"]
     
     # 3. Rezerv bildirimini enjekte et (Art 16)
     mektuplar = [item[3] for item in analiz_sonuclari if item[0] == "Art 16"]
     if mektuplar:
-        # Metni temizle ve zorunlu alanlara en başa (index 0) ekle
-        uyari = f"🔴 {mektuplar[0].replace('[DİKKAT: UCP 600 MADDE 16 GEREĞİ BİLDİRİM]', '').strip()}"
-        self.analiz_verisi["zorunlu_alanlar"].insert(0, uyari)
-
-# Sınıfın orijinal metodunu, bu tek ve güncel yamayla değiştiriyoruz
-YapayZekaDisTicaretDenetleyici.ucp600_kural_motoru = dinamik_ucp600_kural_motoru# --- HUKUK MOTORU GELİŞMİŞ DİNAMİK YAMA (NİHAİ VE TEMİZ) ---
-def dinamik_ucp600_kural_motoru(self):
-    # 1. Hukuk Motorunu Çalıştır
-    try:
-        from hukuk_motoru import analiz_et
-        analiz_sonuclari = analiz_et(self.depo)
-    except ImportError:
-        analiz_sonuclari = [("SİSTEM", "Hata", "AKTİF DEĞİL", "hukuk_motoru.py bulunamadı.")]
-
-    # 2. Analiz verilerini raporlama şablonuna dağıt
-    # Tabloyu güncelle (Art 16 hariç)
-    self.analiz_verisi["ucp_tablosu"] = [item for item in analiz_sonuclari if item[0] != "Art 16"]
-    
-    # 3. Rezerv bildirimini enjekte et (Art 16)
-    mektuplar = [item[3] for item in analiz_sonuclari if item[0] == "Art 16"]
-    if mektuplar:
-        # Metni temizle ve zorunlu alanlara en başa (index 0) ekle
+        # Metni temizle ve zorunlu alanlar listesinin en başına ekle
+        # Bu sayede markdown_raporu_olustur metodu bunu 5. Bölümde listeleyecektir
         uyari = f"🔴 {mektuplar[0].replace('[DİKKAT: UCP 600 MADDE 16 GEREĞİ BİLDİRİM]', '').strip()}"
         self.analiz_verisi["zorunlu_alanlar"].insert(0, uyari)
 
