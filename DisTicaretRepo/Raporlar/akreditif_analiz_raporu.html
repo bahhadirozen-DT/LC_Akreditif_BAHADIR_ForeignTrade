@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hukuki Akreditif Analiz Raporu</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; padding: 30px; color: #2d3748; background-color: #f7fafc; }
-    .container { background: white; padding: 40px; border-radius: 12px;
-                  box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 1100px; margin: 0 auto; }
-    h1 { color: #1a365d; border-bottom: 4px solid #3182ce; padding-bottom: 12px; }
-    h2 { color: #2b6cb0; margin-top: 30px; border-left: 5px solid #3182ce; padding-left: 10px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-    th, td { border: 1px solid #e2e8f0; padding: 14px; text-align: left; }
-    th { background-color: #ebf8ff; color: #2b6cb0; }
-    tr:nth-child(even) { background-color: #f8fafc; }
+    body {font-family:'Segoe UI',sans-serif;padding:30px;color:#2d3748;background:#f7fafc;}
+    .container {background:#fff;padding:40px;border-radius:12px;
+                 box-shadow:0 4px 6px rgba(0,0,0,.05);max-width:1100px;margin:0 auto;}
+    h1 {color:#1a365d;border-bottom:4px solid #3182ce;padding-bottom:12px;}
+    h2 {color:#2b6cb0;margin-top:30px;border-left:5px solid #3182ce;padding-left:10px;}
+    table {width:100%;border-collapse:collapse;margin-top:15px;}
+    th,td {border:1px solid #e2e8f0;padding:14px;text-align:left;}
+    th {background:#ebf8ff;color:#2b6cb0;}
+    tr:nth-child(even) {background:#f8fafc;}
+    ul {margin-top:8px;} li {margin-bottom:6px;line-height:1.6;}
+    .risk-box {background:#fff5f5;border-left:5px solid #e53e3e;
+                padding:16px;border-radius:6px;margin-top:12px;}
   </style>
 </head>
-<body>
-<div class="container">
-  <h1>📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU</h1>
-  <p><b>Rapor Tarihi:</b> 09.06.2026 08:15</p>
-  <h2>1. Kritik Süreler ve Vade Analizi</h2>
-  <ul><li>En Geç Yükleme Tarihi (Alan 44C): **Belgeden tespit edilemedi — manuel kontrol gerekli**</li><li>Bankaya İbraz Süresi: Belgeden tespit edilemedi — UCP 600 Madde 14c varsayılan 21 günlük limit uygulanır.</li></ul>
-  <h2>2. Finansal Vade ve Ödeme Takvimi</h2>
-  <ul><li>Ödeme Vadesi: Belgelerden tespit edilemedi — manuel kontrol önerilir.</li></ul>
+<body><div class="container">
+  <h1>AKREDITIF GELISMIS HUKUKI VE SAYISAL UZMAN DENETiM RAPORU</h1>
+  <p><b>Rapor Tarihi:</b> 09.06.2026 13:39 &nbsp;|&nbsp;
+     <b>Altyapi:</b> UCP 600 &amp; ISBP Hukuk Motoru v4.0</p>
+  <h2>1. Kritik Sureler ve Vade Analizi</h2>
+  <ul><li>En Gec Yukleme Tarihi (Alan 44C): Belgeden tespit edilemedi — manuel kontrol gerekli.</li><li>Bankaya Ibraz Suresi: Tespit edilemedi — UCP 600 Art 14c varsayilan 21 gun uygulanir.</li></ul>
+  <h2>2. Finansal Vade ve Odeme Takvimi</h2>
+  <ul><li>Odeme Vadesi: Belgelerden tespit edilemedi — manuel kontrol onerilir.</li></ul>
   <h2>3. Incoterms ve Sigorta Hukuku (ICC 2020)</h2>
-  <ul><li>Incoterms Standardı: **CIF (ICC 2020 Rules)**</li><li>[HUKUKİ REZERV RİSKİ] Teslim şekli CIF olmasına rağmen Sigorta Poliçesi bulunamadı!</li></ul>
-  <h2>4. Sayısal ve Çapraz Evrak Uyumluluk Kontrolü</h2>
+  <ul><li>Incoterms Standardi: **CIF (ICC 2020 Rules)**</li><li>[HUKUKi REZERV RiSKi] Teslim sekli CIF olmasina ragmen Sigorta Policesi bulunamadi!</li></ul>
+  <h2>4. Sayisal ve Capraz Evrak Uyumluluk Kontrolu</h2>
   <table>
-    <tr><th>Belgeler</th><th>Detaylı İnceleme Kriteri</th><th>Durum</th></tr>
-    <tr><td><b>Fatura vs Akreditif Tutarı (Art 18 / Art 30)</b></td><td>Tutar tespit edilemedi: Fatura, Akreditif (32B)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Fatura vs Konşimento Kilo</b></td><td>Fatura: 1470.0 KG | Konşimento: 2400.0 KG</td><td><b>REZERV RİSKİ - UYUMSUZ SAYISAL VERİ</b></td></tr><tr><td><b>Fatura Mal Tanımı vs Küşat (Art 18c)</b></td><td>Mal tanımı tespit edilemedi: Fatura, Küşat (45A)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Konşimento Yükleme Tarihi vs Alan 44C (Art 20)</b></td><td>Tarih tespit edilemedi: Küşat 44C</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Sigorta Bedeli ≥ Fatura × %110 (Art 28f-ii)</b></td><td>CIF teslimlerde sigorta poliçesi zorunludur ancak dosyalar arasında bulunamadı.</td><td><b>REZERV RİSKİ - SİGORTA BELGESİ EKSİK</b></td></tr>
+    <tr><th>Belgeler</th><th>Detayli inceleme Kriteri</th><th>Durum</th></tr>
+    <tr><td><b>Fatura vs Akreditif Tutari (Art 18 / Art 30)</b></td><td>Tutar tespit edilemedi: Fatura, Akreditif (32B)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Fatura vs Konsimento Kilo</b></td><td>Fatura: 1,470.00 KG | Konsimento: 2,400.00 KG</td><td><b>REZERV RiSKi - UYUMSUZ SAYISAL VERi</b></td></tr><tr><td><b>Fatura Mal Tanimi vs Kusat (Art 18c)</b></td><td>Mal tanimi tespit edilemedi: Fatura, Kusat (45A)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Konsimento Yukleme Tarihi vs Alan 44C (Art 20)</b></td><td>Tarih tespit edilemedi: Kusat 44C</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Sigorta Bedeli >= Fatura x %110 (Art 28f-ii)</b></td><td>CIF teslimlerde sigorta policesi zorunludur ancak dosyalar arasinda bulunamadi.</td><td><b>REZERV RiSKi - SiGORTA BELGESi EKSiK</b></td></tr>
   </table>
-  <h2>5. Konşimento ve Taşıma Hukuku Parametreleri</h2>
-  <ul><li>[OK] Konşimento üzerinde yasal 'Shipped on Board' şerhi saptandı (Art 20a-ii uyumlu).</li></ul>
+  <h2>5. Konsimento ve Tasima Hukuku Parametreleri</h2>
+  <ul><li>[TAMAM] Konsimento uzerinde 'Shipped on Board' serhi saptandi (Art 20a-ii uyumlu).</li><li>[BiLGi] Konsimentoda 'CLEAN' ibaresi bulunamadi — Art 27 kapsaminda manuel kontrol onerilir.</li></ul>
   <h2>6. UCP 600 Hukuki Maddeleri Tablosu</h2>
   <table>
-    <tr><th>Madde</th><th>Açıklama</th><th>Sistem Durumu</th><th>Bulgu</th></tr>
-    <tr><td><b>Art 14</b></td><td>Belgelerin İncelenmesi Standartları</td><td><code>TESPİT EDİLDİ</code></td><td>Standart 21 günlük yasal banka ibraz sınırı uygulandı.</td></tr><tr><td><b>Art 15</b></td><td>Uyumlu İbraz (Complying Presentation)</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Vesaiklerin bankaya eksiksiz ve hatasız ulaştığının teyidi.</td></tr><tr><td><b>Art 17</b></td><td>Orijinal Belgeler ve Suretler</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Banka ibrazında orijinal/suret kaşelerinin varlığı aranır.</td></tr><tr><td><b>Art 18</b></td><td>Ticari Fatura (Commercial Invoice)</td><td><code>DOĞRUDAN GEÇTİ</code></td><td>Mal tanımının küşat metniyle karakter doğrulaması yapıldı (Art 18c).</td></tr><tr><td><b>Art 20</b></td><td>Konşimento (Bill of Lading)</td><td><code>TESPİT EDİLDİ</code></td><td>Shipped on Board şerhi ve ciro silsilesi hukuki denetimi yapıldı.</td></tr><tr><td><b>Art 27</b></td><td>Temiz Taşıma Belgesi</td><td><code>TESPİT EDİLDİ</code></td><td>Üzerinde hasar veya kusurlu ambalaj şerhi bulunmayan temiz belge kontrolü.</td></tr><tr><td><b>Art 28</b></td><td>Sigorta Belgesi ve Kapsamı</td><td><code>YÜKSEK RİSK</code></td><td>CIF teslimlerde Sigorta Poliçesi zorunludur! Minimum %110 teminat aranır (UCP 600 Madde 28).</td></tr><tr><td><b>Art 30</b></td><td>Miktar ve Tutarda Toleranslar</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Akreditifte aksi belirtilmedikçe %5 / %10 tolerans limitleri.</td></tr>
+    <tr><th>Madde</th><th>Aciklama</th><th>Sistem Durumu</th><th>Bulgu</th></tr>
+    <tr><td><b>Art 14</b></td><td>Belgelerin incelenmesi Standartlari</td><td><code>TESPiT EDiLDi</code></td><td>Standart 21 gunluk yasal banka ibraz siniri uygulandı.</td></tr><tr><td><b>Art 15</b></td><td>Uyumlu ibraz (Complying Presentation)</td><td><code>DOGRUDAN GECMIYOR</code></td><td>Vesaiklerin bankaya eksiksiz ve hatasiz ulastiginin teyidi.</td></tr><tr><td><b>Art 17</b></td><td>Orijinal Belgeler ve Suretler</td><td><code>DOGRUDAN GECMIYOR</code></td><td>Banka ibrazinda orijinal/suret kaselerinin varligi aranir.</td></tr><tr><td><b>Art 18</b></td><td>Ticari Fatura (Commercial Invoice)</td><td><code>DOGRUDAN GECTI</code></td><td>Mal tariminın kusat metniyle karakter dogrulamasi yapildi (Art 18c).</td></tr><tr><td><b>Art 20</b></td><td>Konsimento (Bill of Lading)</td><td><code>TESPiT EDiLDi</code></td><td>Shipped on Board serhi ve ciro silsilesi hukuki denetimi yapildi.</td></tr><tr><td><b>Art 27</b></td><td>Temiz Tasima Belgesi</td><td><code>TESPiT EDiLDi</code></td><td>Uzerinde hasar veya kusurlu ambalaj serhi bulunmayan temiz belge kontrolu.</td></tr><tr><td><b>Art 28</b></td><td>Sigorta Belgesi ve Kapsami</td><td><code>YUKSEK RISK</code></td><td>CIF teslimlerde Sigorta Policesi zorunludur! Minimum %110 teminat aranir (UCP 600 Madde 28).</td></tr><tr><td><b>Art 30</b></td><td>Miktar ve Tutarda Toleranslar</td><td><code>DOGRUDAN GECMIYOR</code></td><td>Akreditifte aksi belirtilmedikce %5 / %10 tolerans limitleri.</td></tr><tr><td><b>Art 1</b></td><td>UCP 600 kurallarına tabi olduğu açıkça yazılmalıdır.</td><td><code>KURAL LISTESI</code></td><td>UCP 600</td></tr><tr><td><b>Art 3</b></td><td>Akreditif gayrikabili rücu (dönülemez) olmalıdır.</td><td><code>KURAL LISTESI</code></td><td>IRREVOCABLE</td></tr><tr><td><b>Art 2</b></td><td>İhbar bankası tanımı eksiksiz olmalıdır.</td><td><code>KURAL LISTESI</code></td><td>ADVISING BANK</td></tr><tr><td><b>Art 4</b></td><td>Akreditif satış sözleşmesinden bağımsız bir işlemdir.</td><td><code>KURAL LISTESI</code></td><td>CONTRACT</td></tr><tr><td><b>Art 5</b></td><td>Bankalar mallarla değil, sadece belgelerle ilgilenir.</td><td><code>KURAL LISTESI</code></td><td>DOCUMENTS</td></tr><tr><td><b>Art 6</b></td><td>Akreditifin geçerli olduğu banka ve ödeme/iştira şekli.</td><td><code>KURAL LISTESI</code></td><td>:41A:</td></tr><tr><td><b>Art 7</b></td><td>Amir bankanın kesin ödeme yükümlülüğü.</td><td><code>KURAL LISTESI</code></td><td>ISSUING BANK</td></tr><tr><td><b>Art 8</b></td><td>Teyit bankasının sorumlulukları ve teyit talimatı (:49:).</td><td><code>KURAL LISTESI</code></td><td>CONFIRMING BANK</td></tr><tr><td><b>Art 9</b></td><td>Değişikliklerin lehtar onayı olmadan yürürlüğe girememe kuralı.</td><td><code>KURAL LISTESI</code></td><td>AMENDMENT</td></tr><tr><td><b>Art 10</b></td><td>Değişikliklerin ihbar edilme usulleri.</td><td><code>KURAL LISTESI</code></td><td>ADVISING AMENDMENTS</td></tr><tr><td><b>Art 11</b></td><td>Teleks/SWIFT mesajlarının ön talimat ve asıl metin ilişkisi.</td><td><code>KURAL LISTESI</code></td><td>TELETRANSMITTED</td></tr><tr><td><b>Art 12</b></td><td>Görevlendirilen bankanın yetki sınırları.</td><td><code>KURAL LISTESI</code></td><td>NOMINATED BANK</td></tr><tr><td><b>Art 13</b></td><td>Bankalar arası rücu ve ramisment anlaşmaları.</td><td><code>KURAL LISTESI</code></td><td>REIMBURSEMENT</td></tr><tr><td><b>Art 16</b></td><td>Rezervli belgelerin reddedilme bildirimi kuralları (en geç 5 iş günü).</td><td><code>KURAL LISTESI</code></td><td>DISCREPANT DOCUMENTS</td></tr><tr><td><b>Art 19</b></td><td>En az iki farklı taşıma modunu kapsayan taşıma belgesi kuralları.</td><td><code>KURAL LISTESI</code></td><td>MULTIMODAL</td></tr><tr><td><b>Art 21</b></td><td>Ciro edilemez deniz yolu taşıma senedi kuralları.</td><td><code>KURAL LISTESI</code></td><td>NON-NEGOTIABLE SEA WAYBILL</td></tr><tr><td><b>Art 22</b></td><td>Kiralık gemi konşimentosu kabul şartları.</td><td><code>KURAL LISTESI</code></td><td>CHARTER PARTY</td></tr><tr><td><b>Art 23</b></td><td>Hava yolu taşıma senedi (Air Waybill) imza ve asıl nüsha kuralları.</td><td><code>KURAL LISTESI</code></td><td>AIR TRANSPORT</td></tr><tr><td><b>Art 24</b></td><td>Karayolu (CMR), demiryolu veya iç su yolu taşıma belgeleri.</td><td><code>KURAL LISTESI</code></td><td>ROAD RAIL INLAND</td></tr><tr><td><b>Art 25</b></td><td>Kurye ve posta alındıları, makbuz tarihleri.</td><td><code>KURAL LISTESI</code></td><td>COURIER POST</td></tr><tr><td><b>Art 26</b></td><td>Gemi güvertesine yükleme (On Deck) ve 'Shipper's load and count' ibareleri.</td><td><code>KURAL LISTESI</code></td><td>DECK</td></tr><tr><td><b>Art 29</b></td><td>Kapanış tarihinin resmi tatile gelmesi durumunda uzama kuralları.</td><td><code>KURAL LISTESI</code></td><td>EXPIRY DATE</td></tr><tr><td><b>Art 31</b></td><td>Kısmi yükleme ve aktarma (Partial Shipments / Transshipments) kuralları.</td><td><code>KURAL LISTESI</code></td><td>PARTIAL</td></tr><tr><td><b>Art 32</b></td><td>Dönemsel/parti parti yüklemelerde bir dönemin kaçırılması durumunda akreditifin hükümsüz kalması.</td><td><code>KURAL LISTESI</code></td><td>INSTALMENT</td></tr><tr><td><b>Art 33</b></td><td>Bankaların çalışma saatleri dışında belge kabul etmeme hakkı.</td><td><code>KURAL LISTESI</code></td><td>HOURS</td></tr><tr><td><b>Art 34</b></td><td>Belgelerin doğruluğu ve hukuki geçerliliği konusunda bankaların sorumsuzluğu.</td><td><code>KURAL LISTESI</code></td><td>DISCLAIMER DOCUMENTS</td></tr><tr><td><b>Art 35</b></td><td>Belgelerin postada kaybolması veya gecikmesi durumunda bankaların sorumsuzluğu.</td><td><code>KURAL LISTESI</code></td><td>TRANSMISSION</td></tr><tr><td><b>Art 36</b></td><td>Mücbir sebep (grev, afet, savaş) durumunda bankaların sorumluluktan muafiyeti.</td><td><code>KURAL LISTESI</code></td><td>FORCE MAJEURE</td></tr><tr><td><b>Art 37</b></td><td>Masrafların kime ait olduğu (:71D:) ve yabancı banka masrafları sorumluluğu.</td><td><code>KURAL LISTESI</code></td><td>USER CHARGES</td></tr><tr><td><b>Art 38</b></td><td>Devredilebilir akreditifler (Transferable L/C) ve birinci/ikinci lehtar ilişkileri.</td><td><code>KURAL LISTESI</code></td><td>TRANSFERABLE</td></tr><tr><td><b>Art 39</b></td><td>Akreditif alacağının temliki (hukuki devri) hakları.</td><td><code>KURAL LISTESI</code></td><td>ASSIGNMENT</td></tr>
   </table>
-</div>
-</body>
-</html>
+  <h2>7. Risk Degerlendirmesi ve Rezerv Ozeti</h2>
+  <div class="risk-box"><ul><li>Toplam Risk Puani: **60** — Risk Sinifi: **YUKSEK RISK**</li><li>1. REZERV — Sigorta belgesi eksik (CIF teslimde Art 28 zorunlulugu)</li><li>2. REZERV — Kilo uyumsuzlugu: Fatura 1,470.00 KG / Konsimento 2,400.00 KG</li></ul></div>
+</div></body></html>
