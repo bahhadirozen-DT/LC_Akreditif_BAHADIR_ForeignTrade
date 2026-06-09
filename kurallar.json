@@ -1,0 +1,59 @@
+{
+  "zorunlu_kurallar": [
+    {"madde": "Art 1", "anahtar": "UCP 600", "aciklama": "UCP 600 kurallarına tabi olduğu açıkça yazılmalıdır."},
+    {"madde": "Art 3", "anahtar": "IRREVOCABLE", "aciklama": "Akreditif gayrikabili rücu (dönülemez) olmalıdır."}
+  ],
+  "kritik_kontroller": [
+    {"madde": "Art 2", "anahtar": "ADVISING BANK", "aciklama": "İhbar bankası tanımı eksiksiz olmalıdır."},
+    {"madde": "Art 4", "anahtar": "CONTRACT", "aciklama": "Akreditif satış sözleşmesinden bağımsız bir işlemdir."},
+    {"madde": "Art 5", "anahtar": "DOCUMENTS", "aciklama": "Bankalar mallarla değil, sadece belgelerle ilgilenir."},
+    {"madde": "Art 6", "anahtar": ":41A:", "aciklama": "Akreditifin geçerli olduğu banka ve ödeme/iştira şekli."},
+    {"madde": "Art 7", "anahtar": "ISSUING BANK", "aciklama": "Amir bankanın kesin ödeme yükümlülüğü."},
+    {"madde": "Art 8", "anahtar": "CONFIRMING BANK", "aciklama": "Teyit bankasının sorumlulukları ve teyit talimatı (:49:)."},
+    {"madde": "Art 9", "anahtar": "AMENDMENT", "aciklama": "Değişikliklerin lehtar onayı olmadan yürürlüğe girememe kuralı."},
+    {"madde": "Art 10", "anahtar": "ADVISING AMENDMENTS", "aciklama": "Değişikliklerin ihbar edilme usulleri."},
+    {"madde": "Art 11", "anahtar": "TELETRANSMITTED", "aciklama": "Teleks/SWIFT mesajlarının ön talimat ve asıl metin ilişkisi."},
+    {"madde": "Art 12", "anahtar": "NOMINATED BANK", "aciklama": "Görevlendirilen bankanın yetki sınırları."},
+    {"madde": "Art 13", "anahtar": "REIMBURSEMENT", "aciklama": "Bankalar arası rücu ve ramisment anlaşmaları."},
+    {"madde": "Art 14", "anahtar": ":48:", "aciklama": "Belge inceleme standardı. İbraz süresi belirtilmemişse en fazla 21 gündür."},
+    {"madde": "Art 15", "anahtar": "COMPLYING PRESENTATION", "aciklama": "Uygun ibraz durumunda ödeme yapılması zorunluluğu."},
+    {"madde": "Art 16", "anahtar": "DISCREPANT DOCUMENTS", "aciklama": "Rezervli belgelerin reddedilme bildirimi kuralları (en geç 5 iş günü)."},
+    {"madde": "Art 17", "anahtar": "ORIGINAL", "aciklama": "Orijinal ve kopya belge ayrımı ve imza kriterleri."},
+    {"madde": "Art 18", "anahtar": "COMMERCIAL INVOICE", "aciklama": "Ticari fatura lehtar adına düzenlenmeli ve akreditif döviz cinsinden olmalıdır."},
+    {"madde": "Art 19", "anahtar": "MULTIMODAL", "aciklama": "En az iki farklı taşıma modunu kapsayan taşıma belgesi kuralları."},
+    {"madde": "Art 20", "anahtar": "BILL OF LADING", "aciklama": "Deniz konşimentosu (Kaptan/Acente imzası, On Board notu)."},
+    {"madde": "Art 21", "anahtar": "NON-NEGOTIABLE SEA WAYBILL", "aciklama": "Ciro edilemez deniz yolu taşıma senedi kuralları."},
+    {"madde": "Art 22", "anahtar": "CHARTER PARTY", "aciklama": "Kiralık gemi konşimentosu kabul şartları."},
+    {"madde": "Art 23", "anahtar": "AIR TRANSPORT", "aciklama": "Hava yolu taşıma senedi (Air Waybill) imza ve asıl nüsha kuralları."},
+    {"madde": "Art 24", "anahtar": "ROAD RAIL INLAND", "aciklama": "Karayolu (CMR), demiryolu veya iç su yolu taşıma belgeleri."},
+    {"madde": "Art 25", "anahtar": "COURIER POST", "aciklama": "Kurye ve posta alındıları, makbuz tarihleri."},
+    {"madde": "Art 26", "anahtar": "DECK", "aciklama": "Gemi güvertesine yükleme (On Deck) ve 'Shipper's load and count' ibareleri."},
+    {"madde": "Art 27", "anahtar": "CLEAN", "aciklama": "Temiz taşıma belgesi (Clean Bill of Lading) şartı. Malda hasar ibaresi olmamalı."},
+    {"madde": "Art 28", "anahtar": "INSURANCE", "aciklama": "Sigorta belgesi ve kapsamı (Kural olarak en az CIF/CIP değerinin %110'u)."},
+    {"madde": "Art 29", "anahtar": "EXPIRY DATE", "aciklama": "Kapanış tarihinin resmi tatile gelmesi durumunda uzama kuralları."},
+    {"madde": "Art 30", "anahtar": "TOLERANCE", "aciklama": "Miktar, tutar ve birim fiyattaki +/- %5 ve %10 tolerans kuralları (:39A:)."},
+    {"madde": "Art 31", "anahtar": "PARTIAL", "aciklama": "Kısmi yükleme ve aktarma (Partial Shipments / Transshipments) kuralları."},
+    {"madde": "Art 32", "anahtar": "INSTALMENT", "aciklama": "Dönemsel/parti parti yüklemelerde bir dönemin kaçırılması durumunda akreditifin hükümsüz kalması."},
+    {"madde": "Art 33", "anahtar": "HOURS", "aciklama": "Bankaların çalışma saatleri dışında belge kabul etmeme hakkı."},
+    {"madde": "Art 34", "anahtar": "DISCLAIMER DOCUMENTS", "aciklama": "Belgelerin doğruluğu ve hukuki geçerliliği konusunda bankaların sorumsuzluğu."},
+    {"madde": "Art 35", "anahtar": "TRANSMISSION", "aciklama": "Belgelerin postada kaybolması veya gecikmesi durumunda bankaların sorumsuzluğu."},
+    {"madde": "Art 36", "anahtar": "FORCE MAJEURE", "aciklama": "Mücbir sebep (grev, afet, savaş) durumunda bankaların sorumluluktan muafiyeti."},
+    {"madde": "Art 37", "anahtar": "USER CHARGES", "aciklama": "Masrafların kime ait olduğu (:71D:) ve yabancı banka masrafları sorumluluğu."},
+    {"madde": "Art 38", "anahtar": "TRANSFERABLE", "aciklama": "Devredilebilir akreditifler (Transferable L/C) ve birinci/ikinci lehtar ilişkileri."},
+    {"madde": "Art 39", "anahtar": "ASSIGNMENT", "aciklama": "Akreditif alacağının temliki (hukuki devri) hakları."}
+  ],
+  "isbp_kurallari": [
+    {
+      "orijinal": "LIMITED",
+      "karsiliklar": ["LTD", "LTD.", "LIMITED LIABILITY COMPANY"]
+    },
+    {
+      "orijinal": "COMPANY",
+      "karsiliklar": ["CO", "CO.", "COMP."]
+    },
+    {
+      "orijinal": "INTERNATIONAL",
+      "karsiliklar": ["INTL", "INTL.", "INTERN."]
+    }
+  ]
+}
