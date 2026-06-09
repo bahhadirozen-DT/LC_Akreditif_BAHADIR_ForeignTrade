@@ -1,5 +1,5 @@
 # 📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU
-**Analiz Zamanı:** 09.06.2026 05:42  
+**Analiz Zamanı:** 09.06.2026 05:44  
 **Altyapı Sistemi:** Yapay Zeka UCP 600 & ISBP Hukuk Motoru v3.0  
 
 ---
@@ -20,7 +20,7 @@
 ## 4. Sayısal ve Çapraz Evrak Uyumluluk Kontrolü
 | Belgeler | İnceleme Detayı | Durum |
 | :--- | :--- | :--- |
-| Fatura vs Konşimento Kilo | Fatura: 2450.0 KG | Konşimento: 2400.0 KG | **[REZERV RİSKİ - UYUMSUZ SAYISAL VERİ]** |
+| Fatura vs Konşimento Kilo | Brüt Kilo Eşleşmesi (2450.0 KG) | **[UYUMLU]** |
 
 --- 
 ## 5. Konşimento ve Taşıma Hukuku Parametreleri (UCP Art. 20-27)
