@@ -1,20 +1,20 @@
 # 📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU
-**Analiz Zamanı:** 09.06.2026 06:10  
+**Analiz Zamanı:** 09.06.2026 08:02  
 **Altyapı Sistemi:** Yapay Zeka UCP 600 & ISBP Hukuk Motoru v3.0  
 
 ---
 ## 1. Kritik Süreler ve Vade Analizi
-* En Geç Yükleme Tarihi (Alan 44C): **15.07.2026**
-* Bankaya İbraz Süresi: **05.08.2026** (UCP 600 Madde 14c'ye tam uyumlu).
+* En Geç Yükleme Tarihi (Alan 44C): **Belgeden tespit edilemedi — manuel kontrol gerekli**
+* Bankaya İbraz Süresi: Belgeden tespit edilemedi — UCP 600 Madde 14c varsayılan 21 günlük limit uygulanır.
 
 --- 
 ## 2. Finansal Vade ve Ödeme Takvimi
-* Ödeme Vadesi: **Görüldüğünde Ödemeli (Belgeler Uyumluysa İbraz Anında)**
+* Ödeme Vadesi: Belgelerden tespit edilemedi — manuel kontrol önerilir.
 
 --- 
 ## 3. Incoterms ve Sigorta Hukuku (ICC 2020 / UCP Art. 28)
 * Incoterms Standardı: **CIF (ICC 2020 Rules)**
-* [OK] Hukuki Zorunluluk: CIF şartı gereği **Resmi Sigorta Poliçesi** dosyalar arasında saptandı ve incelendi (UCP 600 Art 28).
+* [OK] Hukuki Zorunluluk: CIF şartı gereği Resmi Sigorta Poliçesi dosyalar arasında saptandı ve incelendi (UCP 600 Art 28).
 
 --- 
 ## 4. Sayısal ve Çapraz Evrak Uyumluluk Kontrolü
@@ -24,7 +24,7 @@
 
 --- 
 ## 5. Konşimento ve Taşıma Hukuku Parametreleri (UCP Art. 20-27)
-* [OK] Konşimento üzerinde yasal '**Shipped on Board**' şerhi saptandı (Art 20a-ii uyumlu).
+* [OK] Konşimento üzerinde yasal 'Shipped on Board' şerhi saptandı (Art 20a-ii uyumlu).
 
 --- 
 ## 6. UCP 600 Hukuki Maddeleri ve Uzman Yorum Tablosu
