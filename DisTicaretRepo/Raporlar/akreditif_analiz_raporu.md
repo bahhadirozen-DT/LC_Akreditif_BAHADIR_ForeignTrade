@@ -1,5 +1,5 @@
 # 📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU
-**Analiz Zamanı:** 09.06.2026 00:56  
+**Analiz Zamanı:** 09.06.2026 01:10  
 **Altyapı Sistemi:** Yapay Zeka UCP 600 & ISBP Hukuk Motoru v3.0  
 
 ---
@@ -12,8 +12,6 @@
 
 --- 
 ## 3. Incoterms ve Sigorta Hukuku (ICC 2020 / UCP Art. 28)
-* Incoterms Standardı: **CIF (ICC 2020 Rules)**
-* <span style='color:red; font-weight:bold;'>[HUKUKİ REZERV RİSKİ]</span> Teslim şekli CIF olmasına rağmen Sigorta Poliçesi bulunamadı! (UCP 600 Art 28)
 
 --- 
 ## 4. Sayısal ve Çapraz Evrak Uyumluluk Kontrolü
@@ -34,5 +32,5 @@
 | **Art 18** | Ticari Fatura (Commercial Invoice) | `DOĞRUDAN GEÇMİYOR` | Mal tanımının küşat metniyle karakter doğrulaması yapıldı (Art 18c). |
 | **Art 20** | Konşimento (Bill of Lading) | `DOĞRUDAN GEÇMİYOR` | Shipped on Board şerhi ve ciro silsilesi hukuki denetimi yapıldı. |
 | **Art 27** | Temiz Taşıma Belgesi | `DOĞRUDAN GEÇMİYOR` | Üzerinde hasar veya kusurlu ambalaj şerhi bulunmayan temiz belge kontrolü. |
-| **Art 28** | Sigorta Belgesi ve Kapsamı | `YÜKSEK RİSK` | CIF teslimlerde Sigorta Poliçesi zorunludur! Minimum %110 teminat aranır (UCP 600 Madde 28). |
+| **Art 28** | Sigorta Belgesi ve Kapsamı | `UYGULANMAZ` | Teslim şekli (BELİRSİZ) kuralları satıcının sigorta poliçesi ibrazını zorunlu kılmıyor. |
 | **Art 30** | Miktar ve Tutarda Toleranslar | `DOĞRUDAN GEÇMİYOR` | Akreditifte aksi belirtilmedikçe %5 / %10 tolerans limitleri. |
