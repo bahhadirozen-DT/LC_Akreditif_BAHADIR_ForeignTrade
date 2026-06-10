@@ -3,59 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hukuki Akreditif Analiz Raporu</title>
+  <title>Akreditif Analiz Raporu v5.0</title>
   <style>
-    body {font-family:'Segoe UI',sans-serif;padding:30px;color:#2d3748;background:#f7fafc;}
-    .container {background:#fff;padding:40px;border-radius:12px;
-                 box-shadow:0 4px 6px rgba(0,0,0,.05);max-width:1100px;margin:0 auto;}
-    h1 {color:#1a365d;border-bottom:4px solid #3182ce;padding-bottom:12px;}
-    h2 {color:#2b6cb0;margin-top:30px;border-left:5px solid #3182ce;padding-left:10px;}
-    table {width:100%;border-collapse:collapse;margin-top:15px;}
-    th,td {border:1px solid #e2e8f0;padding:14px;text-align:left;}
-    th {background:#ebf8ff;color:#2b6cb0;}
-    tr:nth-child(even) {background:#f8fafc;}
-    ul {margin-top:8px;}
-    li {margin-bottom:6px;line-height:1.6;}
-    .risk-box {background:#fff5f5;border-left:5px solid #e53e3e;
-                padding:16px;border-radius:6px;margin-top:12px;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',sans-serif;background:#f0f4f8;color:#2d3748;padding:20px;}
+    .container{background:#fff;padding:36px;border-radius:14px;
+                box-shadow:0 4px 20px rgba(0,0,0,.08);max-width:1200px;margin:0 auto;}
+    h1{color:#1a365d;border-bottom:4px solid #3182ce;padding-bottom:14px;font-size:1.4em;}
+    h2{color:#2b6cb0;margin:28px 0 10px;border-left:5px solid #3182ce;
+        padding-left:10px;font-size:1.1em;}
+    table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.92em;}
+    th,td{border:1px solid #e2e8f0;padding:10px 12px;text-align:left;}
+    th{background:#ebf8ff;color:#2b6cb0;font-weight:600;}
+    tr:nth-child(even){background:#f7fafc;}
+    ul{padding-left:18px;margin-top:8px;}
+    li{margin-bottom:5px;line-height:1.65;}
+    .risk-box{background:#fff5f5;border-left:5px solid #e53e3e;
+               padding:16px;border-radius:8px;margin-top:12px;}
+    .score{font-size:1.6em;font-weight:700;color:#276749;margin:6px 0;}
+    .badge-high{color:#c53030;font-weight:700;}
+    .badge-ok{color:#276749;font-weight:700;}
+    .meta{color:#718096;font-size:.88em;margin-bottom:16px;}
+    code{background:#edf2f7;padding:2px 6px;border-radius:4px;font-size:.88em;}
   </style>
 </head>
 <body>
 <div class="container">
   <h1>📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU</h1>
-  <p>
-    <b>Rapor Tarihi:</b> 10.06.2026 21:53 &nbsp;|&nbsp;
-    <b>Altyapı:</b> UCP 600 &amp; ISBP Hukuk Motoru v4.0
+  <p class="meta">
+    <b>Rapor Tarihi:</b> 10.06.2026 22:14 &nbsp;|&nbsp;
+    <b>Altyapı:</b> UCP 600 &amp; ISBP 821 Hukuk Motoru v5.0
   </p>
 
-  <h2>1. Kritik Süreler ve Vade Analizi</h2>
-  <ul><li>En Geç Yükleme Tarihi (Alan 44C): Belgeden tespit edilemedi — manuel kontrol gerekli.</li><li>Bankaya İbraz Süresi: Belgeden tespit edilemedi — UCP 600 Madde 14c varsayılan 21 günlük limit uygulanır.</li></ul>
-
-  <h2>2. Finansal Vade ve Ödeme Takvimi</h2>
-  <ul><li>Ödeme Vadesi: Belgelerden tespit edilemedi — manuel kontrol önerilir.</li></ul>
-
-  <h2>3. Incoterms ve Sigorta Hukuku (ICC 2020)</h2>
-  <ul><li>Incoterms Standardı: **CIF (ICC 2020 Rules)**</li><li>[HUKUKİ REZERV RİSKİ] Teslim şekli CIF olmasına rağmen Sigorta Poliçesi bulunamadı!</li></ul>
+  <h2>1. Kritik Süreler ve Vade Analizi</h2><ul><li>En Geç Yükleme Tarihi (Alan 44C): Belgeden tespit edilemedi — manuel kontrol gerekli.</li><li>Bankaya İbraz Süresi: Belgeden tespit edilemedi — UCP 600 Madde 14c varsayılan 21 günlük limit uygulanır.</li></ul>
+  <h2>2. Finansal Vade ve Ödeme Takvimi</h2><ul><li>Ödeme Vadesi: Belgelerden tespit edilemedi — manuel kontrol önerilir.</li></ul>
+  <h2>3. Incoterms ve Sigorta Hukuku (ICC 2020)</h2><ul><li>Incoterms Standardı: **CIF (ICC 2020 Rules)**</li><li>[HUKUKİ REZERV RİSKİ] Teslim şekli CIF olmasına rağmen Sigorta Poliçesi bulunamadı!</li></ul>
 
   <h2>4. Sayısal ve Çapraz Evrak Uyumluluk Kontrolü</h2>
+  <table><tr><th>Belgeler</th><th>Detaylı İnceleme Kriteri</th><th>Durum</th></tr><tr><td><b>Fatura vs Akreditif Tutarı (Art 18 / Art 30)</b></td><td>Tutar tespit edilemedi: Fatura, Akreditif (32B)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Fatura vs Konşimento Kilo</b></td><td>Fatura: 1,470.00 KG | Konşimento: 2,400.00 KG</td><td><b>REZERV RİSKİ - UYUMSUZ SAYISAL VERİ</b></td></tr><tr><td><b>Fatura Mal Tanımı vs Küşat (Art 18c)</b></td><td>Mal tanımı tespit edilemedi: Fatura, Küşat (45A)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Konşimento Yükleme Tarihi vs Alan 44C (Art 20)</b></td><td>Tarih tespit edilemedi: Küşat 44C</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Sigorta Bedeli ≥ Fatura × %110 (Art 28f-ii)</b></td><td>CIF teslimlerde sigorta poliçesi zorunludur ancak bulunamadı.</td><td><b>REZERV RİSKİ - SİGORTA BELGESİ EKSİK</b></td></tr></table>
+
+  <h2>5. Konşimento ve Taşıma Hukuku Parametreleri</h2><ul><li>[TAMAM] Konşimento üzerinde 'Shipped on Board' şerhi saptandı (Art 20a-ii uyumlu).</li><li>[BİLGİ] 'CLEAN' ibaresi bulunamadı ancak kirli konşimento ifadesi de yok — Art 27 kapsamında TEMİZ KONŞİMENTO - MANUEL DOĞRULAMA önerilir.</li></ul>
+
+  <h2>6. 46A Belge Şartları Kontrolü</h2>
+  <table><tr><th>Talep Edilen Belge</th><th>Detay</th><th>Durum</th></tr><tr><td>Alan 46A</td><td>MT700 Alan 46A tespit edilemedi.</td><td><b>MANUEL KONTROL</b></td></tr></table>
+
+  <h2>7. UCP 600 Hukuki Maddeleri Tablosu</h2>
+  <table><tr><th>Madde</th><th>Açıklama</th><th>Sistem Durumu</th><th>Bulgu</th></tr><tr><td><b>Art 14</b></td><td>Belgelerin İncelenmesi Standartları</td><td><code>MANUEL KONTROL</code></td><td>21 günlük banka ibraz süresi kısıtlaması uygulandı (Madde 14c).</td></tr><tr><td><b>Art 15</b></td><td>Uyumlu İbraz (Complying Presentation)</td><td><code>MANUEL KONTROL</code></td><td>Uyumlu ibrazın teyidi için bankayla doğrulama gerekir.</td></tr><tr><td><b>Art 17</b></td><td>Orijinal Belgeler ve Suretler</td><td><code>MANUEL KONTROL</code></td><td>Banka ibrazında orijinal/suret kaşelerinin varlığı aranır.</td></tr><tr><td><b>Art 18</b></td><td>Ticari Fatura (Commercial Invoice)</td><td><code>MANUEL KONTROL</code></td><td>Mal tanımı ve tutar uyumu analiz edildi (Art 18c).</td></tr><tr><td><b>Art 20</b></td><td>Konşimento (Bill of Lading)</td><td><code>DOĞRUDAN GEÇTİ</code></td><td>Shipped on Board şerhi, yükleme tarihi ve kilo denetimi yapıldı.</td></tr><tr><td><b>Art 27</b></td><td>Temiz Taşıma Belgesi</td><td><code>MANUEL KONTROL</code></td><td>Kirli konşimento ifadeleri tarandı (Art 27).</td></tr><tr><td><b>Art 28</b></td><td>Sigorta Belgesi ve Kapsamı</td><td><code>REZERV RİSKİ</code></td><td>%110 teminat hesabı dahil sigorta uyumu analiz edildi.</td></tr><tr><td><b>Art 30</b></td><td>Miktar ve Tutarda Toleranslar</td><td><code>MANUEL KONTROL</code></td><td>%5 tolerans kuralı uygulandı (Art 30b).</td></tr><tr><td><b>Art 1</b></td><td>UCP 600 kurallarına tabi olduğu açıkça yazılmalıdır.</td><td><code>ZORUNLU KURAL</code></td><td>UCP 600</td></tr><tr><td><b>Art 3</b></td><td>Akreditif gayrikabili rücu (dönülemez) olmalıdır.</td><td><code>ZORUNLU KURAL</code></td><td>IRREVOCABLE</td></tr></table>
+
+  <h2>8. ISBP 821 Yorum Tablosu</h2>
+  <table><tr><th>UCP Maddesi</th><th>ISBP Prensibi</th><th>Bulgu</th><th>Öneri</th></tr><tr><td><b>Art 18</b></td><td>ISBP C1-C23 — Ticari Fatura Prensipleri</td><td>Fatura vs Akreditif Tutarı (Art 18 / Art 30): MANUEL KONTROL</td><td>Mal tanımını akreditifteki 45A alanından kopyalayarak faturaya ekleyin. Fazla açıklama eklemeyin.</td></tr><tr><td><b>Art 18</b></td><td>ISBP C1-C23 — Ticari Fatura Prensipleri</td><td>Fatura Mal Tanımı vs Küşat (Art 18c): MANUEL KONTROL</td><td>Mal tanımını akreditifteki 45A alanından kopyalayarak faturaya ekleyin. Fazla açıklama eklemeyin.</td></tr><tr><td><b>Art 20</b></td><td>ISBP E1-E30 — Konşimento Prensipleri</td><td>Konşimento Yükleme Tarihi vs Alan 44C (Art 20): MANUEL KONTROL</td><td>Konşimentonun 'On Board' notasyonunda tarih ile liman bilgisinin ayrıca yer aldığından emin olun.</td></tr><tr><td><b>Art 28</b></td><td>ISBP K1-K15 — Sigorta Belgesi Prensipleri</td><td>Sigorta Bedeli ≥ Fatura × %110 (Art 28f-ii): REZERV RİSKİ - SİGORTA BELGESİ EKSİK</td><td>Sigorta poliçesinin döviz cinsini, teminat tutarını ve kapsam tarihini akreditifle karşılaştırın.</td></tr><tr><td><b>Art 20</b></td><td>ISBP E1-E30 — Konşimento Prensipleri</td><td>[TAMAM] Konşimento üzerinde 'Shipped on Board' şerhi saptandı (Art 20a-ii uyumlu).</td><td>Konşimentonun 'On Board' notasyonunda tarih ile liman bilgisinin ayrıca yer aldığından emin olun.</td></tr><tr><td><b>Art 27</b></td><td>ISBP E26-E27 — Temiz Taşıma Belgesi Prensipleri</td><td>[BİLGİ] 'CLEAN' ibaresi bulunamadı ancak kirli konşimento ifadesi de yok — Art 27 kapsamında TEMİZ KONŞİMENTO - MANUEL DOĞRULAMA önerilir.</td><td>Konşimentonun taşıyıcı tarafından 'clean' olarak düzenlendiğini teyit edin; hasar notu varsa düzeltilmiş yeni konşimento talep edin.</td></tr><tr><td><b>Art 14</b></td><td>ISBP A1-A7 — Belge İnceleme Prensipleri</td><td>Belge inceleme süresi uygulandı (UCP Art 14c — en fazla 21 iş günü).</td><td>İbraz öncesi tüm belgeler 21 günlük süre kısıtlaması gözetilerek hazırlanmalıdır.</td></tr></table>
+
+  <h2>9. Tespit Edilen Kritik Rezervler ve Uzman Önerileri</h2>
   <table>
-    <tr><th>Belgeler</th><th>Detaylı İnceleme Kriteri</th><th>Durum</th></tr>
-    <tr><td><b>Fatura vs Akreditif Tutarı (Art 18 / Art 30)</b></td><td>Tutar tespit edilemedi: Fatura, Akreditif (32B)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Fatura vs Konşimento Kilo</b></td><td>Fatura: 1,470.00 KG | Konşimento: 2,400.00 KG</td><td><b>REZERV RİSKİ - UYUMSUZ SAYISAL VERİ</b></td></tr><tr><td><b>Fatura Mal Tanımı vs Küşat (Art 18c)</b></td><td>Mal tanımı tespit edilemedi: Fatura, Küşat (45A)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Konşimento Yükleme Tarihi vs Alan 44C (Art 20)</b></td><td>Tarih tespit edilemedi: Küşat 44C</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Sigorta Bedeli ≥ Fatura × %110 (Art 28f-ii)</b></td><td>CIF teslimlerde sigorta poliçesi zorunludur ancak dosyalar arasında bulunamadı.</td><td><b>REZERV RİSKİ - SİGORTA BELGESİ EKSİK</b></td></tr>
+    <tr><th>Rezerv</th><th>Risk</th><th>Banka İtirazı</th><th>UCP Maddesi</th><th>Düzeltme Önerisi</th></tr>
+    <tr><td>REZERV — Sigorta belgesi eksik (CIF teslimde Art 28 zorunlul</td><td>YÜKSEK</td><td>Banka, sigorta poliçesi ibraz edilmeden ödeme yapmayı reddedecektir.</td><td>UCP 600 Art 28</td><td>CIF/CIP teslimde orijinal sigorta poliçesini en az fatura bedelinin %110'u için temin edin.</td></tr><tr><td>REZERV — Kilo uyumsuzluğu: Fatura 1,470.00 KG / Konşimento 2</td><td>ORTA</td><td>Banka, belgelerdeki kilo uyumsuzluğunu rezerv olarak bildirebilir.</td><td>UCP 600 Art 14 / Art 18</td><td>Fatura ve konşimentodaki kilo değerlerini düzelterek eşleştirin.</td></tr>
   </table>
 
-  <h2>5. Konşimento ve Taşıma Hukuku Parametreleri</h2>
-  <ul><li>[TAMAM] Konşimento üzerinde 'Shipped on Board' şerhi saptandı (Art 20a-ii uyumlu).</li><li>[BİLGİ] Konşimentoda 'CLEAN' ibaresi bulunamadı — Art 27 kapsamında manuel kontrol önerilir.</li></ul>
+  <h2>10. Eksik Belgeler Özeti</h2><ul><li>❌ Sigorta Poliçesi (CIF/CIP zorunlu)</li><li>❌ Çeki Listesi / Packing List</li></ul>
 
-  <h2>6. UCP 600 Hukuki Maddeleri Tablosu</h2>
-  <table>
-    <tr><th>Madde</th><th>Açıklama</th><th>Sistem Durumu</th><th>Bulgu</th></tr>
-    <tr><td><b>Art 14</b></td><td>Belgelerin İncelenmesi Standartları</td><td><code>TESPİT EDİLDİ</code></td><td>Standart 21 günlük yasal banka ibraz sınırı uygulandı.</td></tr><tr><td><b>Art 15</b></td><td>Uyumlu İbraz (Complying Presentation)</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Vesaiklerin bankaya eksiksiz ve hatasız ulaştığının teyidi.</td></tr><tr><td><b>Art 17</b></td><td>Orijinal Belgeler ve Suretler</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Banka ibrazında orijinal/suret kaşelerinin varlığı aranır.</td></tr><tr><td><b>Art 18</b></td><td>Ticari Fatura (Commercial Invoice)</td><td><code>DOĞRUDAN GEÇTİ</code></td><td>Mal tanımının küşat metniyle karakter doğrulaması yapıldı (Art 18c).</td></tr><tr><td><b>Art 20</b></td><td>Konşimento (Bill of Lading)</td><td><code>TESPİT EDİLDİ</code></td><td>Shipped on Board şerhi ve ciro silsilesi hukuki denetimi yapıldı.</td></tr><tr><td><b>Art 27</b></td><td>Temiz Taşıma Belgesi</td><td><code>TESPİT EDİLDİ</code></td><td>Üzerinde hasar veya kusurlu ambalaj şerhi bulunmayan temiz belge kontrolü.</td></tr><tr><td><b>Art 28</b></td><td>Sigorta Belgesi ve Kapsamı</td><td><code>YÜKSEK RİSK</code></td><td>CIF teslimlerde Sigorta Poliçesi zorunludur! Minimum %110 teminat aranır (UCP 600 Madde 28).</td></tr><tr><td><b>Art 30</b></td><td>Miktar ve Tutarda Toleranslar</td><td><code>DOĞRUDAN GEÇMİYOR</code></td><td>Akreditifte aksi belirtilmedikçe %5 / %10 tolerans limitleri.</td></tr><tr><td><b>Art 1</b></td><td>UCP 600 kurallarına tabi olduğu açıkça yazılmalıdır.</td><td><code>ZORUNLU KURAL</code></td><td>UCP 600</td></tr><tr><td><b>Art 3</b></td><td>Akreditif gayrikabili rücu (dönülemez) olmalıdır.</td><td><code>ZORUNLU KURAL</code></td><td>IRREVOCABLE</td></tr>
-  </table>
-
-  <h2>7. Risk Değerlendirmesi ve Rezerv Özeti</h2>
-  <div class="risk-box">
-    <ul><li>Toplam Risk Puanı: **60** — Risk Sınıfı: **YÜKSEK RİSK**</li><li>1. REZERV — Sigorta belgesi eksik (CIF teslimde Art 28 zorunluluğu)</li><li>2. REZERV — Kilo uyumsuzluğu: Fatura 1,470.00 KG / Konşimento 2,400.00 KG</li></ul>
-  </div>
+  <h2>11. Risk Değerlendirmesi ve Uyumluluk Skoru</h2>
+  <div class="risk-box"><ul><li>Toplam Risk Puanı: **60** — Risk Sınıfı: **YÜKSEK RİSK**</li><li>Uyumluluk Skoru: **%65**</li><li>1. REZERV — Sigorta belgesi eksik (CIF teslimde Art 28 zorunluluğu)</li><li>2. REZERV — Kilo uyumsuzluğu: Fatura 1,470.00 KG / Konşimento 2,400.00 KG</li></ul></div>
 </div>
 </body>
 </html>
