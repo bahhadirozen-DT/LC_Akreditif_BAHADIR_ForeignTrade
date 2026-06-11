@@ -1,6 +1,6 @@
 """
 Yapay Zeka Destekli Dış Ticaret Akreditif Denetleme Sistemi
-UCP 600 / ISBP 821 Uyumlu | Üretim Ortamı Sürümü v5.0
+UCP 600 / ISBP 821 Uyumlu | Üretim Ortamı Sürümü v6.0
 
 Bağımlılıklar (opsiyonel):
     pypdf, python-docx, openpyxl, Pillow, pytesseract
@@ -109,39 +109,151 @@ AY_ISIMLERI: dict[str, int] = {
 }
 
 # ---------------------------------------------------------------------------
-# ISBP 821 eşleştirme tablosu
+# ISBP 821 eşleştirme tablosu — paragraf düzeyinde referans
 # ---------------------------------------------------------------------------
 ISBP_ESLESTIRME: dict[str, dict[str, str]] = {
     "Art 14": {
-        "prensip":    "ISBP A1-A7 — Belge İnceleme Prensipleri",
+        "prensip":    "ISBP 821 Paragraf A1-A7 — Belge İnceleme Prensipleri",
         "aciklama":   "Banka, belgeleri ibraz tarihinden itibaren en fazla 5 iş günü içinde inceler. Belgelerin yüzeyde uyumlu görünmesi yeterlidir.",
         "oneri":      "İbraz öncesi tüm belgeler 21 günlük süre kısıtlaması gözetilerek hazırlanmalıdır.",
+        "paragraf":   "ISBP 821 § A1, § A3, § A6",
     },
     "Art 18": {
-        "prensip":    "ISBP C1-C23 — Ticari Fatura Prensipleri",
+        "prensip":    "ISBP 821 Paragraf C1-C23 — Ticari Fatura Prensipleri",
         "aciklama":   "Faturadaki mal tanımı, akreditifte yer alan ifadeyle birebir uyumlu olmalıdır. Kısaltma ve parantez içi açıklamalar kabul görmeyebilir.",
         "oneri":      "Mal tanımını akreditifteki 45A alanından kopyalayarak faturaya ekleyin. Fazla açıklama eklemeyin.",
+        "paragraf":   "ISBP 821 § C5, § C7, § C14",
     },
     "Art 20": {
-        "prensip":    "ISBP E1-E30 — Konşimento Prensipleri",
+        "prensip":    "ISBP 821 Paragraf E1-E30 — Konşimento Prensipleri",
         "aciklama":   "'Shipped on Board' şerhi yükleme tarihini açıkça göstermelidir. Kaptan, acente veya taşıyıcı imzası zorunludur.",
         "oneri":      "Konşimentonun 'On Board' notasyonunda tarih ile liman bilgisinin ayrıca yer aldığından emin olun.",
+        "paragraf":   "ISBP 821 § E4, § E11, § E14",
     },
     "Art 27": {
-        "prensip":    "ISBP E26-E27 — Temiz Taşıma Belgesi Prensipleri",
+        "prensip":    "ISBP 821 Paragraf E26-E27 — Temiz Taşıma Belgesi Prensipleri",
         "aciklama":   "Konşimento üzerinde malın durumuna ilişkin herhangi bir olumsuz kaydın bulunmaması gerekir. 'CLEAN' ifadesi olmasa dahi kloz içermemesi temiz kabul edilir.",
         "oneri":      "Konşimentonun taşıyıcı tarafından 'clean' olarak düzenlendiğini teyit edin; hasar notu varsa düzeltilmiş yeni konşimento talep edin.",
+        "paragraf":   "ISBP 821 § E26, § E27",
     },
     "Art 28": {
-        "prensip":    "ISBP K1-K15 — Sigorta Belgesi Prensipleri",
+        "prensip":    "ISBP 821 Paragraf K1-K15 — Sigorta Belgesi Prensipleri",
         "aciklama":   "Sigorta belgesi en az fatura bedelinin %110'unu teminat altına almalı ve akreditif para birimiyle düzenlenmelidir.",
         "oneri":      "Sigorta poliçesinin döviz cinsini, teminat tutarını ve kapsam tarihini akreditifle karşılaştırın.",
+        "paragraf":   "ISBP 821 § K3, § K8, § K12",
     },
     "Art 30": {
-        "prensip":    "ISBP B14 — Miktar ve Tutar Tolerans Prensipleri",
+        "prensip":    "ISBP 821 Paragraf B14 — Miktar ve Tutar Tolerans Prensipleri",
         "aciklama":   "Akreditifte 'about' veya 'approximately' ifadesi varsa %10 tolerans uygulanır. Aksi hâlde %5 tolerans geçerlidir.",
         "oneri":      "Fatura tutarının akreditif tutarıyla %5 sapma sınırı içinde kaldığını doğrulayın.",
+        "paragraf":   "ISBP 821 § B14",
     },
+}
+
+# ---------------------------------------------------------------------------
+# Rezerv kategorileri — bankacı standardı
+# ---------------------------------------------------------------------------
+REZERV_KATEGORILERI: dict[str, dict[str, Any]] = {
+    "sigorta_eksik":          {"kategori": "MAJOR DISCREPANCY",  "puan": 25, "sure": "2-3 Gün"},
+    "tutar_uyusmazligi":      {"kategori": "MAJOR DISCREPANCY",  "puan": 25, "sure": "1-2 Gün"},
+    "yukleme_tarihi_ihlali":  {"kategori": "MAJOR DISCREPANCY",  "puan": 25, "sure": "Akreditif değişikliği"},
+    "konsimento_eksik":       {"kategori": "MAJOR DISCREPANCY",  "puan": 25, "sure": "3-5 Gün"},
+    "mal_tanimi_uyusmazligi": {"kategori": "MEDIUM DISCREPANCY", "puan": 10, "sure": "1 Gün"},
+    "mal_tanimi_kritik":      {"kategori": "MAJOR DISCREPANCY",  "puan": 25, "sure": "1-2 Gün"},
+    "kilo_uyusmazligi":       {"kategori": "MEDIUM DISCREPANCY", "puan": 10, "sure": "1 Gün"},
+    "ibraz_suresi_belirsiz":  {"kategori": "MINOR DISCREPANCY",  "puan":  5, "sure": "Aynı Gün"},
+    "temiz_bl_sorunu":        {"kategori": "MAJOR DISCREPANCY",  "puan": 25, "sure": "3-7 Gün"},
+    "46a_belge_eksigi":       {"kategori": "MEDIUM DISCREPANCY", "puan": 10, "sure": "1-2 Gün"},
+    "gec_yukleme":            {"kategori": "MAJOR DISCREPANCY",  "puan": 25, "sure": "Akreditif değişikliği"},
+}
+
+# ---------------------------------------------------------------------------
+# MT700 tüm alan listesi ve açıklamaları
+# ---------------------------------------------------------------------------
+MT700_ALAN_ACIKLAMALARI: dict[str, str] = {
+    "20":  "Documentary Credit Number — Akreditif Numarası",
+    "31C": "Date of Issue — Düzenlenme Tarihi",
+    "31D": "Date and Place of Expiry — Son Kullanma Tarihi ve Yeri",
+    "32B": "Currency Code, Amount — Para Birimi ve Tutar",
+    "39A": "Percentage Credit Amount Tolerance — Yüzde Tolerans",
+    "39B": "Maximum Credit Amount — Azami Tutar",
+    "40A": "Form of Documentary Credit — Akreditif Türü",
+    "41A": "Available With — Kullanım Yeri",
+    "42C": "Drafts at — Poliçe Vadesi",
+    "42P": "Deferred Payment Details — Vadeli Ödeme Detayı",
+    "43P": "Partial Shipments — Kısmi Sevkiyat",
+    "43T": "Transhipment — Aktarma",
+    "44A": "Place of Taking in Charge — Teslim Alım Yeri",
+    "44B": "Place of Final Destination — Varış Yeri",
+    "44C": "Latest Date of Shipment — En Geç Yükleme Tarihi",
+    "44D": "Shipment Period — Yükleme Dönemi",
+    "45A": "Description of Goods — Mal Tanımı",
+    "46A": "Documents Required — Talep Edilen Belgeler",
+    "47A": "Additional Conditions — Ek Şartlar",
+    "48":  "Period for Presentation — İbraz Süresi (gün)",
+    "49":  "Confirmation Instructions — Teyit Talimatı",
+    "53A": "Reimbursement Bank — Rambursman Bankası",
+    "57A": "Advising Bank — İhbar Bankası",
+    "71B": "Charges — Masraflar",
+    "78":  "Instructions to the Paying Bank — Ödeme Bankasına Talimat",
+}
+
+# ---------------------------------------------------------------------------
+# Rezerv simülatörü — SWIFT mesaj şablonları
+# ---------------------------------------------------------------------------
+REZERV_SWIFT_SABLONLARI: dict[str, str] = {
+    "sigorta_eksik": (
+        "DOCUMENTS REJECTED.\n\n"
+        "INSURANCE DOCUMENT AS REQUIRED BY FIELD 46A\n"
+        "OF THE CREDIT HAS NOT BEEN PRESENTED.\n"
+        "UCP 600 ARTICLE 28."
+    ),
+    "tutar_uyusmazligi": (
+        "DOCUMENTS REJECTED.\n\n"
+        "INVOICE AMOUNT EXCEEDS THE CREDIT AMOUNT.\n"
+        "UCP 600 ARTICLE 18 / ARTICLE 30."
+    ),
+    "kilo_uyusmazligi": (
+        "DOCUMENTS REJECTED.\n\n"
+        "GROSS WEIGHT AS SHOWN ON COMMERCIAL INVOICE\n"
+        "DOES NOT CORRESPOND WITH THAT SHOWN ON\n"
+        "BILL OF LADING.\n"
+        "UCP 600 ARTICLE 14 / ISBP 821 § C10."
+    ),
+    "mal_tanimi_kritik": (
+        "DOCUMENTS REJECTED.\n\n"
+        "DESCRIPTION OF GOODS ON COMMERCIAL INVOICE\n"
+        "DOES NOT CORRESPOND WITH THAT STATED IN\n"
+        "THE CREDIT.\n"
+        "UCP 600 ARTICLE 18(C) / ISBP 821 § C5."
+    ),
+    "konsimento_eksik": (
+        "DOCUMENTS REJECTED.\n\n"
+        "FULL SET OF ORIGINAL BILLS OF LADING\n"
+        "AS REQUIRED BY THE CREDIT HAS NOT\n"
+        "BEEN PRESENTED.\n"
+        "UCP 600 ARTICLE 20."
+    ),
+    "gec_yukleme": (
+        "DOCUMENTS REJECTED.\n\n"
+        "SHIPMENT DATE AS EVIDENCED BY BILL OF LADING\n"
+        "IS LATER THAN THE LATEST DATE OF SHIPMENT\n"
+        "STIPULATED IN FIELD 44C OF THE CREDIT.\n"
+        "UCP 600 ARTICLE 14(C) / ARTICLE 20."
+    ),
+    "temiz_bl_sorunu": (
+        "DOCUMENTS REJECTED.\n\n"
+        "BILL OF LADING BEARS CLAUSE(S) OR NOTATION(S)\n"
+        "ADVERSELY COMMENTING ON THE CONDITION OF\n"
+        "THE GOODS AND/OR PACKAGING.\n"
+        "UCP 600 ARTICLE 27 / ISBP 821 § E26."
+    ),
+    "46a_belge_eksigi": (
+        "DOCUMENTS REJECTED.\n\n"
+        "ONE OR MORE DOCUMENTS AS REQUIRED BY FIELD 46A\n"
+        "OF THE CREDIT HAVE NOT BEEN PRESENTED.\n"
+        "UCP 600 ARTICLE 14(A) / ARTICLE 16."
+    ),
 }
 
 
@@ -159,11 +271,14 @@ class YapayZekaDisTicaretDenetleyici:
         os.makedirs(self.yuklenenler_dir, exist_ok=True)
         os.makedirs(self.raporlar_dir,    exist_ok=True)
 
-        self.depo:           dict[str, Any] = self._bos_depo()
-        self.analiz_verisi:  dict[str, Any] = {}
-        self.risk_puani:     int            = 0
-        self.uyumluluk_puani: int           = 100
-        self.mt700_alanlari: dict[str, str] = {}
+        self.depo:              dict[str, Any] = self._bos_depo()
+        self.analiz_verisi:     dict[str, Any] = {}
+        self.risk_puani:        int            = 0
+        self.uyumluluk_puani:   int            = 100
+        self.mt700_alanlari:    dict[str, str] = {}
+        # v6.0 — yeni durum alanları
+        self._aktif_rezerv_kategorileri: list[str] = []   # kategori anahtarları listesi
+        self._banka_kabul_olasiligi:     int        = 100  # 0–100 %
 
     # ------------------------------------------------------------------
     # Depo yardımcıları
@@ -756,91 +871,113 @@ class YapayZekaDisTicaretDenetleyici:
 
             if "Sigorta belgesi eksik" in rezerv or "SİGORTA BELGESİ EKSİK" in rezerv:
                 oneri.update({
-                    "risk": "YÜKSEK",
-                    "banka_itiraz": "Banka, sigorta poliçesi ibraz edilmeden ödeme yapmayı reddedecektir.",
-                    "ucp_maddesi": "UCP 600 Art 28",
-                    "isbp_prensibi": "ISBP K1-K15",
-                    "duzeltme": "CIF/CIP teslimde orijinal sigorta poliçesini en az fatura bedelinin %110'u için temin edin.",
+                    "risk":          "YÜKSEK",
+                    "kategori":      "MAJOR DISCREPANCY",
+                    "banka_itiraz":  "Banka, sigorta poliçesi ibraz edilmeden ödeme yapmayı reddedecektir.",
+                    "ucp_maddesi":   "UCP 600 Art 28",
+                    "isbp_prensibi": "ISBP 821 § K3, § K8",
+                    "duzeltme":      "CIF/CIP teslimde orijinal sigorta poliçesini en az fatura bedelinin %110'u için temin edin.",
+                    "tahmini_sure":  "2-3 Gün",
                 })
             elif "Sigorta teminatı yetersiz" in rezerv:
                 oneri.update({
-                    "risk": "YÜKSEK",
-                    "banka_itiraz": "Banka, %110 altında teminat içeren sigorta belgesini reddedebilir.",
-                    "ucp_maddesi": "UCP 600 Art 28f-ii",
-                    "isbp_prensibi": "ISBP K8",
-                    "duzeltme": "Sigorta şirketinden ek teminat endorsmanı alın veya poliçeyi yeniden düzenletin.",
+                    "risk":          "YÜKSEK",
+                    "kategori":      "MAJOR DISCREPANCY",
+                    "banka_itiraz":  "Banka, %110 altında teminat içeren sigorta belgesini reddedebilir.",
+                    "ucp_maddesi":   "UCP 600 Art 28f-ii",
+                    "isbp_prensibi": "ISBP 821 § K8",
+                    "duzeltme":      "Sigorta şirketinden ek teminat endorsmanı alın veya poliçeyi yeniden düzenletin.",
+                    "tahmini_sure":  "1-2 Gün",
                 })
             elif "Tutar" in rezerv and "sapıyor" in rezerv:
                 oneri.update({
-                    "risk": "YÜKSEK",
-                    "banka_itiraz": "Fatura tutarı akreditif limitini aştığından banka ödeme yapmayacaktır.",
-                    "ucp_maddesi": "UCP 600 Art 18 / Art 30",
-                    "isbp_prensibi": "ISBP B14",
-                    "duzeltme": "Akreditif tutarını artırın (amir nezdinde değişiklik) veya fatura tutarını %5 tolerans sınırına çekin.",
+                    "risk":          "YÜKSEK",
+                    "kategori":      "MAJOR DISCREPANCY",
+                    "banka_itiraz":  "Fatura tutarı akreditif limitini aştığından banka ödeme yapmayacaktır.",
+                    "ucp_maddesi":   "UCP 600 Art 18 / Art 30",
+                    "isbp_prensibi": "ISBP 821 § B14",
+                    "duzeltme":      "Akreditif tutarını artırın (amir nezdinde değişiklik) veya fatura tutarını tolerans sınırına çekin.",
+                    "tahmini_sure":  "1-2 Gün",
                 })
             elif "Kilo uyumsuzluğu" in rezerv:
                 oneri.update({
-                    "risk": "ORTA",
-                    "banka_itiraz": "Banka, belgelerdeki kilo uyumsuzluğunu rezerv olarak bildirebilir.",
-                    "ucp_maddesi": "UCP 600 Art 14 / Art 18",
-                    "isbp_prensibi": "ISBP C10",
-                    "duzeltme": "Fatura ve konşimentodaki kilo değerlerini düzelterek eşleştirin.",
+                    "risk":          "ORTA",
+                    "kategori":      "MEDIUM DISCREPANCY",
+                    "banka_itiraz":  "Banka, belgelerdeki kilo uyumsuzluğunu rezerv olarak bildirebilir.",
+                    "ucp_maddesi":   "UCP 600 Art 14 / Art 18",
+                    "isbp_prensibi": "ISBP 821 § C10",
+                    "duzeltme":      "Fatura ve konşimentodaki kilo değerlerini düzelterek eşleştirin.",
+                    "tahmini_sure":  "1 Gün",
                 })
             elif "Mal tanımı uyuşmazlığı" in rezerv:
                 oneri.update({
-                    "risk": "YÜKSEK",
-                    "banka_itiraz": "Banka, mal tanımı uyuşmazlığını UCP Art 18c kapsamında rezerv gerekçesi olarak kullanacaktır.",
-                    "ucp_maddesi": "UCP 600 Art 18c",
-                    "isbp_prensibi": "ISBP C4",
-                    "duzeltme": "Faturadaki mal tanımını akreditifteki 45A alanıyla birebir eşleştirin.",
+                    "risk":          "YÜKSEK",
+                    "kategori":      "MAJOR DISCREPANCY",
+                    "banka_itiraz":  "Banka, mal tanımı uyuşmazlığını UCP Art 18c kapsamında rezerv gerekçesi olarak kullanacaktır.",
+                    "ucp_maddesi":   "UCP 600 Art 18c",
+                    "isbp_prensibi": "ISBP 821 § C5, § C7",
+                    "duzeltme":      "Faturadaki mal tanımını akreditifteki 45A alanıyla birebir eşleştirin.",
+                    "tahmini_sure":  "1-2 Gün",
                 })
             elif "GEÇ YÜKLEME" in rezerv or "yükleme tarihi" in rezerv.lower():
                 oneri.update({
-                    "risk": "YÜKSEK",
-                    "banka_itiraz": "Geç yükleme nedeniyle konşimento akreditifle uyumsuz sayılacak, ödeme reddedilebilir.",
-                    "ucp_maddesi": "UCP 600 Art 20 / Art 14c",
-                    "isbp_prensibi": "ISBP E4",
-                    "duzeltme": "Akreditifin 44C alanında değişiklik talep edin veya yüklemeyi öne alın.",
+                    "risk":          "YÜKSEK",
+                    "kategori":      "MAJOR DISCREPANCY",
+                    "banka_itiraz":  "Geç yükleme nedeniyle konşimento akreditifle uyumsuz sayılacak, ödeme reddedilebilir.",
+                    "ucp_maddesi":   "UCP 600 Art 20 / Art 14c",
+                    "isbp_prensibi": "ISBP 821 § E4, § E14",
+                    "duzeltme":      "Akreditifin 44C alanında değişiklik talep edin veya yüklemeyi öne alın.",
+                    "tahmini_sure":  "Akreditif değişikliği",
                 })
             elif "Shipped on Board" in rezerv:
                 oneri.update({
-                    "risk": "YÜKSEK",
-                    "banka_itiraz": "'Shipped on Board' şerhi olmayan konşimento, banka tarafından geçersiz sayılacaktır.",
-                    "ucp_maddesi": "UCP 600 Art 20a-ii",
-                    "isbp_prensibi": "ISBP E11",
-                    "duzeltme": "Yükleme tarihini açıkça gösteren 'Shipped on Board' şerhini taşıyıcıdan talep edin.",
+                    "risk":          "YÜKSEK",
+                    "kategori":      "MAJOR DISCREPANCY",
+                    "banka_itiraz":  "'Shipped on Board' şerhi olmayan konşimento, banka tarafından geçersiz sayılacaktır.",
+                    "ucp_maddesi":   "UCP 600 Art 20a-ii",
+                    "isbp_prensibi": "ISBP 821 § E11",
+                    "duzeltme":      "Yükleme tarihini açıkça gösteren 'Shipped on Board' şerhini taşıyıcıdan talep edin.",
+                    "tahmini_sure":  "1-3 Gün",
                 })
             elif "Konşimento belgesi ibraz edilmemiş" in rezerv:
                 oneri.update({
-                    "risk": "KRİTİK",
-                    "banka_itiraz": "Temel taşıma belgesi olmadan ödeme kesinlikle yapılmayacaktır.",
-                    "ucp_maddesi": "UCP 600 Art 20",
-                    "isbp_prensibi": "ISBP E1",
-                    "duzeltme": "Tam set orijinal konşimentoyu (genellikle 3/3) bankaya ibraz edin.",
+                    "risk":          "KRİTİK",
+                    "kategori":      "MAJOR DISCREPANCY",
+                    "banka_itiraz":  "Temel taşıma belgesi olmadan ödeme kesinlikle yapılmayacaktır.",
+                    "ucp_maddesi":   "UCP 600 Art 20",
+                    "isbp_prensibi": "ISBP 821 § E1, § E4",
+                    "duzeltme":      "Tam set orijinal konşimentoyu (genellikle 3/3) bankaya ibraz edin.",
+                    "tahmini_sure":  "3-5 Gün",
                 })
             elif "temiz" in rezerv.lower() or "CLEAN" in rezerv:
                 oneri.update({
-                    "risk": "YÜKSEK",
-                    "banka_itiraz": "Klozlu konşimento bankaca reddedilir.",
-                    "ucp_maddesi": "UCP 600 Art 27",
-                    "isbp_prensibi": "ISBP E26",
-                    "duzeltme": "Taşıyıcıdan klozlar kaldırılmış temiz konşimento talep edin; gerekirse mal paketlemesini yenileyin.",
+                    "risk":          "YÜKSEK",
+                    "kategori":      "MAJOR DISCREPANCY",
+                    "banka_itiraz":  "Klozlu konşimento bankaca reddedilir.",
+                    "ucp_maddesi":   "UCP 600 Art 27",
+                    "isbp_prensibi": "ISBP 821 § E26, § E27",
+                    "duzeltme":      "Taşıyıcıdan klozlar kaldırılmış temiz konşimento talep edin; gerekirse mal paketlemesini yenileyin.",
+                    "tahmini_sure":  "3-7 Gün",
                 })
             elif "46A" in rezerv:
                 oneri.update({
-                    "risk": "ORTA",
-                    "banka_itiraz": "Akreditifte talep edilen belgelerden biri eksik olduğundan banka ödemeyi reddedecektir.",
-                    "ucp_maddesi": "UCP 600 Art 14 / Art 16",
-                    "isbp_prensibi": "ISBP A4",
-                    "duzeltme": "Eksik belgeyi temin ederek tam ibraz yapın.",
+                    "risk":          "ORTA",
+                    "kategori":      "MEDIUM DISCREPANCY",
+                    "banka_itiraz":  "Akreditifte talep edilen belgelerden biri eksik olduğundan banka ödemeyi reddedecektir.",
+                    "ucp_maddesi":   "UCP 600 Art 14 / Art 16",
+                    "isbp_prensibi": "ISBP 821 § A4, § A6",
+                    "duzeltme":      "Eksik belgeyi temin ederek tam ibraz yapın.",
+                    "tahmini_sure":  "1-2 Gün",
                 })
             else:
                 oneri.update({
-                    "risk": "BELİRSİZ",
-                    "banka_itiraz": "Tespit edilen sorunun banka tarafından rezerv olarak değerlendirilmesi mümkündür.",
-                    "ucp_maddesi": "UCP 600 Art 14-16",
-                    "isbp_prensibi": "ISBP A1-A7",
-                    "duzeltme": "Belgeleri akreditif şartlarıyla karşılaştırarak manuel inceleme yapın.",
+                    "risk":          "BELİRSİZ",
+                    "kategori":      "INFORMATIONAL",
+                    "banka_itiraz":  "Tespit edilen sorunun banka tarafından rezerv olarak değerlendirilmesi mümkündür.",
+                    "ucp_maddesi":   "UCP 600 Art 14-16",
+                    "isbp_prensibi": "ISBP 821 § A1-A7",
+                    "duzeltme":      "Belgeleri akreditif şartlarıyla karşılaştırarak manuel inceleme yapın.",
+                    "tahmini_sure":  "Değişken",
                 })
 
             oneriler.append(oneri)
@@ -848,10 +985,25 @@ class YapayZekaDisTicaretDenetleyici:
         sonuclar["uzman_onerileri"] = oneriler
 
     # ------------------------------------------------------------------
-    # Risk ve uyumluluk puan yönetimi
+    # Risk ve uyumluluk puan yönetimi — dinamik, kategori ağırlıklı
     # ------------------------------------------------------------------
     def _risk_puani_ekle(self, kategori: str) -> None:
-        self.risk_puani += RISK_PUANLARI.get(kategori, 0)
+        """Kategori ağırlığını kullanarak risk puanı ekler; banka kabul olasılığını günceller."""
+        bilgi = REZERV_KATEGORILERI.get(kategori)
+        if bilgi:
+            self.risk_puani += bilgi["puan"]
+            # MAJOR = -25%, MEDIUM = -10%, MINOR = -5%
+            kat = bilgi["kategori"]
+            if "MAJOR" in kat:
+                self._banka_kabul_olasiligi = max(0, self._banka_kabul_olasiligi - 25)
+            elif "MEDIUM" in kat:
+                self._banka_kabul_olasiligi = max(0, self._banka_kabul_olasiligi - 10)
+            else:
+                self._banka_kabul_olasiligi = max(0, self._banka_kabul_olasiligi - 5)
+        else:
+            self.risk_puani += RISK_PUANLARI.get(kategori, 0)
+        if kategori not in self._aktif_rezerv_kategorileri:
+            self._aktif_rezerv_kategorileri.append(kategori)
 
     def _uyumluluk_duş(self, miktar: int) -> None:
         self.uyumluluk_puani = max(0, self.uyumluluk_puani - miktar)
@@ -861,6 +1013,272 @@ class YapayZekaDisTicaretDenetleyici:
             if alt <= self.risk_puani <= ust:
                 return sinif
         return "YÜKSEK RİSK"
+
+    # ------------------------------------------------------------------
+    # Rezerv simülatörü — muhtemel SWIFT banka reddi metni
+    # ------------------------------------------------------------------
+    def _rezerv_simulatoru_olustur(self, sonuclar: dict[str, Any]) -> None:
+        """
+        Tespit edilen rezervler için bankanın yazacağı muhtemel SWIFT
+        reddi mesajlarını üretir. sonuclar['rezerv_swift_metinleri'] listesine yazar.
+        """
+        swift_metinleri: list[str] = []
+        for kategori in self._aktif_rezerv_kategorileri:
+            sablon = REZERV_SWIFT_SABLONLARI.get(kategori)
+            if sablon:
+                swift_metinleri.append(sablon)
+
+        # Kilo uyumsuzluğu ayrıca kontrol (kategori adı farklı olabilir)
+        for r in sonuclar.get("rezerv_ozeti", []):
+            if "kilo" in r.lower() and not any("kilo" in k for k in self._aktif_rezerv_kategorileri):
+                swift_metinleri.append(REZERV_SWIFT_SABLONLARI.get("kilo_uyusmazligi", ""))
+
+        sonuclar["rezerv_swift_metinleri"] = [t for t in swift_metinleri if t]
+
+    # ------------------------------------------------------------------
+    # MT700 tam alan analizi raporu
+    # ------------------------------------------------------------------
+    def _mt700_alan_analizi_olustur(self, sonuclar: dict[str, Any]) -> None:
+        """
+        Ayrıştırılan MT700 alanlarını okunabilir bir analizle raporlar.
+        sonuclar['mt700_alan_analizi'] listesine yazar.
+        """
+        analiz: list[dict[str, str]] = []
+        for alan_kodu, aciklama in MT700_ALAN_ACIKLAMALARI.items():
+            deger = self.mt700_alanlari.get(alan_kodu)
+            if deger:
+                # 48 (ibraz süresi) özel kontrolü
+                if alan_kodu == "48":
+                    try:
+                        gun = int(re.sub(r'[^0-9]', '', deger))
+                        durum = "✔ UYGUN" if gun <= 21 else "⚠ UYARI — 21 GÜN SINIRINI AŞIYOR"
+                    except ValueError:
+                        gun = -1
+                        durum = "? Ayrıştırılamadı"
+                elif alan_kodu == "43P":
+                    izin_verildi = any(x in deger.upper() for x in ["ALLOWED", "PERMITTED", "IZIN"])
+                    yasak = any(x in deger.upper() for x in ["NOT ALLOWED", "PROHIBITED", "YASAK"])
+                    durum = "✔ İZİNLİ" if izin_verildi else ("✖ YASAK" if yasak else "? İncelenmeli")
+                elif alan_kodu == "43T":
+                    izin_verildi = any(x in deger.upper() for x in ["ALLOWED", "PERMITTED"])
+                    yasak = any(x in deger.upper() for x in ["NOT ALLOWED", "PROHIBITED"])
+                    durum = "✔ İZİNLİ" if izin_verildi else ("✖ YASAK" if yasak else "? İncelenmeli")
+                else:
+                    durum = "✔ TESPİT EDİLDİ"
+                analiz.append({
+                    "alan":      alan_kodu,
+                    "aciklama":  aciklama,
+                    "deger":     deger[:120],
+                    "durum":     durum,
+                })
+            else:
+                # Zorunlu alanlar için uyarı
+                zorunlu = {"20", "31D", "32B", "40A", "44C", "45A", "46A"}
+                if alan_kodu in zorunlu:
+                    analiz.append({
+                        "alan":     alan_kodu,
+                        "aciklama": aciklama,
+                        "deger":    "—",
+                        "durum":    "⚠ TESPİT EDİLEMEDİ — Manuel Kontrol",
+                    })
+        sonuclar["mt700_alan_analizi"] = analiz
+
+    # ------------------------------------------------------------------
+    # Tarih zinciri analizi
+    # ------------------------------------------------------------------
+    def _tarih_zinciri_olustur(self, sonuclar: dict[str, Any]) -> None:
+        """
+        Tüm belgelerdeki tarihleri çekerek kronolojik tutarlılık zinciri kurar.
+        sonuclar['tarih_zinciri'] listesine yazar.
+        """
+        zincir: list[dict[str, str]] = []
+
+        def tarih_karti(etiket: str, ham: Optional[str], dt: Optional[datetime],
+                        referans_dt: Optional[datetime] = None,
+                        referans_adi: str = "", gecmemeli: bool = True) -> dict[str, str]:
+            if not ham:
+                return {"etiket": etiket, "deger": "—",
+                        "durum": "⚠ TESPİT EDİLEMEDİ",
+                        "not": "OCR veya format sorunu olabilir — manuel doğrulama önerilir."}
+            if not dt:
+                return {"etiket": etiket, "deger": ham,
+                        "durum": "? FORMAT TANINAMADI",
+                        "not": f"Tarih metni okundu ancak datetime'a çevrilemedi: '{ham}'"}
+            bilgi = {"etiket": etiket, "deger": dt.strftime("%d.%m.%Y"), "not": ""}
+            if referans_dt and referans_adi:
+                if gecmemeli:
+                    if dt <= referans_dt:
+                        bilgi["durum"] = f"✔ UYUMLU ({referans_adi}: {referans_dt.strftime('%d.%m.%Y')})"
+                    else:
+                        bilgi["durum"] = f"✖ REZERV — {referans_adi} aşıldı ({referans_dt.strftime('%d.%m.%Y')})"
+                        bilgi["not"] = "Banka bu tarihi geç sevkiyat/ibraz gerekçesiyle reddedebilir."
+                else:
+                    if dt >= referans_dt:
+                        bilgi["durum"] = f"✔ UYUMLU ({referans_adi}: {referans_dt.strftime('%d.%m.%Y')})"
+                    else:
+                        bilgi["durum"] = f"✖ REZERV — {referans_adi} öncesinde"
+            else:
+                bilgi["durum"] = "✔ TESPİT EDİLDİ"
+            return bilgi
+
+        kusat_text      = self._depo_metin("KUSAT")
+        fatura_text     = self._depo_metin("FATURA")
+        konsimento_text = self._depo_metin("KONSIMENTO")
+        sigorta_text    = self._depo_metin("SIGORTA")
+
+        # LC Son Geçerlilik Tarihi (31D)
+        lc_31d_str = self.mt700_alanlari.get("31D")
+        lc_31d_dt  = self.tarih_ayristir(lc_31d_str) if lc_31d_str else None
+        zincir.append(tarih_karti("LC Son Geçerlilik (31D)", lc_31d_str, lc_31d_dt))
+
+        # En Geç Yükleme Tarihi (44C)
+        lc_44c_str = self.mt700_alanlari.get("44C")
+        lc_44c_dt  = self.tarih_ayristir(lc_44c_str) if lc_44c_str else None
+        zincir.append(tarih_karti("En Geç Yükleme (44C)", lc_44c_str, lc_44c_dt))
+
+        # Fatura Tarihi
+        fatura_tarih_str = self.tarih_bul(fatura_text, [
+            r'(?:INVOICE\s+DATE|DATE\s+OF\s+INVOICE|DÜZENLEME\s+TARİHİ)[:\s]+'
+            r'([\d]{1,2}[.\-/ ][A-Za-z\d]{2,9}[.\-/ ][\d]{4})',
+            r'DATE[:\s]+([\d]{1,2}[.\-/][\d]{2}[.\-/][\d]{4})',
+        ])
+        fatura_tarih_dt = self.tarih_ayristir(fatura_tarih_str) if fatura_tarih_str else None
+        zincir.append(tarih_karti(
+            "Fatura Tarihi", fatura_tarih_str, fatura_tarih_dt,
+            lc_31d_dt, "LC Geçerlilik", gecmemeli=True
+        ))
+
+        # Konşimento / Yükleme Tarihi
+        bl_tarih_str = self.tarih_bul(konsimento_text, [
+            r'(?:SHIPPED\s+ON\s+BOARD|ON\s+BOARD\s+DATE|DATE\s+OF\s+SHIPMENT)'
+            r'[:\s]+([\d]{1,2}[.\-/][A-Z]{3,}[.\-/][\d]{4})',
+            r'(?:SHIPPED\s+ON\s+BOARD|ON\s+BOARD\s+DATE)[:\s]+'
+            r'([\d]{2}[.\-/][\d]{2}[.\-/][\d]{4})',
+            r'(?:SHIPPED\s+ON\s+BOARD|ON\s+BOARD\s+DATE)[:\s]+'
+            r'([\d]{1,2}\s+[A-Z]{3,}\s+[\d]{4})',
+        ])
+        bl_tarih_dt = self.tarih_ayristir(bl_tarih_str) if bl_tarih_str else None
+        zincir.append(tarih_karti(
+            "Konşimento Yükleme Tarihi (B/L)", bl_tarih_str, bl_tarih_dt,
+            lc_44c_dt, "44C Son Yükleme", gecmemeli=True
+        ))
+
+        # Sigorta Başlangıç Tarihi
+        sig_tarih_str = self.tarih_bul(sigorta_text, [
+            r'(?:DATE\s+OF\s+ISSUE|INSURANCE\s+DATE|COVERAGE\s+FROM)[:\s]+'
+            r'([\d]{1,2}[.\-/ ][A-Za-z\d]{2,9}[.\-/ ][\d]{4})',
+        ]) if sigorta_text else None
+        sig_tarih_dt = self.tarih_ayristir(sig_tarih_str) if sig_tarih_str else None
+        # Sigorta tarihi yükleme tarihinden geç olmamalı
+        zincir.append(tarih_karti(
+            "Sigorta Tarihi", sig_tarih_str, sig_tarih_dt,
+            bl_tarih_dt, "Yükleme Tarihi", gecmemeli=False
+        ))
+
+        sonuclar["tarih_zinciri"] = zincir
+
+    # ------------------------------------------------------------------
+    # Tolerans hesaplama — dinamik (Art 30)
+    # ------------------------------------------------------------------
+    def _tolerans_hesapla(self, lc_miktar: Optional[float], fatura_miktar: Optional[float],
+                          lc_metni: str = "") -> dict[str, Any]:
+        """
+        UCP 600 Art 30 uyarınca toleransı hesaplar.
+        'about'/'approximately' varsa %10, yoksa %5 tolerans uygulanır.
+        """
+        if lc_miktar is None or fatura_miktar is None or lc_miktar == 0:
+            return {"durum": "VERİ EKSİK", "sapma_yuzde": None, "tolerans": None}
+
+        about_var = any(x in lc_metni.upper() for x in ["ABOUT", "APPROXIMATELY", "YAKLAŞIK"])
+        tolerans_yuzde = 10 if about_var else 5
+        sapma = fatura_miktar - lc_miktar
+        sapma_yuzde = (sapma / lc_miktar) * 100
+
+        sinir = lc_miktar * (tolerans_yuzde / 100)
+        uyumlu = abs(sapma) <= sinir
+
+        return {
+            "lc_miktar":        lc_miktar,
+            "fatura_miktar":    fatura_miktar,
+            "sapma":            sapma,
+            "sapma_yuzde":      round(sapma_yuzde, 2),
+            "tolerans_yuzde":   tolerans_yuzde,
+            "tolerans_tipi":    "±%10 (ABOUT/APPROXIMATELY)" if about_var else "±%5 (Standart)",
+            "durum":            "UYUMLU" if uyumlu else "REZERV RİSKİ — TOLERANS AŞILDI",
+        }
+
+    # ------------------------------------------------------------------
+    # OCR güven tahmini (heuristik)
+    # ------------------------------------------------------------------
+    @staticmethod
+    def _ocr_guven_tahmini(metin: str, alan_adi: str) -> dict[str, Any]:
+        """
+        Metnin kalitesini basit heuristiklerle tahmin eder.
+        Gerçek OCR güven skoru pytesseract'tan gelmiyorsa bu yöntem kullanılır.
+        """
+        if not metin:
+            return {"guven": 0, "seviye": "YOK", "not": "Belge veya alan tespit edilemedi."}
+        uzunluk = len(metin.strip())
+        # Heuristik: çok kısa metin veya aşırı özel karakter
+        ozel_oran = len(re.findall(r'[^\w\s.,;:\-\/()%\'\"@#]', metin)) / max(uzunluk, 1)
+        if uzunluk < 10:
+            guven, seviye = 30, "DÜŞÜK"
+            not_ = "Çok kısa içerik — OCR atlaması veya format uyumsuzluğu olabilir."
+        elif ozel_oran > 0.15:
+            guven, seviye = 45, "DÜŞÜK"
+            not_ = f"Yüksek özel karakter oranı (%{ozel_oran*100:.0f}) — OCR bozulması şüphesi."
+        elif uzunluk < 30:
+            guven, seviye = 60, "ORTA"
+            not_ = "Kısa içerik — manuel doğrulama önerilir."
+        else:
+            guven, seviye = 85, "YÜKSEK"
+            not_ = "İçerik yeterli uzunlukta ve makul karakter dağılımında."
+        return {"guven": guven, "seviye": seviye, "not": not_, "alan": alan_adi}
+
+    # ------------------------------------------------------------------
+    # Yönetici özeti (Executive Summary)
+    # ------------------------------------------------------------------
+    def _yonetici_ozeti_olustur(self, sonuclar: dict[str, Any]) -> None:
+        """
+        Raporun en üstüne eklenecek yönetici özetini üretir.
+        sonuclar['yonetici_ozeti'] sözlüğüne yazar.
+        """
+        rezervler = sonuclar.get("rezerv_ozeti", [])
+        major_sayisi  = sum(1 for k in self._aktif_rezerv_kategorileri
+                           if REZERV_KATEGORILERI.get(k, {}).get("kategori") == "MAJOR DISCREPANCY")
+        medium_sayisi = sum(1 for k in self._aktif_rezerv_kategorileri
+                           if REZERV_KATEGORILERI.get(k, {}).get("kategori") == "MEDIUM DISCREPANCY")
+        minor_sayisi  = sum(1 for k in self._aktif_rezerv_kategorileri
+                           if REZERV_KATEGORILERI.get(k, {}).get("kategori") == "MINOR DISCREPANCY")
+
+        mevcut_belgeler = [k for k in ["KUSAT", "FATURA", "KONSIMENTO", "CEKI_LISTESI", "SIGORTA"]
+                           if self.depo.get(k)]
+        toplam_belge = len(mevcut_belgeler)
+
+        # En kritik sorun
+        kritik_sorun = "Tespit edilmedi"
+        if rezervler:
+            for r in rezervler:
+                if any(k in r.upper() for k in ["SİGORTA", "KONŞİMENTO", "GEÇ YÜKLEME", "TUTAR"]):
+                    kritik_sorun = r[:120]
+                    break
+            if kritik_sorun == "Tespit edilmedi":
+                kritik_sorun = rezervler[0][:120]
+
+        sonuclar["yonetici_ozeti"] = {
+            "toplam_belge":          toplam_belge,
+            "mevcut_belgeler":       mevcut_belgeler,
+            "eksik_belgeler":        sonuclar.get("eksik_belgeler", []),
+            "toplam_rezerv":         len(rezervler),
+            "major_rezerv":          major_sayisi,
+            "medium_rezerv":         medium_sayisi,
+            "minor_rezerv":          minor_sayisi,
+            "uyumluluk_skoru":       self.uyumluluk_puani,
+            "risk_puani":            self.risk_puani,
+            "risk_sinifi":           self._risk_sinifi(),
+            "banka_kabul_olasiligi": self._banka_kabul_olasiligi,
+            "kritik_sorun":          kritik_sorun,
+        }
 
     # ------------------------------------------------------------------
     # UCP tablosunu analiz sonuçlarından türet (dinamik)
@@ -977,18 +1395,24 @@ class YapayZekaDisTicaretDenetleyici:
         ).upper()
 
         sonuclar: dict[str, Any] = {
-            "vade_analizi":    [],
-            "finansal_durum":  [],
-            "incoterms":       [],
-            "capraz_kontrol":  [],
-            "zorunlu_alanlar": [],
-            "ucp_tablosu":     [],
-            "risk_ozeti":      [],
-            "rezerv_ozeti":    [],
-            "belge_46a":       [],
-            "isbp_tablosu":    [],
-            "uzman_onerileri": [],
-            "eksik_belgeler":  [],
+            "vade_analizi":           [],
+            "finansal_durum":         [],
+            "incoterms":              [],
+            "capraz_kontrol":         [],
+            "zorunlu_alanlar":        [],
+            "ucp_tablosu":            [],
+            "risk_ozeti":             [],
+            "rezerv_ozeti":           [],
+            "belge_46a":              [],
+            "isbp_tablosu":           [],
+            "uzman_onerileri":        [],
+            "eksik_belgeler":         [],
+            # v6.0 yeni alanlar
+            "mt700_alan_analizi":     [],
+            "tarih_zinciri":          [],
+            "rezerv_swift_metinleri": [],
+            "yonetici_ozeti":         {},
+            "rezerv_detay_listesi":   [],
         }
 
         # ================================================================
@@ -1103,25 +1527,30 @@ class YapayZekaDisTicaretDenetleyici:
             lc_tutari = self.para_tutari_bul(kusat_text)
 
         if fatura_tutari is not None and lc_tutari is not None:
-            tolerans = lc_tutari * 0.05
-            fark     = abs(fatura_tutari - lc_tutari)
-            if fark <= tolerans:
+            tol = self._tolerans_hesapla(lc_tutari, fatura_tutari, kusat_text)
+            detay = (
+                f"LC: {lc_tutari:,.2f} | Fatura: {fatura_tutari:,.2f} | "
+                f"Sapma: {tol['sapma_yuzde']:+.1f}% | "
+                f"Tolerans: {tol['tolerans_tipi']}"
+            )
+            if tol["durum"] == "UYUMLU":
                 sonuclar["capraz_kontrol"].append({
                     "belge":  "Fatura vs Akreditif Tutarı (Art 18 / Art 30)",
-                    "detay": f"Fatura: {fatura_tutari:,.2f} | Akreditif: {lc_tutari:,.2f} | Fark: {fark:,.2f} (≤ %5)",
+                    "detay": detay,
                     "durum": "UYUMLU",
                 })
             else:
                 sonuclar["capraz_kontrol"].append({
                     "belge":  "Fatura vs Akreditif Tutarı (Art 18 / Art 30)",
-                    "detay": f"Fatura: {fatura_tutari:,.2f} | Akreditif: {lc_tutari:,.2f} | Fark: {fark:,.2f} (> %5)",
+                    "detay": detay,
                     "durum": "REZERV RİSKİ - TUTAR UYUŞMAZLIĞI",
                 })
                 self._risk_puani_ekle("tutar_uyusmazligi")
                 self._uyumluluk_duş(20)
                 sonuclar["rezerv_ozeti"].append(
                     f"REZERV — Fatura tutarı ({fatura_tutari:,.2f}) akreditif tutarından "
-                    f"({lc_tutari:,.2f}) {fark:,.2f} sapıyor, %5 toleransı aşıyor (Art 30)"
+                    f"({lc_tutari:,.2f}) {abs(tol['sapma']):,.2f} sapıyor, "
+                    f"{tol['tolerans_tipi']} aşıyor (Art 30)"
                 )
         else:
             eksik_t = [k for k, v in [("Fatura", fatura_tutari), ("Akreditif (32B)", lc_tutari)] if v is None]
@@ -1479,6 +1908,40 @@ class YapayZekaDisTicaretDenetleyici:
         self._isbp_tablosu_olustur(sonuclar)
         self._uzman_onerileri_olustur(sonuclar)
 
+        # ================================================================
+        # 10. v6.0 — MT700 Alan Analizi
+        # ================================================================
+        self._mt700_alan_analizi_olustur(sonuclar)
+
+        # ================================================================
+        # 11. v6.0 — Tarih Zinciri Analizi
+        # ================================================================
+        self._tarih_zinciri_olustur(sonuclar)
+
+        # ================================================================
+        # 12. v6.0 — Rezerv Kategorileri ve Detay Listesi
+        # ================================================================
+        rezerv_detaylar: list[dict[str, str]] = []
+        for kat_key in self._aktif_rezerv_kategorileri:
+            kat_bilgi = REZERV_KATEGORILERI.get(kat_key, {})
+            rezerv_detaylar.append({
+                "kategori_kodu": kat_key,
+                "kategori":      kat_bilgi.get("kategori", "BELİRSİZ"),
+                "puan":          str(kat_bilgi.get("puan", "?")),
+                "tahmini_sure":  kat_bilgi.get("sure", "?"),
+            })
+        sonuclar["rezerv_detay_listesi"] = rezerv_detaylar
+
+        # ================================================================
+        # 13. v6.0 — Rezerv Simülatörü (SWIFT Banka Metinleri)
+        # ================================================================
+        self._rezerv_simulatoru_olustur(sonuclar)
+
+        # ================================================================
+        # 14. v6.0 — Yönetici Özeti (Executive Summary)
+        # ================================================================
+        self._yonetici_ozeti_olustur(sonuclar)
+
         self.analiz_verisi = sonuclar
 
     # ------------------------------------------------------------------
@@ -1506,8 +1969,51 @@ class YapayZekaDisTicaretDenetleyici:
         s = []
         s.append("# 📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU\n")
         s.append(f"**Analiz Zamanı:** {datetime.now().strftime('%d.%m.%Y %H:%M')}  \n")
-        s.append("**Altyapı Sistemi:** Yapay Zeka UCP 600 & ISBP 821 Hukuk Motoru v5.0  \n\n")
+        s.append("**Altyapı Sistemi:** Yapay Zeka UCP 600 & ISBP 821 Hukuk Motoru v6.0  \n\n")
         s.append("---\n")
+
+        # ---- Yönetici Özeti ----
+        oz = v.get("yonetici_ozeti", {})
+        if oz:
+            s.append("## 🏦 YÖNETİCİ ÖZETİ (Executive Summary)\n\n")
+            s.append(f"| Metrik | Değer |\n| :--- | :--- |\n")
+            s.append(f"| Toplam Belge | {oz.get('toplam_belge', '?')} |\n")
+            s.append(f"| Mevcut Belgeler | {', '.join(oz.get('mevcut_belgeler', []))} |\n")
+            eksik_list = oz.get('eksik_belgeler', [])
+            s.append(f"| Eksik Belgeler | {', '.join(eksik_list) if eksik_list else '—'} |\n")
+            s.append(f"| Tespit Edilen Rezerv | {oz.get('toplam_rezerv', 0)} |\n")
+            s.append(f"| MAJOR Discrepancy | {oz.get('major_rezerv', 0)} |\n")
+            s.append(f"| MEDIUM Discrepancy | {oz.get('medium_rezerv', 0)} |\n")
+            s.append(f"| MINOR Discrepancy | {oz.get('minor_rezerv', 0)} |\n")
+            s.append(f"| Uyumluluk Skoru | **%{oz.get('uyumluluk_skoru', '?')}** |\n")
+            s.append(f"| Risk Puanı | {oz.get('risk_puani', '?')} — {oz.get('risk_sinifi', '?')} |\n")
+            s.append(f"| Banka Kabul Olasılığı | **%{oz.get('banka_kabul_olasiligi', '?')}** |\n")
+            s.append(f"| En Kritik Sorun | {oz.get('kritik_sorun', '—')} |\n")
+            s.append("\n---\n")
+
+        # ---- MT700 Alan Analizi ----
+        mt_analiz = v.get("mt700_alan_analizi", [])
+        if mt_analiz:
+            s.append("## 📡 MT700 ALAN ANALİZİ\n\n")
+            s.append("| Alan | Açıklama | Değer | Durum |\n| :--- | :--- | :--- | :--- |\n")
+            for a in mt_analiz:
+                s.append(
+                    f"| **{a.get('alan','')}** | {a.get('aciklama','')} | "
+                    f"`{a.get('deger','')}` | {a.get('durum','')} |\n"
+                )
+            s.append("\n---\n")
+
+        # ---- Tarih Zinciri ----
+        tarih_z = v.get("tarih_zinciri", [])
+        if tarih_z:
+            s.append("## 📅 TARİH ZİNCİRİ ANALİZİ\n\n")
+            s.append("| Belge / Alan | Tarih | Durum | Not |\n| :--- | :--- | :--- | :--- |\n")
+            for t in tarih_z:
+                s.append(
+                    f"| {t.get('etiket','')} | {t.get('deger','—')} | "
+                    f"**{t.get('durum','')}** | {t.get('not','')} |\n"
+                )
+            s.append("\n---\n")
 
         s.append("## 1. Kritik Süreler ve Vade Analizi\n")
         for x in v.get("vade_analizi", []):   s.append(f"* {x}\n")
@@ -1543,7 +2049,7 @@ class YapayZekaDisTicaretDenetleyici:
                 s.append(f"| **{m[0]}** | {m[1]} | `{m[2]}` | {m[3]} |\n")
 
         s.append("\n---\n## 8. ISBP 821 Yorum Tablosu\n")
-        s.append("| UCP Maddesi | ISBP Prensibi | Bulgu | Öneri |\n| :--- | :--- | :--- | :--- |\n")
+        s.append("| UCP Maddesi | ISBP Prensibi (Paragraf) | Bulgu | Öneri |\n| :--- | :--- | :--- | :--- |\n")
         for i in v.get("isbp_tablosu", []):
             s.append(
                 f"| **{i.get('ucp_maddesi','')}** | {i.get('isbp_prensibi','')} | "
@@ -1553,21 +2059,43 @@ class YapayZekaDisTicaretDenetleyici:
         s.append("\n---\n## 9. Tespit Edilen Kritik Rezervler ve Uzman Önerileri\n")
         for o in v.get("uzman_onerileri", []):
             s.append(f"\n### Rezerv: {o.get('rezerv','')}\n")
+            s.append(f"* **Kategori:** {o.get('kategori','')}\n")
             s.append(f"* **Risk Seviyesi:** {o.get('risk','')}\n")
             s.append(f"* **Muhtemel Banka İtirazı:** {o.get('banka_itiraz','')}\n")
             s.append(f"* **İlgili UCP Maddesi:** {o.get('ucp_maddesi','')}\n")
             s.append(f"* **İlgili ISBP Prensibi:** {o.get('isbp_prensibi','')}\n")
             s.append(f"* **Düzeltme Önerisi:** {o.get('duzeltme','')}\n")
+            s.append(f"* **Tahmini Çözüm Süresi:** {o.get('tahmini_sure','')}\n")
 
-        s.append("\n---\n## 10. Eksik Belgeler Özeti\n")
+        # ---- Rezerv Kategorileri ----
+        detaylar = v.get("rezerv_detay_listesi", [])
+        if detaylar:
+            s.append("\n---\n## 10. Rezerv Kategorileri\n\n")
+            s.append("| Kategori | Sınıf | Risk Puanı | Tahmini Çözüm Süresi |\n| :--- | :--- | :--- | :--- |\n")
+            for d in detaylar:
+                s.append(
+                    f"| {d.get('kategori_kodu','')} | **{d.get('kategori','')}** | "
+                    f"{d.get('puan','')} | {d.get('tahmini_sure','')} |\n"
+                )
+
+        s.append("\n---\n## 11. Eksik Belgeler Özeti\n")
         eksik = v.get("eksik_belgeler", [])
         if eksik:
             for e in eksik: s.append(f"* ❌ {e}\n")
         else:
             s.append("* ✅ Zorunlu belgeler sistemde mevcut.\n")
 
-        s.append("\n---\n## 11. Risk Değerlendirmesi ve Uyumluluk Skoru\n")
+        s.append("\n---\n## 12. Risk Değerlendirmesi ve Uyumluluk Skoru\n")
         for x in v.get("risk_ozeti", []): s.append(f"* {x}\n")
+
+        # ---- Rezerv Simülatörü ----
+        swift_metinleri = v.get("rezerv_swift_metinleri", [])
+        if swift_metinleri:
+            s.append("\n---\n## 🏛 REZERV SİMÜLATÖRÜ — Muhtemel Banka SWIFT Ret Metinleri\n\n")
+            s.append("> Aşağıdaki metinler, bankanın MT734/MT750 mesajında yazabileceği\n")
+            s.append("> muhtemel rezerv ifadelerini simüle etmektedir.\n\n")
+            for i, mt in enumerate(swift_metinleri, 1):
+                s.append(f"### Simüle Edilen Ret Metni {i}\n\n```\n{mt}\n```\n\n")
 
         with open(md_yolu, "w", encoding="utf-8") as f:
             f.writelines(s)
@@ -1613,43 +2141,114 @@ class YapayZekaDisTicaretDenetleyici:
         )
         uzman_s = "".join(
             f"<tr><td>{o.get('rezerv','')[:60]}</td>"
+            f"<td>{o.get('kategori','')}</td>"
             f"<td>{o.get('risk','')}</td>"
             f"<td>{o.get('banka_itiraz','')}</td>"
             f"<td>{o.get('ucp_maddesi','')}</td>"
-            f"<td>{o.get('duzeltme','')}</td></tr>"
+            f"<td>{o.get('isbp_prensibi','')}</td>"
+            f"<td>{o.get('duzeltme','')}</td>"
+            f"<td>{o.get('tahmini_sure','')}</td></tr>"
             for o in v.get("uzman_onerileri", [])
         )
         eksik_s = "".join(
             f"<li>❌ {e}</li>" for e in v.get("eksik_belgeler", [])
         ) or "<li>✅ Zorunlu belgeler sistemde mevcut.</li>"
 
+        # Yönetici özeti HTML bloğu
+        oz = v.get("yonetici_ozeti", {})
+        kabul_renk = "#276749" if oz.get("banka_kabul_olasiligi", 0) >= 70 else \
+                     "#d69e2e" if oz.get("banka_kabul_olasiligi", 0) >= 40 else "#c53030"
+        oz_html = ""
+        if oz:
+            oz_html = f"""
+  <div class="exec-summary">
+    <h2>🏦 YÖNETİCİ ÖZETİ</h2>
+    <div class="exec-grid">
+      <div class="exec-card"><div class="exec-label">Toplam Belge</div>
+        <div class="exec-val">{oz.get('toplam_belge','?')}</div></div>
+      <div class="exec-card"><div class="exec-label">Tespit Edilen Rezerv</div>
+        <div class="exec-val badge-high">{oz.get('toplam_rezerv',0)}</div></div>
+      <div class="exec-card"><div class="exec-label">MAJOR Discrepancy</div>
+        <div class="exec-val badge-high">{oz.get('major_rezerv',0)}</div></div>
+      <div class="exec-card"><div class="exec-label">MEDIUM Discrepancy</div>
+        <div class="exec-val" style="color:#d69e2e">{oz.get('medium_rezerv',0)}</div></div>
+      <div class="exec-card"><div class="exec-label">Uyumluluk Skoru</div>
+        <div class="exec-val score">%{oz.get('uyumluluk_skoru','?')}</div></div>
+      <div class="exec-card"><div class="exec-label">Banka Kabul Olasılığı</div>
+        <div class="exec-val score" style="color:{kabul_renk}">
+          %{oz.get('banka_kabul_olasiligi','?')}</div></div>
+      <div class="exec-card"><div class="exec-label">Risk Sınıfı</div>
+        <div class="exec-val badge-high">{oz.get('risk_sinifi','?')}</div></div>
+    </div>
+    <div style="margin-top:10px;font-size:.9em;">
+      <b>En Kritik Sorun:</b> {oz.get('kritik_sorun','—')}
+    </div>
+  </div>"""
+
+        # MT700 alan analizi HTML
+        mt_html = "".join(
+            f"<tr><td><b>{a.get('alan','')}</b></td><td>{a.get('aciklama','')}</td>"
+            f"<td><code>{a.get('deger','')}</code></td><td>{a.get('durum','')}</td></tr>"
+            for a in v.get("mt700_alan_analizi", [])
+        )
+
+        # Tarih zinciri HTML
+        tarih_html = "".join(
+            f"<tr><td><b>{t.get('etiket','')}</b></td><td>{t.get('deger','—')}</td>"
+            f"<td><b>{t.get('durum','')}</b></td><td>{t.get('not','')}</td></tr>"
+            for t in v.get("tarih_zinciri", [])
+        )
+
+        # Rezerv kategorileri
+        kat_html = "".join(
+            f"<tr><td>{d.get('kategori_kodu','')}</td><td><b>{d.get('kategori','')}</b></td>"
+            f"<td>{d.get('puan','')}</td><td>{d.get('tahmini_sure','')}</td></tr>"
+            for d in v.get("rezerv_detay_listesi", [])
+        )
+
+        # SWIFT simülatör HTML
+        swift_html = ""
+        for i, mt in enumerate(v.get("rezerv_swift_metinleri", []), 1):
+            swift_html += f'<div class="swift-box"><b>Simüle Edilen Ret Metni {i}</b><pre>{mt}</pre></div>'
+
         html = f"""<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akreditif Analiz Raporu v5.0</title>
+  <title>Akreditif Analiz Raporu v6.0</title>
   <style>
     *{{box-sizing:border-box;margin:0;padding:0;}}
     body{{font-family:'Segoe UI',sans-serif;background:#f0f4f8;color:#2d3748;padding:20px;}}
     .container{{background:#fff;padding:36px;border-radius:14px;
-                box-shadow:0 4px 20px rgba(0,0,0,.08);max-width:1200px;margin:0 auto;}}
+                box-shadow:0 4px 20px rgba(0,0,0,.08);max-width:1260px;margin:0 auto;}}
     h1{{color:#1a365d;border-bottom:4px solid #3182ce;padding-bottom:14px;font-size:1.4em;}}
     h2{{color:#2b6cb0;margin:28px 0 10px;border-left:5px solid #3182ce;
         padding-left:10px;font-size:1.1em;}}
-    table{{width:100%;border-collapse:collapse;margin-top:12px;font-size:.92em;}}
-    th,td{{border:1px solid #e2e8f0;padding:10px 12px;text-align:left;}}
+    table{{width:100%;border-collapse:collapse;margin-top:12px;font-size:.9em;}}
+    th,td{{border:1px solid #e2e8f0;padding:9px 11px;text-align:left;vertical-align:top;}}
     th{{background:#ebf8ff;color:#2b6cb0;font-weight:600;}}
     tr:nth-child(even){{background:#f7fafc;}}
     ul{{padding-left:18px;margin-top:8px;}}
     li{{margin-bottom:5px;line-height:1.65;}}
     .risk-box{{background:#fff5f5;border-left:5px solid #e53e3e;
                padding:16px;border-radius:8px;margin-top:12px;}}
-    .score{{font-size:1.6em;font-weight:700;color:#276749;margin:6px 0;}}
-    .badge-high{{color:#c53030;font-weight:700;}}
-    .badge-ok{{color:#276749;font-weight:700;}}
+    .exec-summary{{background:linear-gradient(135deg,#ebf8ff,#f0fff4);
+                   border:2px solid #3182ce;border-radius:12px;padding:20px;margin-bottom:24px;}}
+    .exec-grid{{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;}}
+    .exec-card{{background:#fff;border:1px solid #bee3f8;border-radius:8px;
+                padding:12px 18px;min-width:150px;text-align:center;}}
+    .exec-label{{font-size:.78em;color:#718096;margin-bottom:4px;}}
+    .exec-val{{font-size:1.4em;font-weight:700;color:#2b6cb0;}}
+    .score{{color:#276749;}}
+    .badge-high{{color:#c53030;}}
+    .badge-ok{{color:#276749;}}
     .meta{{color:#718096;font-size:.88em;margin-bottom:16px;}}
-    code{{background:#edf2f7;padding:2px 6px;border-radius:4px;font-size:.88em;}}
+    code{{background:#edf2f7;padding:2px 6px;border-radius:4px;font-size:.85em;}}
+    .swift-box{{background:#1a202c;color:#f6e05e;border-radius:8px;
+                padding:16px;margin:8px 0;font-family:monospace;font-size:.88em;}}
+    .swift-box pre{{white-space:pre-wrap;margin-top:8px;color:#e2e8f0;}}
+    .swift-box b{{color:#f6e05e;}}
   </style>
 </head>
 <body>
@@ -1657,8 +2256,16 @@ class YapayZekaDisTicaretDenetleyici:
   <h1>📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU</h1>
   <p class="meta">
     <b>Rapor Tarihi:</b> {datetime.now().strftime('%d.%m.%Y %H:%M')} &nbsp;|&nbsp;
-    <b>Altyapı:</b> UCP 600 &amp; ISBP 821 Hukuk Motoru v5.0
+    <b>Altyapı:</b> UCP 600 &amp; ISBP 821 Hukuk Motoru v6.0
   </p>
+
+  {oz_html}
+
+  <h2>📡 MT700 Alan Analizi</h2>
+  <table><tr><th>Alan</th><th>Açıklama</th><th>Değer</th><th>Durum</th></tr>{mt_html}</table>
+
+  <h2>📅 Tarih Zinciri Analizi</h2>
+  <table><tr><th>Belge / Alan</th><th>Tarih</th><th>Durum</th><th>Not</th></tr>{tarih_html}</table>
 
   <h2>1. Kritik Süreler ve Vade Analizi</h2><ul>{li("vade_analizi")}</ul>
   <h2>2. Finansal Vade ve Ödeme Takvimi</h2><ul>{li("finansal_durum")}</ul>
@@ -1675,19 +2282,30 @@ class YapayZekaDisTicaretDenetleyici:
   <h2>7. UCP 600 Hukuki Maddeleri Tablosu</h2>
   <table><tr><th>Madde</th><th>Açıklama</th><th>Sistem Durumu</th><th>Bulgu</th></tr>{ucp_s}</table>
 
-  <h2>8. ISBP 821 Yorum Tablosu</h2>
+  <h2>8. ISBP 821 Yorum Tablosu (Paragraf Düzeyinde)</h2>
   <table><tr><th>UCP Maddesi</th><th>ISBP Prensibi</th><th>Bulgu</th><th>Öneri</th></tr>{isbp_s}</table>
 
   <h2>9. Tespit Edilen Kritik Rezervler ve Uzman Önerileri</h2>
   <table>
-    <tr><th>Rezerv</th><th>Risk</th><th>Banka İtirazı</th><th>UCP Maddesi</th><th>Düzeltme Önerisi</th></tr>
+    <tr><th>Rezerv</th><th>Kategori</th><th>Risk</th><th>Banka İtirazı</th>
+        <th>UCP</th><th>ISBP Paragraf</th><th>Düzeltme</th><th>Süre</th></tr>
     {uzman_s}
   </table>
 
-  <h2>10. Eksik Belgeler Özeti</h2><ul>{eksik_s}</ul>
+  <h2>10. Rezerv Kategorileri</h2>
+  <table><tr><th>Kategori Kodu</th><th>Sınıf</th><th>Risk Puanı</th><th>Tahmini Çözüm</th></tr>
+  {kat_html}</table>
 
-  <h2>11. Risk Değerlendirmesi ve Uyumluluk Skoru</h2>
+  <h2>11. Eksik Belgeler Özeti</h2><ul>{eksik_s}</ul>
+
+  <h2>12. Risk Değerlendirmesi ve Uyumluluk Skoru</h2>
   <div class="risk-box"><ul>{li("risk_ozeti")}</ul></div>
+
+  <h2>🏛 Rezerv Simülatörü — Muhtemel Banka SWIFT Ret Metinleri</h2>
+  <p style="margin:8px 0;font-size:.9em;color:#718096;">
+    Aşağıdaki metinler bankanın MT734/MT750 mesajında yazabileceği muhtemel rezerv ifadelerini simüle etmektedir.
+  </p>
+  {swift_html if swift_html else '<p style="color:#276749">✅ Simüle edilecek SWIFT ret metni bulunmuyor.</p>'}
 </div>
 </body>
 </html>"""
