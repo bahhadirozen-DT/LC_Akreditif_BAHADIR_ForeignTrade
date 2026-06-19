@@ -10,13 +10,13 @@
 | Toplam Belge | 1 |
 | Mevcut Belgeler | KUSAT |
 | Eksik Belgeler | Sigorta Poliçesi (CIF/CIP zorunlu), Konşimento (Bill of Lading), Ticari Fatura, Çeki Listesi / Packing List |
-| Tespit Edilen Rezerv | 2 |
+| Tespit Edilen Rezerv | 7 |
 | MAJOR Discrepancy | 2 |
-| MEDIUM Discrepancy | 0 |
-| MINOR Discrepancy | 1 |
-| Uyumluluk Skoru | **%45** |
-| Risk Puanı | 55 — YÜKSEK RİSK |
-| Banka Kabul Olasılığı | **%45** |
+| MEDIUM Discrepancy | 1 |
+| MINOR Discrepancy | 0 |
+| Uyumluluk Skoru | **%0** |
+| Risk Puanı | 100 — YÜKSEK RİSK |
+| Banka Kabul Olasılığı | **%0** |
 | En Kritik Sorun | REZERV — Sigorta belgesi eksik (CIF teslimde Art 28 zorunluluğu) |
 
 ---
@@ -29,13 +29,12 @@
 | **32B** | Currency Code, Amount — Para Birimi ve Tutar | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
 | **40A** | Form of Documentary Credit — Akreditif Türü | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
 | **44C** | Latest Date of Shipment — En Geç Yükleme Tarihi | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
-| **45A** | Description of Goods — Mal Tanımı | `TEXTILE FABRICS (12 PALLETS)
-Invoice Value: USD 23.940,00 (CIF)
+| **45A** | Description of Goods — Mal Tanımı | `TEXTILE FABRICS (100% COTTON, DYED)
+HS Code: 5208.31.00.00.00` | ✔ TESPİT EDİLDİ |
+| **46A** | Documents Required — Talep Edilen Belgeler | `1. COMMERCIAL INVOICE in 3 originals and 3 copies,
+ signed by the Beneficiary, indicating L/C No. and date.
 
-Sum Insured: USD 26.334,00 (110% of CIF Value)
-
-Conditi` | ✔ TESPİT EDİLDİ |
-| **46A** | Documents Required — Talep Edilen Belgeler | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
+2. PACKING ` | ✔ TESPİT EDİLDİ |
 
 ---
 ## 📅 TARİH ZİNCİRİ ANALİZİ
@@ -51,11 +50,11 @@ Conditi` | ✔ TESPİT EDİLDİ |
 ---
 ## 1. Kritik Süreler ve Vade Analizi
 * En Geç Yükleme Tarihi (Alan 44C): Belgeden tespit edilemedi — manuel kontrol gerekli.
-* Bankaya İbraz Süresi: Belgeden tespit edilemedi — UCP 600 Madde 14c varsayılan 21 günlük limit uygulanır.
+* Bankaya İbraz Süresi: **10 gün** (UCP 600 Madde 14c'ye göre 21 günü aşamaz).
 
 ---
 ## 2. Finansal Vade ve Ödeme Takvimi
-* Ödeme Vadesi: Belgelerden tespit edilemedi — manuel kontrol önerilir.
+* Ödeme Vadesi: **Vadeli / Kabul Kredili Akreditif** — Poliçe vade takvimini ve faiz taahhütlerini kontrol edin.
 
 ---
 ## 3. Incoterms ve Sigorta Hukuku (ICC 2020 / UCP Art. 28)
@@ -80,7 +79,35 @@ Conditi` | ✔ TESPİT EDİLDİ |
 ## 6. 46A Belge Şartları Kontrolü
 | Talep Edilen Belge | Detay | Durum |
 | :--- | :--- | :--- |
-| Alan 46A | MT700 Alan 46A tespit edilemedi. | **[MANUEL KONTROL]** |
+| Ticari Fatura | Akreditif 46A'da talep edilmiş. | **[EKSİK]** |
+| Ticari Fatura | Akreditif 46A'da talep edilmiş. | **[EKSİK]** |
+| Konşimento (B/L) | Akreditif 46A'da talep edilmiş. | **[EKSİK]** |
+| Çeki Listesi | Akreditif 46A'da talep edilmiş. | **[EKSİK]** |
+| Sigorta Poliçesi | Akreditif 46A'da talep edilmiş. | **[EKSİK]** |
+| signed by the Beneficiary, indicating L | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| C No. and date. | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| showing gross weight, net weight, measurement and package details per pallet. | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| 3. FULL SET (3 | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| made out TO ORDER OF ISSUING BANK (AMEX BANK LONDON PLC), | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| marked "FREIGHT PREPAID" and notify applicant (ALPHA IMPORT EXPORT LTD.). | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| CERTIFICATE in duplicate, | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| endorsed in blank, covering Institute Cargo Clauses (A), | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| for minimum 110% of CIF value, | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| showing claims payable in London. | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| 5. CERTIFICATE OF ORIGIN issued by Chamber of Commerce, | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| stating goods of Turkish origin. | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| --- | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| SHIPMENT DETAILS: | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| Port of Loading: AMBARLI | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| ISTANBUL | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| Port of Discharge: FELIXSTOWE | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| UK | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| Latest Shipment Date: 05.07.2026 | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| Partial Shipments: NOT ALLOWED | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| Transshipment: NOT ALLOWED | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| Goods Description: | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| TEXTILE FABRICS (100% COTTON, DYED) | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
+| HS Code: 5208.31.00.00.00 | Otomatik eşleştirme yapılamadı — manuel doğrulama gerekli. | **[MANUEL KONTROL]** |
 
 ---
 ## 7. UCP 600 Hukuki Maddeleri ve Uzman Yorum Tablosu
@@ -105,6 +132,7 @@ Conditi` | ✔ TESPİT EDİLDİ |
 | **Art 18** | ISBP 821 Paragraf C1-C23 — Ticari Fatura Prensipleri | Fatura Mal Tanımı vs Küşat (Art 18c): MANUEL KONTROL | Mal tanımını akreditifteki 45A alanından kopyalayarak faturaya ekleyin. Fazla açıklama eklemeyin. |
 | **Art 20** | ISBP 821 Paragraf E1-E30 — Konşimento Prensipleri | Konşimento Yükleme Tarihi vs Alan 44C (Art 20): MANUEL KONTROL | Konşimentonun 'On Board' notasyonunda tarih ile liman bilgisinin ayrıca yer aldığından emin olun. |
 | **Art 28** | ISBP 821 Paragraf K1-K15 — Sigorta Belgesi Prensipleri | Sigorta Bedeli ≥ Fatura × %110 (Art 28f-ii): REZERV RİSKİ - SİGORTA BELGESİ EKSİK | Sigorta poliçesinin döviz cinsini, teminat tutarını ve kapsam tarihini akreditifle karşılaştırın. |
+| **Art 14** | ISBP 821 Paragraf A1-A7 — Belge İnceleme Prensipleri | REZERV — 46A gereği 'Ticari Fatura' belgesi depoda bulunamadı | İbraz öncesi tüm belgeler 21 günlük süre kısıtlaması gözetilerek hazırlanmalıdır. |
 | **Art 14** | ISBP 821 Paragraf A1-A7 — Belge İnceleme Prensipleri | Belge inceleme süresi uygulandı (UCP Art 14c — en fazla 21 iş günü). | İbraz öncesi tüm belgeler 21 günlük süre kısıtlaması gözetilerek hazırlanmalıdır. |
 
 ---
@@ -128,14 +156,59 @@ Conditi` | ✔ TESPİT EDİLDİ |
 * **Düzeltme Önerisi:** Tam set orijinal konşimentoyu (genellikle 3/3) bankaya ibraz edin.
 * **Tahmini Çözüm Süresi:** 3-5 Gün
 
+### Rezerv: REZERV — 46A gereği 'Ticari Fatura' belgesi depoda bulunamadı
+* **Kategori:** MEDIUM DISCREPANCY
+* **Risk Seviyesi:** ORTA
+* **Muhtemel Banka İtirazı:** Akreditifte talep edilen belgelerden biri eksik olduğundan banka ödemeyi reddedecektir.
+* **İlgili UCP Maddesi:** UCP 600 Art 14 / Art 16
+* **İlgili ISBP Prensibi:** ISBP 821 § A4, § A6
+* **Düzeltme Önerisi:** Eksik belgeyi temin ederek tam ibraz yapın.
+* **Tahmini Çözüm Süresi:** 1-2 Gün
+
+### Rezerv: REZERV — 46A gereği 'Ticari Fatura' belgesi depoda bulunamadı
+* **Kategori:** MEDIUM DISCREPANCY
+* **Risk Seviyesi:** ORTA
+* **Muhtemel Banka İtirazı:** Akreditifte talep edilen belgelerden biri eksik olduğundan banka ödemeyi reddedecektir.
+* **İlgili UCP Maddesi:** UCP 600 Art 14 / Art 16
+* **İlgili ISBP Prensibi:** ISBP 821 § A4, § A6
+* **Düzeltme Önerisi:** Eksik belgeyi temin ederek tam ibraz yapın.
+* **Tahmini Çözüm Süresi:** 1-2 Gün
+
+### Rezerv: REZERV — 46A gereği 'Konşimento (B/L)' belgesi depoda bulunamadı
+* **Kategori:** MEDIUM DISCREPANCY
+* **Risk Seviyesi:** ORTA
+* **Muhtemel Banka İtirazı:** Akreditifte talep edilen belgelerden biri eksik olduğundan banka ödemeyi reddedecektir.
+* **İlgili UCP Maddesi:** UCP 600 Art 14 / Art 16
+* **İlgili ISBP Prensibi:** ISBP 821 § A4, § A6
+* **Düzeltme Önerisi:** Eksik belgeyi temin ederek tam ibraz yapın.
+* **Tahmini Çözüm Süresi:** 1-2 Gün
+
+### Rezerv: REZERV — 46A gereği 'Çeki Listesi' belgesi depoda bulunamadı
+* **Kategori:** MEDIUM DISCREPANCY
+* **Risk Seviyesi:** ORTA
+* **Muhtemel Banka İtirazı:** Akreditifte talep edilen belgelerden biri eksik olduğundan banka ödemeyi reddedecektir.
+* **İlgili UCP Maddesi:** UCP 600 Art 14 / Art 16
+* **İlgili ISBP Prensibi:** ISBP 821 § A4, § A6
+* **Düzeltme Önerisi:** Eksik belgeyi temin ederek tam ibraz yapın.
+* **Tahmini Çözüm Süresi:** 1-2 Gün
+
+### Rezerv: REZERV — 46A gereği 'Sigorta Poliçesi' belgesi depoda bulunamadı
+* **Kategori:** MEDIUM DISCREPANCY
+* **Risk Seviyesi:** ORTA
+* **Muhtemel Banka İtirazı:** Akreditifte talep edilen belgelerden biri eksik olduğundan banka ödemeyi reddedecektir.
+* **İlgili UCP Maddesi:** UCP 600 Art 14 / Art 16
+* **İlgili ISBP Prensibi:** ISBP 821 § A4, § A6
+* **Düzeltme Önerisi:** Eksik belgeyi temin ederek tam ibraz yapın.
+* **Tahmini Çözüm Süresi:** 1-2 Gün
+
 ---
 ## 10. Rezerv Kategorileri
 
 | Kategori | Sınıf | Risk Puanı | Tahmini Çözüm Süresi |
 | :--- | :--- | :--- | :--- |
-| ibraz_suresi_belirsiz | **MINOR DISCREPANCY** | 5 | Aynı Gün |
 | sigorta_eksik | **MAJOR DISCREPANCY** | 25 | 2-3 Gün |
 | konsimento_eksik | **MAJOR DISCREPANCY** | 25 | 3-5 Gün |
+| 46a_belge_eksigi | **MEDIUM DISCREPANCY** | 10 | 1-2 Gün |
 
 ---
 ## 11. Eksik Belgeler Özeti
@@ -146,10 +219,15 @@ Conditi` | ✔ TESPİT EDİLDİ |
 
 ---
 ## 12. Risk Değerlendirmesi ve Uyumluluk Skoru
-* Toplam Risk Puanı: **55** — Risk Sınıfı: **YÜKSEK RİSK**
-* Uyumluluk Skoru: **%45**
+* Toplam Risk Puanı: **100** — Risk Sınıfı: **YÜKSEK RİSK**
+* Uyumluluk Skoru: **%0**
 * 1. REZERV — Sigorta belgesi eksik (CIF teslimde Art 28 zorunluluğu)
 * 2. REZERV — Konşimento belgesi ibraz edilmemiş (Art 20)
+* 3. REZERV — 46A gereği 'Ticari Fatura' belgesi depoda bulunamadı
+* 4. REZERV — 46A gereği 'Ticari Fatura' belgesi depoda bulunamadı
+* 5. REZERV — 46A gereği 'Konşimento (B/L)' belgesi depoda bulunamadı
+* 6. REZERV — 46A gereği 'Çeki Listesi' belgesi depoda bulunamadı
+* 7. REZERV — 46A gereği 'Sigorta Poliçesi' belgesi depoda bulunamadı
 
 ---
 ## 🏛 REZERV SİMÜLATÖRÜ — Muhtemel Banka SWIFT Ret Metinleri
@@ -176,5 +254,15 @@ FULL SET OF ORIGINAL BILLS OF LADING
 AS REQUIRED BY THE CREDIT HAS NOT
 BEEN PRESENTED.
 UCP 600 ARTICLE 20.
+```
+
+### Simüle Edilen Ret Metni 3
+
+```
+DOCUMENTS REJECTED.
+
+ONE OR MORE DOCUMENTS AS REQUIRED BY FIELD 46A
+OF THE CREDIT HAVE NOT BEEN PRESENTED.
+UCP 600 ARTICLE 14(A) / ARTICLE 16.
 ```
 
