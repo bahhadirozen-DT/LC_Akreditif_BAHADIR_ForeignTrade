@@ -1,5 +1,5 @@
 # 📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU
-**Analiz Zamanı:** 19.06.2026 03:09  
+**Analiz Zamanı:** 19.06.2026 03:10  
 **Altyapı Sistemi:** Yapay Zeka UCP 600 & ISBP 821 Hukuk Motoru v6.0  
 
 ---
@@ -29,11 +29,12 @@
 | **32B** | Currency Code, Amount — Para Birimi ve Tutar | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
 | **40A** | Form of Documentary Credit — Akreditif Türü | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
 | **44C** | Latest Date of Shipment — En Geç Yükleme Tarihi | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
-| **45A** | Description of Goods — Mal Tanımı | `12 PALLETS TEXTILE FABRICS (100% COTTON, DYED)
-HS Code: 5208.31.00.00.00
+| **45A** | Description of Goods — Mal Tanımı | `TEXTILE FABRICS (12 PALLETS)
+Invoice Value: USD 23.940,00 (CIF)
 
-Quantity: 12 PALLETS (4.800,00 MTRS)
-Unit Pric` | ✔ TESPİT EDİLDİ |
+Sum Insured: USD 26.334,00 (110% of CIF Value)
+
+Conditi` | ✔ TESPİT EDİLDİ |
 | **46A** | Documents Required — Talep Edilen Belgeler | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
 
 ---
@@ -54,7 +55,7 @@ Unit Pric` | ✔ TESPİT EDİLDİ |
 
 ---
 ## 2. Finansal Vade ve Ödeme Takvimi
-* Ödeme Vadesi: **Görüldüğünde Ödemeli (At Sight)** — UCP 600 Art 15b uyarınca uyumlu ibrazda amir banka anında ödemekle yükümlüdür.
+* Ödeme Vadesi: Belgelerden tespit edilemedi — manuel kontrol önerilir.
 
 ---
 ## 3. Incoterms ve Sigorta Hukuku (ICC 2020 / UCP Art. 28)
