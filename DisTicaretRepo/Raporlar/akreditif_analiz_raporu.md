@@ -7,9 +7,9 @@
 
 | Metrik | Değer |
 | :--- | :--- |
-| Toplam Belge | 2 |
-| Mevcut Belgeler | KUSAT, FATURA |
-| Eksik Belgeler | Sigorta Poliçesi (CIF/CIP zorunlu), Konşimento (Bill of Lading), Çeki Listesi / Packing List |
+| Toplam Belge | 1 |
+| Mevcut Belgeler | KUSAT |
+| Eksik Belgeler | Sigorta Poliçesi (CIF/CIP zorunlu), Konşimento (Bill of Lading), Ticari Fatura, Çeki Listesi / Packing List |
 | Tespit Edilen Rezerv | 2 |
 | MAJOR Discrepancy | 2 |
 | MEDIUM Discrepancy | 0 |
@@ -39,7 +39,7 @@
 | :--- | :--- | :--- | :--- |
 | LC Son Geçerlilik (31D) | — | **⚠ TESPİT EDİLEMEDİ** | OCR veya format sorunu olabilir — manuel doğrulama önerilir. |
 | En Geç Yükleme (44C) | — | **⚠ TESPİT EDİLEMEDİ** | OCR veya format sorunu olabilir — manuel doğrulama önerilir. |
-| Fatura Tarihi | 01.07.2026 | **✔ TESPİT EDİLDİ** |  |
+| Fatura Tarihi | — | **⚠ TESPİT EDİLEMEDİ** | OCR veya format sorunu olabilir — manuel doğrulama önerilir. |
 | Konşimento Yükleme Tarihi (B/L) | — | **⚠ TESPİT EDİLEMEDİ** | OCR veya format sorunu olabilir — manuel doğrulama önerilir. |
 | Sigorta Tarihi | — | **⚠ TESPİT EDİLEMEDİ** | OCR veya format sorunu olabilir — manuel doğrulama önerilir. |
 
@@ -62,7 +62,7 @@
 | Belgeler | İnceleme Detayı | Durum |
 | :--- | :--- | :--- |
 | Fatura vs Akreditif Tutarı (Art 18 / Art 30) | Tutar tespit edilemedi: Fatura, Akreditif (32B) | **[MANUEL KONTROL]** |
-| Fatura vs Konşimento Kilo | Brüt kilo değeri tespit edilemedi: Konşimento | **[VERİ EKSİK - MANUEL KONTROL GEREKLİ]** |
+| Fatura vs Konşimento Kilo | Brüt kilo değeri tespit edilemedi: Fatura, Konşimento | **[VERİ EKSİK - MANUEL KONTROL GEREKLİ]** |
 | Fatura Mal Tanımı vs Küşat (Art 18c) | Mal tanımı tespit edilemedi: Fatura, Küşat (45A) | **[MANUEL KONTROL]** |
 | Konşimento Yükleme Tarihi vs Alan 44C (Art 20) | Tarih tespit edilemedi: Konşimento yükleme tarihi, Küşat 44C | **[MANUEL KONTROL]** |
 | Sigorta Bedeli ≥ Fatura × %110 (Art 28f-ii) | CIF teslimlerde sigorta poliçesi zorunludur ancak bulunamadı. | **[REZERV RİSKİ - SİGORTA BELGESİ EKSİK]** |
@@ -136,6 +136,7 @@
 ## 11. Eksik Belgeler Özeti
 * ❌ Sigorta Poliçesi (CIF/CIP zorunlu)
 * ❌ Konşimento (Bill of Lading)
+* ❌ Ticari Fatura
 * ❌ Çeki Listesi / Packing List
 
 ---
