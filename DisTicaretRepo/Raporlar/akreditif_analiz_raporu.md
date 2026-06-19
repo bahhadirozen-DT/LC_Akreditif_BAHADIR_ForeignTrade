@@ -7,9 +7,9 @@
 
 | Metrik | Değer |
 | :--- | :--- |
-| Toplam Belge | 0 |
-| Mevcut Belgeler |  |
-| Eksik Belgeler | Konşimento (Bill of Lading), Küşat (MT700 Akreditif), Ticari Fatura, Çeki Listesi / Packing List |
+| Toplam Belge | 1 |
+| Mevcut Belgeler | KUSAT |
+| Eksik Belgeler | Konşimento (Bill of Lading), Ticari Fatura, Çeki Listesi / Packing List |
 | Tespit Edilen Rezerv | 1 |
 | MAJOR Discrepancy | 1 |
 | MEDIUM Discrepancy | 0 |
@@ -29,7 +29,11 @@
 | **32B** | Currency Code, Amount — Para Birimi ve Tutar | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
 | **40A** | Form of Documentary Credit — Akreditif Türü | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
 | **44C** | Latest Date of Shipment — En Geç Yükleme Tarihi | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
-| **45A** | Description of Goods — Mal Tanımı | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
+| **45A** | Description of Goods — Mal Tanımı | `TEXTILE FABRICS
+Gross Weight: 3.420,00 KG
+Measurement: 11,40 CBM
+
+Freight & Charges: FREIGHT PREPAID + INSURANCE INCLUDE` | ✔ TESPİT EDİLDİ |
 | **46A** | Documents Required — Talep Edilen Belgeler | `—` | ⚠ TESPİT EDİLEMEDİ — Manuel Kontrol |
 
 ---
@@ -62,7 +66,7 @@
 | :--- | :--- | :--- |
 | Fatura vs Akreditif Tutarı (Art 18 / Art 30) | Tutar tespit edilemedi: Fatura, Akreditif (32B) | **[MANUEL KONTROL]** |
 | Fatura vs Konşimento Kilo | Brüt kilo değeri tespit edilemedi: Fatura, Konşimento | **[VERİ EKSİK - MANUEL KONTROL GEREKLİ]** |
-| Fatura Mal Tanımı vs Küşat (Art 18c) | Mal tanımı tespit edilemedi: Fatura, Küşat (45A) | **[MANUEL KONTROL]** |
+| Fatura Mal Tanımı vs Küşat (Art 18c) | Mal tanımı tespit edilemedi: Fatura | **[MANUEL KONTROL]** |
 | Konşimento Yükleme Tarihi vs Alan 44C (Art 20) | Tarih tespit edilemedi: Konşimento yükleme tarihi, Küşat 44C | **[MANUEL KONTROL]** |
 
 ---
@@ -122,7 +126,6 @@
 ---
 ## 11. Eksik Belgeler Özeti
 * ❌ Konşimento (Bill of Lading)
-* ❌ Küşat (MT700 Akreditif)
 * ❌ Ticari Fatura
 * ❌ Çeki Listesi / Packing List
 
