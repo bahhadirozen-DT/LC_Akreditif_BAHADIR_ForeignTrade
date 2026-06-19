@@ -7,9 +7,9 @@
 
 | Metrik | Değer |
 | :--- | :--- |
-| Toplam Belge | 1 |
-| Mevcut Belgeler | KUSAT |
-| Eksik Belgeler | Konşimento (Bill of Lading), Ticari Fatura, Çeki Listesi / Packing List |
+| Toplam Belge | 0 |
+| Mevcut Belgeler |  |
+| Eksik Belgeler | Konşimento (Bill of Lading), Küşat (MT700 Akreditif), Ticari Fatura, Çeki Listesi / Packing List |
 | Tespit Edilen Rezerv | 1 |
 | MAJOR Discrepancy | 1 |
 | MEDIUM Discrepancy | 0 |
@@ -122,6 +122,7 @@
 ---
 ## 11. Eksik Belgeler Özeti
 * ❌ Konşimento (Bill of Lading)
+* ❌ Küşat (MT700 Akreditif)
 * ❌ Ticari Fatura
 * ❌ Çeki Listesi / Packing List
 
