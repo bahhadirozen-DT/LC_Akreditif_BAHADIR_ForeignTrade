@@ -1,100 +1,60 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Akreditif Analiz Raporu v7.0</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Segoe UI',sans-serif;background:#f0f4f8;color:#2d3748;padding:20px}
-    .wrap{background:#fff;padding:36px;border-radius:14px;
-           box-shadow:0 4px 20px rgba(0,0,0,.08);max-width:1280px;margin:0 auto}
-    h1{color:#1a365d;border-bottom:4px solid #3182ce;padding-bottom:14px;font-size:1.4em}
-    h2{color:#2b6cb0;margin:28px 0 10px;border-left:5px solid #3182ce;
-        padding-left:10px;font-size:1.05em}
-    table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.88em}
-    th,td{border:1px solid #e2e8f0;padding:8px 11px;text-align:left;vertical-align:top}
-    th{background:#ebf8ff;color:#2b6cb0;font-weight:600}
-    tr:nth-child(even){background:#f7fafc}
-    ul{padding-left:18px;margin-top:8px}
-    li{margin-bottom:5px;line-height:1.7}
-    .meta{color:#718096;font-size:.88em;margin-bottom:16px}
-    .exec{background:linear-gradient(135deg,#ebf8ff,#f0fff4);
-           border:2px solid #3182ce;border-radius:12px;padding:20px;margin-bottom:24px}
-    .grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
-    .card{background:#fff;border:1px solid #bee3f8;border-radius:8px;
-           padding:12px 18px;min-width:160px;text-align:center}
-    .lbl{font-size:.78em;color:#718096;margin-bottom:4px}
-    .val{font-size:1.35em;font-weight:700;color:#2b6cb0}
-    code{background:#edf2f7;padding:2px 6px;border-radius:4px;font-size:.85em}
-    .swift-box{background:#1a202c;color:#f6e05e;border-radius:8px;
-                padding:16px;margin:8px 0;font-family:monospace;font-size:.87em}
-    .swift-box pre{white-space:pre-wrap;margin-top:8px;color:#e2e8f0}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Akreditif Analiz Raporu v9.0</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:#f0f4f8;color:#2d3748;padding:20px}
+.wrap{background:#fff;padding:32px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.08);max-width:1280px;margin:0 auto}
+h1{color:#1a365d;border-bottom:4px solid #3182ce;padding-bottom:12px;font-size:1.35em}
+h2{color:#2b6cb0;margin:24px 0 8px;border-left:5px solid #3182ce;padding-left:10px;font-size:1.02em}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.88em}
+th,td{border:1px solid #e2e8f0;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#ebf8ff;color:#2b6cb0;font-weight:600}
+tr:nth-child(even){background:#f7fafc}
+ul{padding-left:18px;margin-top:6px}li{margin-bottom:4px;line-height:1.65}
+.meta{color:#718096;font-size:.88em;margin-bottom:14px}
+.exec{background:linear-gradient(135deg,#ebf8ff,#f0fff4);border:2px solid #3182ce;border-radius:10px;padding:18px;margin-bottom:20px}
+.grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.card{background:#fff;border:1px solid #bee3f8;border-radius:7px;padding:10px 16px;min-width:150px;text-align:center}
+.lbl{font-size:.76em;color:#718096;margin-bottom:3px}.val{font-size:1.3em;font-weight:700;color:#2b6cb0}
+code{background:#edf2f7;padding:1px 5px;border-radius:3px;font-size:.84em}
+.swift{background:#1a202c;color:#f6e05e;border-radius:7px;padding:14px;margin:6px 0;font-family:monospace;font-size:.86em}
+.swift pre{white-space:pre-wrap;margin-top:6px;color:#e2e8f0}
+</style>
 </head>
 <body>
 <div class="wrap">
-  <h1>📋 AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU</h1>
-  <p class="meta">
-    <b>Tarih:</b> 21.06.2026 15:17 &nbsp;|&nbsp;
-    <b>Motor:</b> UCP 600 &amp; ISBP 821 v7.0
-  </p>
-
-  <div class="exec">
-    <h2>🏦 YÖNETİCİ ÖZETİ</h2>
-    <div class="grid">
-      <div class="card"><div class="lbl">Belgeler</div>
-        <div class="val">4</div></div>
-      <div class="card"><div class="lbl">Rezerv Sayısı</div>
-        <div class="val" style="color:#c53030">1</div></div>
-      <div class="card"><div class="lbl">MAJOR</div>
-        <div class="val" style="color:#c53030">1</div></div>
-      <div class="card"><div class="lbl">Uyumluluk</div>
-        <div class="val" style="color:#276749">%75</div></div>
-      <div class="card"><div class="lbl">Banka Kabul</div>
-        <div class="val" style="color:#276749">%70</div></div>
-      <div class="card"><div class="lbl">Risk</div>
-        <div class="val" style="font-size:1em">ORTA RİSK</div></div>
-    </div>
-  </div>
-
-  <h2>📁 Dosya Durum Raporu</h2>
-  <table>
-    <tr><th>Dosya</th><th>Bulundu</th><th>OCR</th><th>Sınıf</th><th>Puan</th></tr>
-    <tr><td>Fatura.txt</td><td>✔</td><td>✔</td><td>FATURA</td><td>140</td></tr><tr><td>slinecek.txt</td><td>✔</td><td>✖</td><td>—</td><td>0</td></tr><tr><td>Küşat.txt</td><td>✔</td><td>✔</td><td>CEKI_LISTESI</td><td>155</td></tr><tr><td>packing list.txt</td><td>✔</td><td>✔</td><td>CEKI_LISTESI</td><td>240</td></tr><tr><td>Bill of lading.txt</td><td>✔</td><td>✔</td><td>KONSIMENTO</td><td>180</td></tr><tr><td>insurance certificate.txt</td><td>✔</td><td>✔</td><td>SIGORTA</td><td>85</td></tr>
-  </table>
-
-  <h2>📡 MT700 Alan Analizi</h2>
-  <table><tr><th>Alan</th><th>Açıklama</th><th>Değer</th><th>Durum</th></tr><tr><td><b>20</b></td><td>Documentary Credit Number</td><td><code>—</code></td><td>⚠ TESPİT EDİLEMEDİ</td></tr><tr><td><b>31D</b></td><td>Date and Place of Expiry</td><td><code>—</code></td><td>⚠ TESPİT EDİLEMEDİ</td></tr><tr><td><b>32B</b></td><td>Currency Code, Amount</td><td><code>—</code></td><td>⚠ TESPİT EDİLEMEDİ</td></tr><tr><td><b>40A</b></td><td>Form of Documentary Credit</td><td><code>—</code></td><td>⚠ TESPİT EDİLEMEDİ</td></tr><tr><td><b>44C</b></td><td>Latest Date of Shipment</td><td><code>—</code></td><td>⚠ TESPİT EDİLEMEDİ</td></tr><tr><td><b>45A</b></td><td>Description of Goods</td><td><code>—</code></td><td>⚠ TESPİT EDİLEMEDİ</td></tr><tr><td><b>46A</b></td><td>Documents Required</td><td><code>—</code></td><td>⚠ TESPİT EDİLEMEDİ</td></tr></table>
-
-  <h2>1. Vade Analizi</h2><ul><li>En Geç Yükleme Tarihi (44C): Belgeden tespit edilemedi — manuel kontrol.</li><li>İbraz Süresi: Tespit edilemedi — UCP Art 14c varsayılan 21 gün uygulanır.</li></ul>
-  <h2>2. Ödeme Vadesi</h2><ul><li>Ödeme Vadesi: Tespit edilemedi — manuel kontrol önerilir.</li></ul>
-  <h2>3. Incoterms &amp; Sigorta</h2><ul><li>Incoterms: **CIF (ICC 2020)**</li><li>[TAMAM] CIF teslimde Sigorta Poliçesi mevcut (Art 28 uyumlu).</li></ul>
-
-  <h2>4. Çapraz Kontroller</h2>
-  <table><tr><th>Belgeler</th><th>Detay</th><th>Durum</th></tr><tr><td><b>Fatura vs LC Tutarı (Art 30)</b></td><td>Tespit edilemedi: LC (32B)</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Fatura vs B/L Kilo (Art 14)</b></td><td>Kilo tespit edilemedi: Fatura</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Mal Tanımı vs Küşat (Art 18c)</b></td><td>Tespit edilemedi: Küşat 45A</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>B/L Tarihi vs 44C (Art 20)</b></td><td>Tespit edilemedi: 44C</td><td><b>MANUEL KONTROL</b></td></tr><tr><td><b>Sigorta ≥ Fatura×110% (Art 28f-ii)</b></td><td>Sigorta: 23.94 < Min: 26,334.00</td><td><b>REZERV RİSKİ - YETERSİZ TEMİNAT</b></td></tr><tr><td><b>Menşe (Origin) Analizi</b></td><td>LC'de Certificate of Origin şartı tespit edilmedi.</td><td><b>BİLGİ</b></td></tr></table>
-
-  <h2>5. Konşimento Kontrolü</h2><ul><li>[TAMAM] 'Shipped on Board' şerhi mevcut (Art 20a-ii uyumlu).</li><li>[TAMAM] Kirli/klozlu konşimento ifadesi bulunamadı (Art 27 uyumlu).</li></ul>
-
-  <h2>6. 46A Belge Şartları</h2>
-  <table><tr><th>Belge</th><th>Detay</th><th>Durum</th></tr><tr><td>Packing List İçerik Şartları</td><td>Bulunan: CBM, PACKAGE DETAILS, PALLET, MARKS | Eksik: GROSS WEIGHT, NET WEIGHT, MEASUREMENT, PACKING DETAILS, NUMBER OF PACKAGES, CARTON</td><td><b>UYUMLU</b></td></tr><tr><td>46A</td><td>MT700 46A tespit edilemedi.</td><td><b>MANUEL KONTROL</b></td></tr></table>
-
-  <h2>7. ISBP 821 Tablosu</h2>
-  <table><tr><th>UCP</th><th>ISBP Prensibi</th><th>Bulgu</th><th>Öneri</th></tr><tr><td><b>Art 30</b></td><td>ISBP 821 § B14 — Miktar ve Tutar Tolerans</td><td>Fatura vs LC Tutarı (Art 30): MANUEL KONTROL</td><td>Fatura tutarının akreditif tutarıyla %5 sapma sınırı içinde kaldığını doğrulayın.</td></tr><tr><td><b>Art 14</b></td><td>ISBP 821 § A1-A7 — Belge İnceleme Prensipleri</td><td>Fatura vs B/L Kilo (Art 14): MANUEL KONTROL</td><td>İbraz öncesi tüm belgeler 21 günlük süre kısıtlaması gözetilerek hazırlanmalıdır.</td></tr><tr><td><b>Art 18</b></td><td>ISBP 821 § C1-C23 — Ticari Fatura</td><td>Mal Tanımı vs Küşat (Art 18c): MANUEL KONTROL</td><td>Mal tanımını akreditifteki 45A alanından kopyalayarak faturaya ekleyin.</td></tr><tr><td><b>Art 20</b></td><td>ISBP 821 § E1-E30 — Konşimento</td><td>B/L Tarihi vs 44C (Art 20): MANUEL KONTROL</td><td>Konşimentonun 'On Board' notasyonunda tarih ile liman bilgisini doğrulayın.</td></tr><tr><td><b>Art 28</b></td><td>ISBP 821 § K1-K15 — Sigorta Belgesi</td><td>Sigorta ≥ Fatura×110% (Art 28f-ii): REZERV RİSKİ - YETERSİZ TEMİNAT</td><td>Sigorta poliçesinin döviz cinsini, teminat tutarını ve kapsamı akreditifle karşılaştırın.</td></tr><tr><td><b>Art 14</b></td><td>ISBP 821 § A1-A7 — Belge İnceleme Prensipleri</td><td>21 günlük ibraz süresi kontrolü uygulandı.</td><td>İbraz öncesi tüm belgeler 21 günlük süre kısıtlaması gözetilerek hazırlanmalıdır.</td></tr></table>
-
-  <h2>8. Tespit Edilen Rezervler</h2><ul><li>⚠ REZERV — Sigorta teminatı yetersiz: 23.94 < 26,334.00</li></ul>
-
-  <h2>9. Rezerv Kategorileri</h2>
-  <table><tr><th>Kategori</th><th>Sınıf</th><th>Puan</th><th>Tahmini Süre</th></tr><tr><td>ibraz_suresi_belirsiz</td><td><b>MINOR DISCREPANCY</b></td><td>5</td><td>Aynı Gün</td></tr><tr><td>sigorta_eksik</td><td><b>MAJOR DISCREPANCY</b></td><td>25</td><td>2-3 Gün</td></tr></table>
-
-  <h2>10. Risk Değerlendirmesi</h2><ul><li>Risk Puanı: **30** — ORTA RİSK</li><li>Uyumluluk Skoru: **%75**</li><li>1. REZERV — Sigorta teminatı yetersiz: 23.94 < 26,334.00</li></ul>
-
-  <h2>🏛 SWIFT Rezerv Simülatörü</h2>
-  <div class="swift-box"><b>Ret Metni 1</b><pre>DOCUMENTS REJECTED.
-
-INSURANCE DOCUMENT AS REQUIRED BY FIELD 46A
-OF THE CREDIT HAS NOT BEEN PRESENTED.
-UCP 600 ARTICLE 28.</pre></div>
-</div>
-</body>
-</html>
+<h1>AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0</h1>
+<p class="meta"><b>Tarih:</b> 22.06.2026 23:21 | <b>Motor:</b> UCP 600 &amp; ISBP 821</p>
+<div class="exec">
+<h2>Yönetici Özeti</h2>
+<div class="grid">
+<div class="card"><div class="lbl">Belgeler</div><div class="val">5</div></div>
+<div class="card"><div class="lbl">Rezerv</div><div class="val" style="color:#c53030">1</div></div>
+<div class="card"><div class="lbl">MAJOR</div><div class="val" style="color:#c53030">1</div></div>
+<div class="card"><div class="lbl">Uyumluluk</div><div class="val" style="color:#276749">%80</div></div>
+<div class="card"><div class="lbl">Banka Kabul</div><div class="val" style="color:#276749">%75</div></div>
+<div class="card"><div class="lbl">Risk</div><div class="val" style="font-size:.9em">ORTA RİSK</div></div>
+</div></div>
+<h2>Dosya Durum Raporu</h2>
+<table><tr><th>Dosya</th><th>Var</th><th>OCR</th><th>Sınıf</th><th>Parse</th><th>Puan</th></tr><tr><td>Fatura.txt</td><td>✓</td><td>✓</td><td>FATURA</td><td>✓</td><td>999</td></tr><tr><td>slinecek.txt</td><td>✓</td><td>✗</td><td>-</td><td>✗</td><td>0</td></tr><tr><td>Küşat.txt</td><td>✓</td><td>✓</td><td>KUSAT</td><td>✓</td><td>999</td></tr><tr><td>packing list.txt</td><td>✓</td><td>✓</td><td>CEKI_LISTESI</td><td>✓</td><td>999</td></tr><tr><td>Bill of lading.txt</td><td>✓</td><td>✓</td><td>KONSIMENTO</td><td>✓</td><td>999</td></tr><tr><td>insurance certificate.txt</td><td>✓</td><td>✓</td><td>SIGORTA</td><td>✓</td><td>999</td></tr></table>
+<h2>MT700 Alan Analizi</h2>
+<table><tr><th>Alan</th><th>Açıklama</th><th>Değer</th><th>Durum</th></tr><tr><td><b>20</b></td><td>Documentary Credit Number</td><td><code>—</code></td><td>MANUEL KONTROL</td></tr><tr><td><b>31D</b></td><td>Expiry Date</td><td><code>—</code></td><td>MANUEL KONTROL</td></tr><tr><td><b>32B</b></td><td>Amount</td><td><code>—</code></td><td>MANUEL KONTROL</td></tr><tr><td><b>40A</b></td><td>Form</td><td><code>—</code></td><td>MANUEL KONTROL</td></tr><tr><td><b>44C</b></td><td>Latest Shipment</td><td><code>—</code></td><td>MANUEL KONTROL</td></tr><tr><td><b>45A</b></td><td>Description of Goods</td><td><code>—</code></td><td>MANUEL KONTROL</td></tr><tr><td><b>46A</b></td><td>Documents Required</td><td><code>—</code></td><td>MANUEL KONTROL</td></tr></table>
+<h2>Vade Analizi</h2><ul><li>En Geç Yükleme (44C): Tespit edilemedi — manuel kontrol.</li><li>İbraz Süresi: **10 gün** (max 21)</li></ul>
+<h2>Ödeme Vadesi</h2><ul><li>Ödeme: **Vadeli** — poliçe takvimi kontrol edilmeli.</li></ul>
+<h2>Incoterms &amp; Sigorta</h2><ul><li>Incoterms: **CIF (ICC 2020)**</li><li>[TAMAM] CIF — Sigorta belgesi mevcut.</li></ul>
+<h2>Çapraz Kontroller</h2>
+<table><tr><th>Belgeler</th><th>Detay</th><th>Durum</th></tr><tr><td>Tutar LC vs Fatura (Art 30)</td><td>LC:23,940.00 | Fatura CIF:23,940.00 | Sapma:+0.0% | Tolerans:±%5</td><td>UYUMLU</td></tr><tr><td>Kilo: Fatura vs B/L</td><td>Tespit edilemedi: Fatura</td><td>MANUEL KONTROL</td></tr><tr><td>Kilo: Fatura vs Packing List</td><td>Tespit edilemedi: Fatura, Packing List</td><td>MANUEL KONTROL</td></tr><tr><td>Kilo: Packing List vs B/L</td><td>Tespit edilemedi: Packing List</td><td>MANUEL KONTROL</td></tr><tr><td>Mal Tanımı LC vs Fatura (Art 18c)</td><td>Tespit edilemedi: 45A </td><td>MANUEL KONTROL</td></tr><tr><td>B/L Tarihi vs 44C (Art 20)</td><td>B/L:20.06.2026 | 44C:-</td><td>MANUEL KONTROL</td></tr><tr><td>Sigorta ≥ CIF × 110% (Art 28f-ii)</td><td>Sigorta:26,334.00 < Min:26,334.00</td><td>REZERV - YETERSİZ TEMİNAT</td></tr><tr><td>Menşe (Origin) Analizi</td><td>Certificate of Origin belgesi mevcut.</td><td>UYUMLU</td></tr></table>
+<h2>Konşimento Kontrolleri</h2><ul><li>[TAMAM] 'Shipped on Board' şerhi mevcut (Art 20a-ii).</li><li>[TAMAM] Kirli/klozlu ifade bulunamadı (Art 27 uyumlu).</li></ul>
+<h2>46A Belge Şartları</h2>
+<table><tr><th>Belge</th><th>Detay</th><th>Durum</th></tr><tr><td>46A</td><td>MT700 46A tespit edilemedi.</td><td>MANUEL KONTROL</td></tr><tr><td>Packing List İçerik</td><td>Bulunan: CBM, PACKAGE DETAILS, PALLET, MARKS, PACKING LIST | Eksik: GROSS WEIGHT, NET WEIGHT, MEASUREMENT, NUMBER OF PACKAGES, CARTON</td><td>UYUMLU</td></tr></table>
+<h2>Tespit Edilen Rezervler</h2><ul><li>REZERV — Sigorta yetersiz: 26,334.00 < 26,334.00</li></ul>
+<h2>Rezerv Kategorileri</h2>
+<table><tr><th>Kod</th><th>Kategori</th><th>Puan</th><th>Süre</th></tr><tr><td>sigorta_eksik</td><td><b>MAJOR DISCREPANCY</b></td><td>25</td><td>2-3 Gün</td></tr></table>
+<h2>Risk Değerlendirmesi</h2><ul><li>Risk Puanı: **25** — ORTA RİSK</li><li>Uyumluluk: **%80**</li><li>1. REZERV — Sigorta yetersiz: 26,334.00 < 26,334.00</li></ul>
+<h2>SWIFT Rezerv Simülatörü</h2><div class="swift"><b>Ret 1</b><pre>DOCUMENTS REJECTED.
+INSURANCE DOCUMENT NOT PRESENTED.
+UCP 600 ART 28.</pre></div>
+</div></body></html>
