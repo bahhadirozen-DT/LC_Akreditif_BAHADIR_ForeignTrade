@@ -8,7 +8,6 @@ on:
       - 'DisTicaretRepo/YuklenenDosyalar/**'
   workflow_dispatch:
 
-# GitHub Actions'ın repoya yazma yetkisini tanımlıyoruz
 permissions:
   contents: write
 
@@ -17,44 +16,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Depoyu Bulut Sunucusuna Çek
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0 
+      - name: Depoyu Bulut Sunucusuna Çek
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Python Ortamını Hazırla
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Python Ortamını Hazırla
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Bağımlılıkları ve Tesseract OCR Motorunu Kur
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y tesseract-ocr tesseract-ocr-tur tesseract-ocr-eng
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Bağımlılıkları ve Tesseract OCR Motorunu Kur
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-tur tesseract-ocr-eng
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Akreditif Analiz Motorunu Tetikle
-      run: |
-        python app.py
+      - name: Akreditif Analiz Motorunu Tetikle
+        run: |
+          python app.py
 
-    - name: Üretilen Raporları Repoya Geri Yükle ve Güncelle
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "Yapay Zeka Otomasyonu"
-        
-        # Değişiklikleri hazırla
-        git add DisTicaretRepo/Raporlar/*
-        
-        # Değişiklik kontrolü (Rapor klasöründe bir şey değişti mi?)
-        if ! git diff --staged --quiet; then
+      - name: Üretilen Raporları Repoya Geri Yükle ve Güncelle
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Yapay Zeka Otomasyonu"
+
+          # Yarım kalmış rebase varsa iptal et (güvenlik için)
+          git rebase --abort 2>/dev/null || true
+
+          # Çalışma alanı durumunu logla
+          git status
+
+          # Rapor dosyalarını hazırla
+          git add DisTicaretRepo/Raporlar/
+
+          # Değişiklik var mı kontrol et
+          if git diff --staged --quiet; then
+            echo "Güncellenecek rapor bulunamadı, işlem atlandı."
+            exit 0
+          fi
+
+          # Commit
           git commit -m "🤖 Otomatik Analiz Raporu Güncellendi [skip ci]"
-          
-          # Çakışmaları yönet: Uzaktakini çek, çakışma olursa senin ürettiğin raporu (ours) baskın tut
-          git pull --rebase origin main || (git checkout --ours DisTicaretRepo/Raporlar/* && git add DisTicaretRepo/Raporlar/* && git rebase --continue)
-          
-          # Push işlemini gerçekleştir
-          git push origin main
-        else
-          echo "Güncellenecek rapor bulunamadı, işlem atlandı."
-        fi
+
+          # Push — çakışma olursa force-with-lease ile üzerine yaz
+          # (Bu branch'e sadece bot yazıyor, force güvenli)
+          git push --force-with-lease origin main
