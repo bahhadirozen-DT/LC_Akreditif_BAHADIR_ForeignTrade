@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 23.06.2026 04:58 | Motor: UCP 600 & ISBP 821
+**Tarih:** 23.06.2026 05:04 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -23,9 +23,9 @@
 |:---|:---|
 | LC No | **LC-AMEX-2026-7890** |
 | Belgeler | KUSAT, FATURA, KONSIMENTO, CEKI_LISTESI, SIGORTA |
-| Rezerv | 1 (MAJOR: 1) |
-| Uyumluluk | **%80** |
-| Banka Kabul | **%75** |
+| Rezerv | 2 (MAJOR: 2) |
+| Uyumluluk | **%60** |
+| Banka Kabul | **%50** |
 | Risk | ORTA RİSK |
 
 ---
@@ -62,13 +62,13 @@
 
 | Belgeler | Detay | Durum |
 |:---|:---|:---|
-| Tutar LC vs Fatura (Art 30) | LC:23,940.00 | Fatura CIF:23,940.00 | Sapma:+0.0% | Tolerans:±%5 | **UYUMLU** |
+| Tutar LC vs Fatura (Art 30) | LC:23,940.00 | Fatura CIF:26,940.00 | Sapma:+12.5% | Tolerans:±%5 | **REZERV - TUTAR UYUMSUZLUĞU** |
 | Kilo: Fatura vs B/L | Tespit edilemedi: Fatura | **MANUEL KONTROL** |
 | Kilo: Fatura vs Packing List | Tespit edilemedi: Fatura, Packing List | **MANUEL KONTROL** |
 | Kilo: Packing List vs B/L | Tespit edilemedi: Packing List | **MANUEL KONTROL** |
 | Mal Tanımı LC vs Fatura (Art 18c) | Tespit edilemedi: 45A  | **MANUEL KONTROL** |
 | B/L Tarihi vs 44C (Art 20) | B/L:20.06.2026 | 44C:- | **MANUEL KONTROL** |
-| Sigorta ≥ CIF × 110% (Art 28f-ii) | Sigorta:26,334.00 < Min:26,334.00 | **REZERV - YETERSİZ TEMİNAT** |
+| Sigorta ≥ CIF × 110% (Art 28f-ii) | Sigorta:26,334.00 < Min:29,634.00 | **REZERV - YETERSİZ TEMİNAT** |
 | Menşe (Origin) Analizi | Certificate of Origin belgesi mevcut. | **UYUMLU** |
 
 ## Konşimento
@@ -85,16 +85,30 @@
 
 ## Tespit Edilen Rezervler
 
-* REZERV — Sigorta yetersiz: 26,334.00 < 26,334.00
+* REZERV — Tutar sapması %12.5 > %5 (Art 30)
+* REZERV — Sigorta yetersiz: 26,334.00 < 29,634.00
 
 ## Rezerv Kategorileri
 
 | Kod | Kategori | Puan | Süre |
 |:---|:---|:---|:---|
+| tutar_uyusmazligi | **MAJOR DISCREPANCY** | 25 | 1-2 Gün |
 | sigorta_eksik | **MAJOR DISCREPANCY** | 25 | 2-3 Gün |
 
 ## Risk Değerlendirmesi
 
-* Risk Puanı: **25** — ORTA RİSK
-* Uyumluluk: **%80**
-* 1. REZERV — Sigorta yetersiz: 26,334.00 < 26,334.00
+* Risk Puanı: **50** — ORTA RİSK
+* Uyumluluk: **%60**
+* 1. REZERV — Tutar sapması %12.5 > %5 (Art 30)
+* 2. REZERV — Sigorta yetersiz: 26,334.00 < 29,634.00
+
+## SWIFT Rezerv Simülatörü
+
+### Ret Metni 1
+
+```
+DOCUMENTS REJECTED.
+INVOICE AMOUNT EXCEEDS CREDIT AMOUNT.
+UCP 600 ART 18/30.
+```
+
