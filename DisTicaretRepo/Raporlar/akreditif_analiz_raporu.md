@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 23.06.2026 06:09 | Motor: UCP 600 & ISBP 821
+**Tarih:** 23.06.2026 06:13 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -57,7 +57,6 @@
 
 * Incoterms: **CIF (ICC 2020)**
 * [TAMAM] CIF — Sigorta belgesi mevcut.
-
 
 ## Çapraz Kontroller
 
