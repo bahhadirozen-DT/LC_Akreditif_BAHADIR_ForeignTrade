@@ -1,65 +1,78 @@
 name: Yapay Zeka Akreditif Denetim Motoru
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'DisTicaretRepo/YuklenenDosyalar/**'
-  workflow_dispatch:
+push:
+branches:
+- main
+paths:
+- 'DisTicaretRepo/YuklenenDosyalar/**'
+workflow_dispatch:
 
 permissions:
-  contents: write
+contents: write
 
 jobs:
-  analiz_ve_raporlama:
-    runs-on: ubuntu-latest
+analiz_ve_raporlama:
+runs-on: ubuntu-latest
 
-    steps:
-      - name: Depoyu Bulut Sunucusuna Çek
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+```
+steps:
+  - name: Depoyu Bulut Sunucusuna Çek
+    uses: actions/checkout@v4
+    with:
+      fetch-depth: 0
 
-      - name: Python Ortamını Hazırla
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+  - name: Python Ortamını Hazırla
+    uses: actions/setup-python@v5
+    with:
+      python-version: "3.10"
 
-      - name: Bağımlılıkları ve Tesseract OCR Motorunu Kur
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-tur tesseract-ocr-eng
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+  - name: Bağımlılıkları ve OCR Motorunu Kur
+    run: |
+      sudo apt-get update
+      sudo apt-get install -y tesseract-ocr tesseract-ocr-tur tesseract-ocr-eng
 
-      - name: Akreditif Analiz Motorunu Tetikle
-        run: |
-          python app.py
+      python -m pip install --upgrade pip
 
-      - name: Üretilen Raporları Repoya Geri Yükle ve Güncelle
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "Yapay Zeka Otomasyonu"
+      if [ -f requirements.txt ]; then
+        pip install -r requirements.txt
+      fi
 
-          # Yarım kalmış rebase varsa iptal et (güvenlik için)
-          git rebase --abort 2>/dev/null || true
+  - name: Akreditif Analiz Motorunu Çalıştır
+    run: |
+      python app.py
 
-          # Çalışma alanı durumunu logla
-          git status
+  - name: Git Kullanıcısını Tanımla
+    run: |
+      git config --global user.email "action@github.com"
+      git config --global user.name "Yapay Zeka Otomasyonu"
 
-          # Rapor dosyalarını hazırla
-          git add DisTicaretRepo/Raporlar/
+  - name: Raporları Commit Et ve Pushla
+    run: |
+      rm -rf __pycache__ || true
 
-          # Değişiklik var mı kontrol et
-          if git diff --staged --quiet; then
-            echo "Güncellenecek rapor bulunamadı, işlem atlandı."
-            exit 0
-          fi
+      git fetch origin
 
-          # Commit
-          git commit -m "🤖 Otomatik Analiz Raporu Güncellendi [skip ci]"
+      git add DisTicaretRepo/Raporlar/
 
-          # Push — çakışma olursa force-with-lease ile üzerine yaz
-          # (Bu branch'e sadece bot yazıyor, force güvenli)
-          git push --force-with-lease origin main
+      if git diff --cached --quiet; then
+        echo "Rapor değişmedi."
+        exit 0
+      fi
+
+      git commit -m "🤖 Otomatik Analiz Raporu Güncellendi [skip ci]"
+
+      git pull --rebase origin main
+
+      git push origin HEAD:main
+
+  - name: Raporları Artifact Olarak Sakla
+    uses: actions/upload-artifact@v4
+    with:
+      name: akreditif-analiz-raporlari
+      path: |
+        DisTicaretRepo/Raporlar/*.md
+        DisTicaretRepo/Raporlar/*.html
+        DisTicaretRepo/Raporlar/*.docx
+      if-no-files-found: ignore
+```
