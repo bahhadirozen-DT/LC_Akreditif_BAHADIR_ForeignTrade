@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 23.06.2026 06:13 | Motor: UCP 600 & ISBP 821
+**Tarih:** 23.06.2026 19:07 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -23,10 +23,10 @@
 |:---|:---|
 | LC No | **LC-AMEX-2026-7890** |
 | Belgeler | KUSAT, FATURA, KONSIMENTO, CEKI_LISTESI, SIGORTA |
-| Rezerv | 1 (MAJOR: 1) |
-| Uyumluluk | **%80** |
-| Banka Kabul | **%75** |
-| Risk | ORTA RİSK |
+| Rezerv | 0 (MAJOR: 0) |
+| Uyumluluk | **%100** |
+| Banka Kabul | **%100** |
+| Risk | DÜŞÜK RİSK |
 
 ---
 
@@ -58,6 +58,7 @@
 * Incoterms: **CIF (ICC 2020)**
 * [TAMAM] CIF — Sigorta belgesi mevcut.
 
+
 ## Çapraz Kontroller
 
 | Belgeler | Detay | Durum |
@@ -68,8 +69,8 @@
 | Kilo: Packing List vs B/L | Tespit edilemedi: Packing List | **MANUEL KONTROL** |
 | Mal Tanımı LC vs Fatura (Art 18c) | Tespit edilemedi: 45A  | **MANUEL KONTROL** |
 | B/L Tarihi vs 44C (Art 20) | B/L:20.06.2026 | 44C:- | **MANUEL KONTROL** |
-| Sigorta ≥ CIF × 110% (Art 28f-ii) | Sigorta:26,334.00 < Min:26,334.00 | **REZERV - YETERSİZ TEMİNAT** |
-| Menşe (Origin) Analizi | Certificate of Origin belgesi mevcut. | **UYUMLU** |
+| Sigorta ≥ CIF × 110% (Art 28f-ii) | CIF:23,940.00 | Min(×110%):26,334.00 | Sigorta:26,334.00 | **UYUMLU** |
+| Menşe (Origin) Analizi | Origin: TÜRKİYE | Kaynak: Commercial Invoice | Ayrı CO belgesi ibraz edilmedi; fatura menşe beyanı kabul edildi. | **UYUMLU** |
 
 ## Konşimento
 
@@ -85,16 +86,14 @@
 
 ## Tespit Edilen Rezervler
 
-* REZERV — Sigorta yetersiz: 26,334.00 < 26,334.00
+* Kritik rezerv tespit edilmedi.
 
 ## Rezerv Kategorileri
 
 | Kod | Kategori | Puan | Süre |
 |:---|:---|:---|:---|
-| sigorta_eksik | **MAJOR DISCREPANCY** | 25 | 2-3 Gün |
 
 ## Risk Değerlendirmesi
 
-* Risk Puanı: **25** — ORTA RİSK
-* Uyumluluk: **%80**
-* 1. REZERV — Sigorta yetersiz: 26,334.00 < 26,334.00
+* Risk Puanı: **0** — DÜŞÜK RİSK
+* Uyumluluk: **%100**
