@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 22.06.2026 23:21 | Motor: UCP 600 & ISBP 821
+**Tarih:** 23.06.2026 04:58 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -21,6 +21,7 @@
 
 | Metrik | Değer |
 |:---|:---|
+| LC No | **LC-AMEX-2026-7890** |
 | Belgeler | KUSAT, FATURA, KONSIMENTO, CEKI_LISTESI, SIGORTA |
 | Rezerv | 1 (MAJOR: 1) |
 | Uyumluluk | **%80** |
@@ -80,7 +81,7 @@
 | Belge | Detay | Durum |
 |:---|:---|:---|
 | 46A | MT700 46A tespit edilemedi. | **MANUEL KONTROL** |
-| Packing List İçerik | Bulunan: CBM, PACKAGE DETAILS, PALLET, MARKS, PACKING LIST | Eksik: GROSS WEIGHT, NET WEIGHT, MEASUREMENT, NUMBER OF PACKAGES, CARTON | **UYUMLU** |
+| Packing List İçerik | Bulunan: GROSS WEIGHT, NET WEIGHT, CBM, PACKAGE DETAILS, NUMBER OF PACKAGES, PALLET, MARKS, PACKING LIST | Eksik: MEASUREMENT, CARTON | **UYUMLU** |
 
 ## Tespit Edilen Rezervler
 
@@ -97,14 +98,3 @@
 * Risk Puanı: **25** — ORTA RİSK
 * Uyumluluk: **%80**
 * 1. REZERV — Sigorta yetersiz: 26,334.00 < 26,334.00
-
-## SWIFT Rezerv Simülatörü
-
-### Ret Metni 1
-
-```
-DOCUMENTS REJECTED.
-INSURANCE DOCUMENT NOT PRESENTED.
-UCP 600 ART 28.
-```
-
