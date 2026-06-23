@@ -42,24 +42,27 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "Yapay Zeka Otomasyonu"
 
-          # Yarım kalmış rebase varsa iptal et (güvenlik için)
-          git rebase --abort 2>/dev/null || true
+          # Eski yarım kalmış işlemleri temizle
+          git rebase --abort || true
+          git merge --abort || true
 
-          # Çalışma alanı durumunu logla
-          git status
-
-          # Rapor dosyalarını hazırla
+          # Raporları ekle
           git add DisTicaretRepo/Raporlar/
 
-          # Değişiklik var mı kontrol et
-          if git diff --staged --quiet; then
-            echo "Güncellenecek rapor bulunamadı, işlem atlandı."
+          # Değişiklik yoksa çık
+          if git diff --cached --quiet; then
+            echo "Rapor değişikliği yok."
             exit 0
           fi
 
-          # Commit
+          # Commit oluştur
           git commit -m "🤖 Otomatik Analiz Raporu Güncellendi [skip ci]"
 
-          # Push — çakışma olursa force-with-lease ile üzerine yaz
-          # (Bu branch'e sadece bot yazıyor, force güvenli)
-          git push --force-with-lease origin main
+          # En güncel main'i al
+          git fetch origin main
+
+          # Çakışma çıkarsa kendi commitini koru
+          git rebase origin/main || true
+
+          # Push
+          git push origin HEAD:main
