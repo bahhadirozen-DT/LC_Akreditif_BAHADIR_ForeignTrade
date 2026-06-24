@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 24.06.2026 02:16 | Motor: UCP 600 & ISBP 821
+**Tarih:** 24.06.2026 02:44 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -72,6 +72,105 @@
 | Sigorta ≥ CIF × 110% (Art 28f-ii) | CIF:23,940.00 | Min(×110%):26,334.00 | Sigorta:26,334.00 | **UYUMLU** |
 | Menşe (Origin) Analizi | Origin: TÜRKİYE | Kaynak: Commercial Invoice | Ayrı CO belgesi ibraz edilmedi; fatura beyanı kabul edildi. | **UYUMLU** |
 
+## UCP 600 Hukuki Kontroller
+
+### Art 14 — Belge İnceleme Standardı
+
+**BULGU:** Belgeler yüz değerinden incelendi.
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Belge inceleme standardı. İbraz süresi belirtilmemişse en fazla 21 gündür.
+
+UCP 600 Art 14(a): Banka, belgeler temelinde uygun ibraz olup olmadığını belirlemek için sunumu inceler. Art 14(b): İnceleme için en fazla 5 iş günü bulunmaktadır. Art 14(d): Belgeler arasındaki veriler çelişmemelidir; ancak birebir aynı olmak zorunda değildir.
+
+**SONUÇ: ⚠ BİLGİ**
+
+---
+
+### Art 30 — Tutar Toleransı
+
+**BULGU:** CIF: 23,940.00 | LC: 23,940.00 | Sapma: %+0.0
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Miktar, tutar ve birim fiyattaki +/- %5 ve %10 tolerans kuralları (:39A:).
+
+UCP 600 Art 30(b) gereği akreditif tutarında standart %5 tolerans uygulanır. Fatura CIF değeri 23,940.00, LC tutarı 23,940.00 olarak tespit edilmiştir. Sapma %0.0 olup tolerans sınırı içinde kaldığından rezerv oluşmamıştır.
+
+**SONUÇ: ✓ UYUMLU**
+
+---
+
+### Art 27 — Temiz Konşimento
+
+**BULGU:** Olumsuz kloz veya hasar şerhi tespit edilmedi.
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Temiz taşıma belgesi (Clean Bill of Lading) şartı. Malda hasar ibaresi olmamalı.
+
+UCP 600 Art 27: Konşimentoda malın veya ambalajın hasarlı durumunu belirten herhangi bir kloz veya şerh bulunmamaktadır. Belge temiz konşimento niteliğini taşımaktadır.
+
+**SONUÇ: ✓ UYUMLU**
+
+---
+
+### Art 20 — Shipped on Board Şerhi
+
+**BULGU:** On Board şerhi konşimentoda mevcut.
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
+
+UCP 600 Art 20(a)(ii): Konşimenton malların gemiye yüklendiğini 'Shipped on Board' şerhi veya ön baskı ile göstermesi zorunludur. Yükleme tarihi bu şerhin tarihi sayılır.
+
+**SONUÇ: ✓ UYUMLU**
+
+---
+
+### Art 20 — Yükleme Tarihi
+
+**BULGU:** Tespit edilemedi: 44C
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
+
+UCP 600 Art 20 kapsamındaki yükleme tarihi kontrolü için konşimendo On Board tarihi ve LC 44C alanı gereklidir. Manuel doğrulama yapılmalıdır.
+
+**SONUÇ: ⚠ MANUEL KONTROL**
+
+---
+
+### Art 30 — Kilo
+
+**BULGU:** Tespit edilemedi: Fatura Kilo
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Miktar, tutar ve birim fiyattaki +/- %5 ve %10 tolerans kuralları (:39A:).
+
+Ağırlık karşılaştırması yapılamadı. Belgelerde kilo bilgisi farklı formatta veya eksik olabilir.
+
+**SONUÇ: ⚠ MANUEL KONTROL**
+
+---
+
+### Art 28(f)(ii) — Sigorta Teminatı
+
+**BULGU:** CIF: 23,940.00 | Min (×110%): 26,334.00 | Poliçe: 26,334.00
+
+**HUKUKİ DEĞERLENDİRME:**
+
+UCP 600 Art 28(f)(ii) gereği akreditifte farklı bir oran belirtilmemişse sigorta teminatı CIF/CIP değerinin en az %%110'u olmalıdır. Belgelerde CIF değerinin 23,940.00 ve sigorta teminatının 26,334.00 olduğu görülmüştür. Teminat tutarı asgari gerekliliği karşıladığından rezerv oluşmamıştır.
+
+**SONUÇ: ✓ UYUMLU**
+
+---
+
+
 ## Konşimento
 
 * [TAMAM] 'Shipped on Board' şerhi mevcut (Art 20a-ii).
@@ -79,7 +178,7 @@
 
 ## 46A Belge Şartları
 
-| Belge | Detay | Durum |
+| Belge Şartı | Detay | Durum |
 |:---|:---|:---|
 | 46A | MT700 46A tespit edilemedi. | **MANUEL KONTROL** |
 | Packing List İçerik | Bulunan: GROSS WEIGHT, NET WEIGHT, CBM, PACKAGE DETAILS, NUMBER OF PACKAGES, PALLET, MARKS, PACKING LIST | Eksik: MEASUREMENT, CARTON | **UYUMLU** |
