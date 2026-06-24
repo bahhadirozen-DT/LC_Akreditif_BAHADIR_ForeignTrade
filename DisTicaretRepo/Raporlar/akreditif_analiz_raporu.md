@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 24.06.2026 02:44 | Motor: UCP 600 & ISBP 821
+**Tarih:** 24.06.2026 03:50 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -12,7 +12,6 @@
 | slinecek.txt | V | X | - | X | 0 |
 | Küşat.txt | V | V | KUSAT | V | 999 |
 | packing list.txt | V | V | CEKI_LISTESI | V | 999 |
-| Bill of lading.txt | V | V | KONSIMENTO | V | 999 |
 | insurance certificate.txt | V | V | SIGORTA | V | 999 |
 
 ---
@@ -22,11 +21,11 @@
 | Metrik | Değer |
 |:---|:---|
 | LC No | **LC-AMEX-2026-7890** |
-| Belgeler | KUSAT, FATURA, KONSIMENTO, CEKI_LISTESI, SIGORTA |
-| Rezerv | 0 (MAJOR: 0) |
-| Uyumluluk | **%100** |
-| Banka Kabul | **%100** |
-| Risk | DÜŞÜK RİSK |
+| Belgeler | KUSAT, FATURA, CEKI_LISTESI, SIGORTA |
+| Rezerv | 1 (MAJOR: 1) |
+| Uyumluluk | **%70** |
+| Banka Kabul | **%75** |
+| Risk | ORTA RİSK |
 
 ---
 
@@ -64,11 +63,11 @@
 | Belgeler | Detay | Durum |
 |:---|:---|:---|
 | Tutar LC vs Fatura (Art 30) | LC:23,940.00 | Fatura CIF:23,940.00 | Sapma:+0.0% | Tolerans:±%5 | **UYUMLU** |
-| Kilo: Fatura vs B/L | Tespit edilemedi: Fatura | **MANUEL KONTROL** |
+| Kilo: Fatura vs B/L | Tespit edilemedi: Fatura, B/L | **MANUEL KONTROL** |
 | Kilo: Fatura vs Packing List | Tespit edilemedi: Fatura, Packing List | **MANUEL KONTROL** |
-| Kilo: Packing List vs B/L | Tespit edilemedi: Packing List | **MANUEL KONTROL** |
+| Kilo: Packing List vs B/L | Tespit edilemedi: Packing List, B/L | **MANUEL KONTROL** |
 | Mal Tanımı LC vs Fatura (Art 18c) | Tespit edilemedi: 45A  | **MANUEL KONTROL** |
-| B/L Tarihi vs 44C (Art 20) | B/L:20.06.2026 | 44C:- | **MANUEL KONTROL** |
+| B/L Tarihi vs 44C (Art 20) | B/L:- | 44C:- | **MANUEL KONTROL** |
 | Sigorta ≥ CIF × 110% (Art 28f-ii) | CIF:23,940.00 | Min(×110%):26,334.00 | Sigorta:26,334.00 | **UYUMLU** |
 | Menşe (Origin) Analizi | Origin: TÜRKİYE | Kaynak: Commercial Invoice | Ayrı CO belgesi ibraz edilmedi; fatura beyanı kabul edildi. | **UYUMLU** |
 
@@ -102,37 +101,9 @@ UCP 600 Art 30(b) gereği akreditif tutarında standart %5 tolerans uygulanır. 
 
 ---
 
-### Art 27 — Temiz Konşimento
-
-**BULGU:** Olumsuz kloz veya hasar şerhi tespit edilmedi.
-
-**HUKUKİ DEĞERLENDİRME:**
-
-Temiz taşıma belgesi (Clean Bill of Lading) şartı. Malda hasar ibaresi olmamalı.
-
-UCP 600 Art 27: Konşimentoda malın veya ambalajın hasarlı durumunu belirten herhangi bir kloz veya şerh bulunmamaktadır. Belge temiz konşimento niteliğini taşımaktadır.
-
-**SONUÇ: ✓ UYUMLU**
-
----
-
-### Art 20 — Shipped on Board Şerhi
-
-**BULGU:** On Board şerhi konşimentoda mevcut.
-
-**HUKUKİ DEĞERLENDİRME:**
-
-Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
-
-UCP 600 Art 20(a)(ii): Konşimenton malların gemiye yüklendiğini 'Shipped on Board' şerhi veya ön baskı ile göstermesi zorunludur. Yükleme tarihi bu şerhin tarihi sayılır.
-
-**SONUÇ: ✓ UYUMLU**
-
----
-
 ### Art 20 — Yükleme Tarihi
 
-**BULGU:** Tespit edilemedi: 44C
+**BULGU:** Tespit edilemedi: B/L Tarihi, 44C
 
 **HUKUKİ DEĞERLENDİRME:**
 
@@ -146,7 +117,7 @@ UCP 600 Art 20 kapsamındaki yükleme tarihi kontrolü için konşimendo On Boar
 
 ### Art 30 — Kilo
 
-**BULGU:** Tespit edilemedi: Fatura Kilo
+**BULGU:** Tespit edilemedi: Fatura Kilo, B/L Kilo
 
 **HUKUKİ DEĞERLENDİRME:**
 
@@ -173,8 +144,7 @@ UCP 600 Art 28(f)(ii) gereği akreditifte farklı bir oran belirtilmemişse sigo
 
 ## Konşimento
 
-* [TAMAM] 'Shipped on Board' şerhi mevcut (Art 20a-ii).
-* [TAMAM] Kirli/klozlu ifade bulunamadı (Art 27 uyumlu).
+* [REZERV] Konşimento belgesi yok!
 
 ## 46A Belge Şartları
 
@@ -185,14 +155,27 @@ UCP 600 Art 28(f)(ii) gereği akreditifte farklı bir oran belirtilmemişse sigo
 
 ## Tespit Edilen Rezervler
 
-* Kritik rezerv tespit edilmedi.
+* REZERV — Konşimento ibraz edilmemiş (Art 20)
 
 ## Rezerv Kategorileri
 
 | Kod | Kategori | Puan | Süre |
 |:---|:---|:---|:---|
+| konsimento_eksik | **MAJOR DISCREPANCY** | 25 | 3-5 Gün |
 
 ## Risk Değerlendirmesi
 
-* Risk Puanı: **0** — DÜŞÜK RİSK
-* Uyumluluk: **%100**
+* Risk Puanı: **25** — ORTA RİSK
+* Uyumluluk: **%70**
+* 1. REZERV — Konşimento ibraz edilmemiş (Art 20)
+
+## SWIFT Rezerv Simülatörü
+
+### Ret Metni 1
+
+```
+DOCUMENTS REJECTED.
+FULL SET ORIGINAL B/L NOT PRESENTED.
+UCP 600 ART 20.
+```
+
