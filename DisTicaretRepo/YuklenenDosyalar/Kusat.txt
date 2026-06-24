@@ -1,0 +1,49 @@
+MT700 - ISSUE OF A DOCUMENTARY CREDIT
+
+20: LC-AMEX-2026-7890
+31D: 15.07.2026 / TURKEY
+32B: USD 23.940,00
+40A: IRREVOCABLE
+44C: 05.07.2026
+45A: TEXTILE FABRICS (100% COTTON, DYED) HS Code: 5208.31.00.00.00
+46A: 
+1. COMMERCIAL INVOICE in 3 originals and 3 copies, signed by the Beneficiary, indicating L/C No. and date.
+2. PACKING LIST in 3 originals and 3 copies, showing gross weight, net weight, measurement and package details per pallet.
+3. FULL SET (3/3) OF CLEAN ON BOARD OCEAN BILL OF LADING made out TO ORDER OF ISSUING BANK (AMEX BANK LONDON PLC), marked "FREIGHT PREPAID" and notify applicant (ALPHA IMPORT EXPORT LTD.).
+4. INSURANCE POLICY / CERTIFICATE in duplicate, endorsed in blank, covering Institute Cargo Clauses (A), for minimum 110% of CIF value, showing claims payable in London.
+5. CERTIFICATE OF ORIGIN issued by Chamber of Commerce, stating goods of Turkish origin.
+
+Sender (Issuing Bank):
+AMEX BANK LONDON PLC
+25 Cannon Street, London EC4M 5SB, UK
+SWIFT: AMEXGB2L
+
+Receiver (Advising Bank):
+TÜRK EKONOMİ BANKASI A.Ş.
+Levent/İSTANBUL
+SWIFT: TEBUTRIS
+
+Applicant (Buyer):
+ALPHA IMPORT EXPORT LTD.
+85 Great Portland Street, London W1W 7LT, UK
+
+Beneficiary (Seller):
+KÜŞAT ULUSLARARASI NAKLİYAT VE TİCARET A.Ş.
+Atatürk Mah. 5. Sok. No:12, Şişli/İSTANBUL
+Vergi No: 1234567890
+
+Port of Loading: AMBARLI / ISTANBUL
+Port of Discharge: FELIXSTOWE / UK
+Partial Shipments: NOT ALLOWED
+Transshipment: NOT ALLOWED
+Latest Shipment Date: 05.07.2026
+Expiry Date: 15.07.2026
+Expiry Place: TURKEY
+
+Additional Conditions:
+- All documents must be in ENGLISH language.
+- Third party documents are NOT ACCEPTABLE.
+- All documents must show L/C number and date.
+
+Period of Presentation:
+Documents must be presented within 10 days after shipment date, but within L/C validity.

@@ -1,0 +1,46 @@
+BILL OF LADING
+B/L No: MAE-2026-7890
+Date: 20.06.2026
+L/C No: LC-AMEX-2026-7890
+
+Shipper:
+KÜŞAT ULUSLARARASI NAKLİYAT VE TİCARET A.Ş.
+İstanbul / TÜRKİYE
+
+Consignee:
+TO ORDER OF AMEX BANK LONDON PLC
+25 Cannon Street, London EC4M 5SB, UK
+
+Notify Party:
+ALPHA IMPORT EXPORT LTD.
+85 Great Portland Street, London W1W 7LT, UK
+
+Vessel: MAERSK ISTANBUL
+Voyage No: V-246E
+Port of Loading: AMBARLI, TURKEY
+Port of Discharge: FELIXSTOWE, UK
+
+Marks & Numbers:
+KÜŞAT / ALPHA / LONDON / C/NO: 1-12
+
+No. of Packages: 12 PALLETS
+Description: TEXTILE FABRICS (100% COTTON, DYED)
+Gross Weight: 3.420,00 KG
+Measurement: 11,40 CBM
+
+Freight & Charges: FREIGHT PREPAID
+
+Shipped on Board:
+Date: 20.06.2026
+Place: AMBARLI / ISTANBUL
+
+CLEAN ON BOARD
+
+Place of Issue: ISTANBUL
+Number of Originals: 3 (THREE)
+
+Signature:
+_________________________
+MAERSK LINE
+As Agent for Carrier
+Date: 20.06.2026
