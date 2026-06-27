@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 27.06.2026 07:22 | Motor: UCP 600 & ISBP 821
+**Tarih:** 27.06.2026 23:04 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -184,13 +184,13 @@
 
 ### Art 14 — Belge İnceleme Standardı
 
-**BULGU:** Belgeler UCP 600 Art 14 kapsamında yüz değerinden incelendi.
+**BULGU:** Belgeler UCP 600 Art 14 kapsamında incelendi.
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Belge inceleme standardı. İbraz süresi belirtilmemişse en fazla 21 gündür.
 
-UCP 600 Art 14(b): İnceleme süresi en fazla 5 iş günüdür. Art 14(d): Belgeler arasındaki veriler çelişmemelidir; birebir aynı olmak zorunda değildir. NOT: Bu satır bilgilendirme amaçlıdır; sistem gerçek zamanlı banka incelemesi yapmaz.
+Art 14(b): 5 iş günü. Art 14(d): Çelişki olmamalı; birebir aynı olmak zorunda değil.
 
 **SONUÇ: ⚠ BİLGİ**
 
@@ -198,27 +198,27 @@ UCP 600 Art 14(b): İnceleme süresi en fazla 5 iş günüdür. Art 14(d): Belge
 
 ### Art 30 — Tutar Toleransı
 
-**BULGU:** CIF: 23,940.00 | LC: 23,940.00 | Sapma: %+0.0
+**BULGU:** CIF:23,940.00 | LC:23,940.00 | Sapma:%+0.0
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Miktar, tutar ve birim fiyattaki +/- %5 ve %10 tolerans kuralları (:39A:).
 
-UCP 600 Art 30(b) kapsamında standart %5 tolerans uygulanır. Fatura CIF 23,940.00, LC tutarı 23,940.00. Sapma %0.0 tolerans sınırı içindedir. Rezerv oluşmamıştır.
+Art 30(b) standart %5. Sapma %0.0 ≤ %5. Rezerv yok.
 
 **SONUÇ: ✓ UYUMLU**
 
 ---
 
-### Art 18 — Fatura Ağırlık Bilgisi
+### Art 18 — Fatura Ağırlık
 
-**BULGU:** Faturada gross weight ifadesi bulunamadı.
+**BULGU:** Faturada gross weight bulunamadı.
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Ticari fatura lehtar adına düzenlenmeli ve akreditif döviz cinsinden olmalıdır.
 
-UCP 600 Art 18, commercial invoice için ağırlık bilgisini zorunlu kılmaz. Kilo bilgisi Packing List ve Bill of Lading üzerinden doğrulanabiliyorsa faturada bulunmaması rezerv sebebi değildir. Muhakeme: veri yok ≠ rezerv (Talimat #4).
+Art 18 faturada kilo zorunlu kılmaz. PL/BL doğrulaması yeterli. Bulunamadı≠Yok.
 
 **SONUÇ: ⚠ BİLGİ**
 
@@ -226,27 +226,27 @@ UCP 600 Art 18, commercial invoice için ağırlık bilgisini zorunlu kılmaz. K
 
 ### Art 27 — Temiz Konşimento
 
-**BULGU:** Konşimentoda olumsuz kloz veya hasar şerhi bulunamadı.
+**BULGU:** Olumsuz kloz bulunamadı.
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Temiz taşıma belgesi (Clean Bill of Lading) şartı. Malda hasar ibaresi olmamalı.
 
-UCP 600 Art 27: Konşimentoda malın veya ambalajın hasarlı durumunu belirten herhangi bir kloz bulunmamaktadır. Temiz konşimento şartı karşılanmıştır.
+Art 27 şartı karşılandı.
 
 **SONUÇ: ✓ UYUMLU**
 
 ---
 
-### Art 20 — Shipped on Board Şerhi
+### Art 20 — Shipped on Board
 
-**BULGU:** On Board şerhi konşimentoda mevcut.
+**BULGU:** On Board şerhi mevcut.
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
 
-UCP 600 Art 20(a)(ii): Konşimenton 'Shipped on Board' şerhi veya ön baskı ile yüklemeyi göstermesi zorunludur. Şart karşılanmıştır.
+Art 20(a)(ii): Şart karşılandı.
 
 **SONUÇ: ✓ UYUMLU**
 
@@ -260,21 +260,21 @@ UCP 600 Art 20(a)(ii): Konşimenton 'Shipped on Board' şerhi veya ön baskı il
 
 Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
 
-Veri eksikliği tek başına rezerv sebebi değildir. 44C ve B/L tarihi manuel doğrulanmalıdır.
+Veri eksikliği rezerv değil. Manuel doğrulama.
 
 **SONUÇ: ⚠ MANUEL KONTROL**
 
 ---
 
-### Art 18 — Kilo (B/L Bilgisi)
+### Art 18 — Kilo (B/L)
 
-**BULGU:** B/L Gross Weight: 3,420.00 KG (Fatura kilo içermiyor — Art 18 zorunlu kılmaz)
+**BULGU:** B/L Gross Weight:3,420.00 KG (Fatura kilo içermiyor)
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Ticari fatura lehtar adına düzenlenmeli ve akreditif döviz cinsinden olmalıdır.
 
-UCP 600 Art 18 faturada kilo bilgisi zorunlu kılmaz. B/L ağırlığı 3,420.00 KG olarak tespit edildi. Packing List ile karşılaştırma yapılabiliyorsa yeterlidir.
+Art 18 faturada kilo zorunlu kılmaz. B/L referans alındı.
 
 **SONUÇ: ⚠ BİLGİ**
 
@@ -282,11 +282,11 @@ UCP 600 Art 18 faturada kilo bilgisi zorunlu kılmaz. B/L ağırlığı 3,420.00
 
 ### Art 28(f)(ii) — Sigorta Teminatı
 
-**BULGU:** CIF: 23,940.00 | Minimum (×110%): 26,334.00 | Poliçe: 26,334.00
+**BULGU:** CIF:23,940.00 | Min:26,334.00 | Poliçe:26,334.00
 
 **HUKUKİ DEĞERLENDİRME:**
 
-UCP 600 Art 28(f)(ii) gereği sigorta teminatı CIF/CIP değerinin en az %%110'u olmalıdır. Belgelerde CIF değeri 23,940.00 ve sigorta teminatı 26,334.00 olarak tespit edilmiştir. Teminat asgari gerekliliği karşıladığından rezerv oluşmamıştır.
+Art 28(f)(ii): CIF×110% karşılandı. Incoterms 2020 CIF: satıcı yükümlüsü. Rezerv yok.
 
 **SONUÇ: ✓ UYUMLU**
 
