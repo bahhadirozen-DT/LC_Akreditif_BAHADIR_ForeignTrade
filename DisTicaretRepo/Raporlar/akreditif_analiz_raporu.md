@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 27.06.2026 23:18 | Motor: UCP 600 & ISBP 821
+**Tarih:** 27.06.2026 23:22 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -8,8 +8,13 @@
 
 | Dosya | Var | OCR | Sınıf | Parse | Puan |
 |:---|:---|:---|:---|:---|:---|
+| insurance certificate.docx | V | V | SIGORTA | V | 999 |
 | slinecek.txt | V | X | - | X | 0 |
-| insurance certificate.txt | V | V | SIGORTA | V | 999 |
+| commercial invoice.docx | V | V | FATURA | V | 999 |
+| certificate of origin.docx | V | V | FATURA | V | 60 |
+| Kusat.docx | V | V | KUSAT | V | 999 |
+| BILL OF LADING.docx | V | V | KONSIMENTO | V | 999 |
+| packing list.docx | V | V | CEKI_LISTESI | V | 999 |
 
 ---
 
@@ -17,12 +22,12 @@
 
 | Metrik | Değer |
 |:---|:---|
-| LC No | **Tespit edilemedi** |
-| Belgeler | SIGORTA |
-| Rezerv | 1 (MAJOR: 1) |
-| Uyumluluk | **%65** |
-| Banka Kabul | **%70** |
-| Risk | ORTA RİSK |
+| LC No | **LC-AMEX-2026-7890** |
+| Belgeler | KUSAT, FATURA, KONSIMENTO, CEKI_LISTESI, SIGORTA |
+| Rezerv | 2 (MAJOR: 2) |
+| Uyumluluk | **%60** |
+| Banka Kabul | **%45** |
+| Risk | YÜKSEK RİSK |
 
 ---
 
@@ -51,20 +56,20 @@
 
 ## Incoterms & Sigorta
 
-* Incoterms: Tespit edilemedi.
+* Incoterms: **FOB (ICC 2020)**
 
 
 ## Çapraz Kontroller
 
 | Belgeler | Detay | Durum |
 |:---|:---|:---|
-| Tutar LC vs Fatura (Art 30) | Tespit edilemedi: Fatura, LC 32B | **MANUEL KONTROL** |
-| Kilo: Fatura vs B/L | Tespit edilemedi: Fatura, B/L | **MANUEL KONTROL** |
+| Tutar LC vs Fatura (Art 30) | LC:25,000.00 | Fatura CIF:14,700.00 | Sapma:-41.2% | Tolerans:±%5 | **REZERV - TUTAR UYUMSUZLUĞU** |
+| Kilo: Fatura vs B/L | Tespit edilemedi: Fatura | **MANUEL KONTROL** |
 | Kilo: Fatura vs Packing List | Tespit edilemedi: Fatura, Packing List | **MANUEL KONTROL** |
-| Kilo: Packing List vs B/L | Tespit edilemedi: Packing List, B/L | **MANUEL KONTROL** |
-| Mal Tanımı LC vs Fatura (Art 18c) | Tespit edilemedi: 45A Fatura | **MANUEL KONTROL** |
+| Kilo: Packing List vs B/L | Tespit edilemedi: Packing List | **MANUEL KONTROL** |
+| Mal Tanımı LC vs Fatura (Art 18c) | Tespit edilemedi: 45A  | **MANUEL KONTROL** |
 | B/L Tarihi vs 44C (Art 20) | B/L:- | 44C:- | **MANUEL KONTROL** |
-| Menşe (Origin) Analizi | LC'de CO şartı tespit edilmedi. | **BİLGİ** |
+| Menşe (Origin) Analizi | Certificate of Origin belgesi mevcut. | **UYUMLU** |
 
 ## UCP 600 Hukuki Kontroller
 
@@ -82,17 +87,15 @@ Art 14(b): 5 iş günü. Art 14(d): Çelişki olmamalı; birebir aynı olmak zor
 
 ---
 
-### Art 30 — Tutar
+### Art 18/30 — Tutar Uyumsuzluğu
 
-**BULGU:** Tespit edilemedi: CIF, LC 32B
+**BULGU:** CIF:14,700.00 | LC:25,000.00 | Sapma:%-41.2
 
 **HUKUKİ DEĞERLENDİRME:**
 
-Miktar, tutar ve birim fiyattaki +/- %5 ve %10 tolerans kuralları (:39A:).
+Tolerans aşıldı: %41.2 > %5. MAJOR DISCREPANCY.
 
-Veri eksikliği rezerv değil. Bulunamadı≠Yok. Manuel doğrulama.
-
-**SONUÇ: ⚠ MANUEL KONTROL**
+**SONUÇ: ✗ REZERV**
 
 ---
 
@@ -110,6 +113,34 @@ Art 18 faturada kilo zorunlu kılmaz. PL/BL doğrulaması yeterli. Bulunamadı�
 
 ---
 
+### Art 27 — Temiz Konşimento
+
+**BULGU:** Olumsuz kloz bulunamadı.
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Temiz taşıma belgesi (Clean Bill of Lading) şartı. Malda hasar ibaresi olmamalı.
+
+Art 27 şartı karşılandı.
+
+**SONUÇ: ✓ UYUMLU**
+
+---
+
+### Art 20 — Shipped on Board
+
+**BULGU:** On Board şerhi mevcut.
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
+
+Art 20(a)(ii): Şart karşılandı.
+
+**SONUÇ: ✓ UYUMLU**
+
+---
+
 ### Art 20 — Yükleme Tarihi
 
 **BULGU:** Tespit edilemedi: B/L Tarihi, 44C
@@ -124,33 +155,72 @@ Veri eksikliği rezerv değil. Manuel doğrulama.
 
 ---
 
+### Art 18 — Kilo (B/L)
+
+**BULGU:** B/L Gross Weight:2,000.00 KG (Fatura kilo içermiyor)
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Ticari fatura lehtar adına düzenlenmeli ve akreditif döviz cinsinden olmalıdır.
+
+Art 18 faturada kilo zorunlu kılmaz. B/L referans alındı.
+
+**SONUÇ: ⚠ BİLGİ**
+
+---
+
+### Art 16 — Rezerv Bildirimi
+
+**BULGU:** Rezerv: 1 adet
+
+**HUKUKİ DEĞERLENDİRME:**
+
+Rezervli belgelerin reddedilme bildirimi kuralları (en geç 5 iş günü).
+
+Art 16(c): Ret hakkı. Bildirim 5. iş günü sonuna kadar (Art 16(d)).
+
+Uyumsuzluklar:
+  [Art 18/30] CIF:14,700.00 | LC:25,000.00 | Sapma:%-41.2
+
+Düzeltme Önerileri:
+  • Art 18/30: Fatura CIF tutarı LC 32B alanındaki tutarla uyumlu olacak şekilde yeniden düzenlenmeli veya LC değişikliği talep edilmelidir.
+
+**SONUÇ: ⚠ UYARI**
+
+---
+
 
 ## Konşimento
 
-* [REZERV] Konşimento belgesi yok!
+* [TAMAM] 'Shipped on Board' şerhi mevcut (Art 20a-ii).
+* [TAMAM] Kirli/klozlu ifade bulunamadı (Art 27 uyumlu).
 
 ## 46A Belge Şartları
 
 | Belge Şartı | Detay | Durum |
 |:---|:---|:---|
 | 46A | MT700 46A tespit edilemedi. | **MANUEL KONTROL** |
+| Packing List İçerik | Bulunan: GROSS WEIGHT, NET WEIGHT, CBM, PACKAGE DETAILS, NUMBER OF PACKAGES, PALLET, MARKS, PACKING LIST | Eksik: MEASUREMENT, CARTON | **UYUMLU** |
 
 ## Tespit Edilen Rezervler
 
-* REZERV — Konşimento ibraz edilmemiş (Art 20)
+* REZERV — Tutar sapması %41.2 > %5 (Art 30)
+* REZERV — B/L yükleme tarihi tespit edilemedi (Art 20)
 
 ## Rezerv Kategorileri
 
 | Kod | Kategori | Puan | Süre |
 |:---|:---|:---|:---|
 | ibraz_suresi_belirsiz | **MINOR DISCREPANCY** | 5 | Aynı Gün |
-| konsimento_eksik | **MAJOR DISCREPANCY** | 25 | 3-5 Gün |
+| tutar_uyusmazligi | **MAJOR DISCREPANCY** | 25 | 1-2 Gün |
+| yukleme_tarihi_ihlali | **MAJOR DISCREPANCY** | 25 | Akreditif değişikliği |
 
 ## Risk Değerlendirmesi
 
-* Risk Puanı: **30** — ORTA RİSK
-* Uyumluluk: **%65**
-* 1. REZERV — Konşimento ibraz edilmemiş (Art 20)
+* Risk Puanı: **55** — YÜKSEK RİSK
+* Uyumluluk: **%60**
+* 1. REZERV — Tutar sapması %41.2 > %5 (Art 30)
+* 2. REZERV — B/L yükleme tarihi tespit edilemedi (Art 20)
 
 ## SWIFT Rezerv Simülatörü
 
@@ -158,7 +228,7 @@ Veri eksikliği rezerv değil. Manuel doğrulama.
 
 ```
 DOCUMENTS REJECTED.
-FULL SET ORIGINAL B/L NOT PRESENTED.
-UCP 600 ART 20.
+INVOICE AMOUNT EXCEEDS CREDIT AMOUNT.
+UCP 600 ART 18/30.
 ```
 
