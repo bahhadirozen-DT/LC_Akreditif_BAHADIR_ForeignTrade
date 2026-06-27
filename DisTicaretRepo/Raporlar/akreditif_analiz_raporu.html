@@ -2,59 +2,57 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Akreditif Analiz Raporu v11.0</title>
+<title>Akreditif Analiz Raporu v9.0</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',sans-serif;background:#f4f6f9;color:#333;padding:30px}
-.wrap{background:#wrap;background-color:#fff;padding:40px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.08);max-width:1280px;margin:0 auto}
-h1{color:#1a365d;border-bottom:4px solid #3182ce;padding-bottom:12px;font-size:1.6em}
-h2{color:#2b6cb0;margin:30px 0 10px;border-left:5px solid #3182ce;padding-left:10px;font-size:1.2em}
-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.9em}
-th,td{border:1px solid #e2e8f0;padding:10px 12px;text-align:left;vertical-align:top}
+body{font-family:'Segoe UI',sans-serif;background:#f0f4f8;color:#2d3748;padding:20px}
+.wrap{background:#fff;padding:32px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.08);max-width:1280px;margin:0 auto}
+h1{color:#1a365d;border-bottom:4px solid #3182ce;padding-bottom:12px;font-size:1.35em}
+h2{color:#2b6cb0;margin:24px 0 8px;border-left:5px solid #3182ce;padding-left:10px;font-size:1.02em}
+table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.88em}
+th,td{border:1px solid #e2e8f0;padding:7px 10px;text-align:left;vertical-align:top}
 th{background:#ebf8ff;color:#2b6cb0;font-weight:600}
 tr:nth-child(even){background:#f7fafc}
-.meta{color:#718096;font-size:.85em;margin-bottom:20px}
-.exec{background:linear-gradient(135deg,#ebf8ff,#f0fff4);border:2px solid #3182ce;border-radius:10px;padding:24px;margin-bottom:25px}
-.grid{display:flex;flex-wrap:wrap;gap:15px;margin-top:15px}
-.card{background:#wrap;background-color:#fff;border:1px solid #bee3f8;border-radius:7px;padding:12px 18px;min-width:180px;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,.02)}
-.lbl{font-size:.78em;color:#718096;margin-bottom:4px}.val{font-size:1.4em;font-weight:700;color:#2b6cb0}
-code{background:#edf2f7;padding:2px 6px;border-radius:4px;font-size:.85em;font-family:monospace}
-.trace-card{border:1px solid #e2e8f0;border-radius:8px;margin-bottom:15px;background:#fcfcfc;box-shadow:0 1px 3px rgba(0,0,0,.02)}
-.trace-header{display:flex;align-items:center;padding:12px;background:#f7fafc;border-bottom:1px solid #e2e8f0;border-top-left-radius:8px;border-top-right-radius:8px}
-.trace-body{padding:15px}
-.trace-log{margin-top:12px;background:#f0f4f8;padding:8px 12px;border-radius:5px;font-size:.8em}
-.badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:.75em;font-weight:600;margin-right:10px}
-.badge.compliant{background-color:#c6f6d5;color:#22543d}
-.badge.discrepant{background-color:#fed7d7;color:#742a2a}
-.badge.warning{background-color:#feebc8;color:#744210}
-.swift{background:#1a202c;color:#f6e05e;border-radius:7px;padding:16px;margin:10px 0;font-family:monospace;font-size:.85em}
+ul{padding-left:18px;margin-top:6px}li{margin-bottom:4px;line-height:1.65}
+.meta{color:#718096;font-size:.88em;margin-bottom:14px}
+.exec{background:linear-gradient(135deg,#ebf8ff,#f0fff4);border:2px solid #3182ce;border-radius:10px;padding:18px;margin-bottom:20px}
+.grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.card{background:#fff;border:1px solid #bee3f8;border-radius:7px;padding:10px 16px;min-width:150px;text-align:center}
+.lbl{font-size:.76em;color:#718096;margin-bottom:3px}.val{font-size:1.3em;font-weight:700;color:#2b6cb0}
+code{background:#edf2f7;padding:1px 5px;border-radius:3px;font-size:.84em}
+.swift{background:#1a202c;color:#f6e05e;border-radius:7px;padding:14px;margin:6px 0;font-family:monospace;font-size:.86em}
 .swift pre{white-space:pre-wrap;margin-top:6px;color:#e2e8f0}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v11.0</h1>
-<p class="meta"><b>Tarih:</b> 27.06.2026 07:19 | <b>Hukuki Altyapı:</b> UCP 600, ISBP, eUCP, eURC &amp; Incoterms 2020</p>
+<h1>AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0</h1>
+<p class="meta"><b>Tarih:</b> 27.06.2026 07:22 | <b>Motor:</b> UCP 600 &amp; ISBP 821</p>
 <div class="exec">
 <h2>Yönetici Özeti</h2>
 <div class="grid">
-<div class="card"><div class="lbl">İşlem Tipi</div><div class="val" style="font-size:1.0em;padding-top:6px;">Documentary Credit (UCP 600 Standard L/C)</div></div>
-<div class="card"><div class="lbl">Toplam Belgeler</div><div class="val">5</div></div>
-<div class="card"><div class="lbl">Toplam Rezerv</div><div class="val" style="color:#c53030">0</div></div>
-<div class="card"><div class="lbl">Uyumluluk</div><div class="val" style="color:#276749">%100</div></div>
-<div class="card"><div class="lbl">Banka Kabul Olasılığı</div><div class="val" style="color:#276749">%100</div></div>
-<div class="card"><div class="lbl">Risk Seviyesi</div><div class="val" style="font-size:1.0em;padding-top:6px;">DÜŞÜK RİSK</div></div>
+<div class="card"><div class="lbl">Belgeler</div><div class="val">5</div></div>
+<div class="card"><div class="lbl">Rezerv</div><div class="val" style="color:#c53030">1</div></div>
+<div class="card"><div class="lbl">MAJOR</div><div class="val" style="color:#c53030">1</div></div>
+<div class="card"><div class="lbl">Uyumluluk</div><div class="val" style="color:#276749">%70</div></div>
+<div class="card"><div class="lbl">Banka Kabul</div><div class="val" style="color:#d69e2e">%65</div></div>
+<div class="card"><div class="lbl">Risk</div><div class="val" style="font-size:.9em">ORTA RİSK</div></div>
 </div></div>
-<h2>1. Belge Durum ve Veri Çıkarım Güven Raporu</h2>
-<table><tr><th>Dosya</th><th>Sınıfı</th><th>Sınıflandırma Güveni</th><th>Veri Çıkarım Güveni</th><th>OCR Gerekli mi?</th></tr><tr><td>Kusat.txt</td><td>KUSAT</td><td>%100.0</td><td>%100.0</td><td>HAYIR</td></tr><tr><td>BILL OF LADING.txt</td><td>KONSIMENTO</td><td>%100.0</td><td>%100.0</td><td>HAYIR</td></tr><tr><td>slinecek.txt</td><td>-</td><td>%0.0</td><td>%100.0</td><td>HAYIR</td></tr><tr><td>COMMERCIAL INVOICE.txt</td><td>FATURA</td><td>%100.0</td><td>%100.0</td><td>HAYIR</td></tr><tr><td>insurance certificate.txt</td><td>SIGORTA</td><td>%100.0</td><td>%100.0</td><td>HAYIR</td></tr><tr><td>PACKING LIST.txt</td><td>CEKI_LISTESI</td><td>%100.0</td><td>%100.0</td><td>HAYIR</td></tr></table>
-<h2>2. RAG / Bilgi Tabanı Sorgu Günlüğü (Knowledge Search Log)</h2>
-<table><tr><th>Sorgulanan Kaynak</th><th>Arama Sorgusu</th><th>Arama Sonucu</th></tr></table>
-<h2>3. Hukuki Muhakeme ve Karar Ağaçları (Decision Trace)</h2>
-
-<h2>4. Çapraz Belge Karşılaştırma Raporu</h2>
-<table><tr><th>İnceleme Kalemi</th><th>İbraz Bulgusu / Çapraz Analiz</th><th>Sonuç</th></tr><tr><td>Tutar LC vs Fatura (Art 30)</td><td>LC:23,940.00 | Fatura CIF:23,940.00 | Sapma:+0.0% | Tolerans:±%5</td><td><b>UYUMLU</b></td></tr><tr><td>Kilo: Fatura vs B/L</td><td>Durum: YOK</td><td><b>MANUEL KONTROL</b></td></tr><tr><td>Mal Tanımı LC vs Fatura (Art 18c)</td><td>LC:TEXTILE FABRICS (100% COTTON, DYED) HS Code: 5208.31.00.00.0 | Fatura:12 PALLETS TEXTILE FABRICS (100% COTTON, DYED)</td><td><b>DÜŞÜK BENZERLİK</b></td></tr><tr><td>Sigorta Tutarı (CIF × 110%)</td><td>Poliçe:26,334.00 ≥ Min:26,334.00</td><td><b>UYUMLU</b></td></tr></table>
-<h2>5. SWIFT Rezerv Bildirim Simülatörü (MT734)</h2>
-<p style="color:#276749">SWIFT ret metni üretilmedi.</p>
-<h2>6. HUKUKİ NİHAİ UZMAN GÖRÜŞÜ</h2>
-<p style="white-space:pre-wrap;line-height:1.6;font-size:0.95em;"></p>
+<h2>Dosya Durum Raporu</h2>
+<table><tr><th>Dosya</th><th>Var</th><th>OCR</th><th>Sınıf</th><th>Parse</th><th>Puan</th></tr><tr><td>Kusat.txt</td><td>✓</td><td>✓</td><td>KUSAT</td><td>✓</td><td>999</td></tr><tr><td>BILL OF LADING.txt</td><td>✓</td><td>✓</td><td>KONSIMENTO</td><td>✓</td><td>999</td></tr><tr><td>slinecek.txt</td><td>✓</td><td>✗</td><td>-</td><td>✗</td><td>0</td></tr><tr><td>COMMERCIAL INVOICE.txt</td><td>✓</td><td>✓</td><td>FATURA</td><td>✓</td><td>999</td></tr><tr><td>insurance certificate.txt</td><td>✓</td><td>✓</td><td>SIGORTA</td><td>✓</td><td>999</td></tr><tr><td>PACKING LIST.txt</td><td>✓</td><td>✓</td><td>CEKI_LISTESI</td><td>✓</td><td>999</td></tr></table>
+<h2>MT700 Alan Analizi</h2>
+<table><tr><th>Alan</th><th>Açıklama</th><th>Değer</th><th>Durum</th></tr><tr><td><b>20</b></td><td>Documentary Credit Number</td><td><code>LC-AMEX-2026-7890</code></td><td>TESPİT EDİLDİ</td></tr><tr><td><b>31D</b></td><td>Expiry Date</td><td><code>15.07.2026 / TURKEY</code></td><td>TESPİT EDİLDİ</td></tr><tr><td><b>32B</b></td><td>Amount</td><td><code>USD 23.940,00</code></td><td>TESPİT EDİLDİ</td></tr><tr><td><b>40A</b></td><td>Form</td><td><code>IRREVOCABLE</code></td><td>TESPİT EDİLDİ</td></tr><tr><td><b>44C</b></td><td>Latest Shipment</td><td><code>05.07.2026</code></td><td>TESPİT EDİLDİ</td></tr><tr><td><b>45A</b></td><td>Description of Goods</td><td><code>TEXTILE FABRICS (100% COTTON, DYED) HS Code: 5208.31.00.00.00</code></td><td>TESPİT EDİLDİ</td></tr><tr><td><b>46A</b></td><td>Documents Required</td><td><code>1. COMMERCIAL INVOICE in 3 originals and 3 copies, signed by the Beneficiary, indicating L/C No. and</code></td><td>TESPİT EDİLDİ</td></tr></table>
+<h2>Vade Analizi</h2><ul><li>En Geç Yükleme (44C): **05.07.2026**</li><li>İbraz Süresi: **10 gün** (max 21)</li></ul>
+<h2>Ödeme Vadesi</h2><ul><li>Ödeme: **Vadeli** — poliçe takvimi kontrol edilmeli.</li></ul>
+<h2>Incoterms &amp; Sigorta</h2><ul><li>Incoterms: **CIF (ICC 2020)**</li><li>[TAMAM] CIF — Sigorta belgesi mevcut.</li></ul>
+<h2>Çapraz Kontroller</h2>
+<table><tr><th>Belgeler</th><th>Detay</th><th>Durum</th></tr><tr><td>Tutar LC vs Fatura (Art 30)</td><td>LC:23,940.00 | Fatura CIF:23,940.00 | Sapma:+0.0% | Tolerans:±%5</td><td>UYUMLU</td></tr><tr><td>Kilo: Fatura vs B/L</td><td>Tespit edilemedi: Fatura</td><td>MANUEL KONTROL</td></tr><tr><td>Kilo: Fatura vs Packing List</td><td>Tespit edilemedi: Fatura</td><td>MANUEL KONTROL</td></tr><tr><td>Kilo: Packing List vs B/L</td><td>Eşleşti: 3,420.00 KG</td><td>UYUMLU</td></tr><tr><td>Mal Tanımı LC vs Fatura (Art 18c)</td><td>LC:TEXTILE FABRICS (100% COTTON, DYED) HS Code: 5208.31.00.00.0 | Fatura:12 PALLETS TEXTILE FABRICS (100% COTTON, DYED) | %67</td><td>DÜŞÜK BENZERLİK - MANUEL KONTROL</td></tr><tr><td>B/L Tarihi vs 44C (Art 20)</td><td>B/L:- | 44C:05.07.2026</td><td>MANUEL KONTROL</td></tr><tr><td>Sigorta ≥ CIF × 110% (Art 28f-ii)</td><td>CIF:23,940.00 | Min(×110%):26,334.00 | Sigorta:26,334.00</td><td>UYUMLU</td></tr><tr><td>Menşe (Origin) Analizi</td><td>Origin: TÜRKİYE | Kaynak: Commercial Invoice | Ayrı CO belgesi ibraz edilmedi; fatura beyanı kabul edildi.</td><td>UYUMLU</td></tr></table>
+<h2>Konşimento Kontrolleri</h2><ul><li>[TAMAM] 'Shipped on Board' şerhi mevcut (Art 20a-ii).</li><li>[TAMAM] Kirli/klozlu ifade bulunamadı (Art 27 uyumlu).</li></ul>
+<h2>46A Belge Şartları</h2>
+<table><tr><th>Belge</th><th>Detay</th><th>Durum</th></tr><tr><td>Ticari Fatura</td><td>46A'da talep edildi.</td><td>VAR</td></tr><tr><td>Ticari Fatura</td><td>46A'da talep edildi.</td><td>VAR</td></tr><tr><td>Konşimento</td><td>46A'da talep edildi.</td><td>VAR</td></tr><tr><td>Packing List</td><td>46A'da talep edildi.</td><td>VAR</td></tr><tr><td>Sigorta Poliçesi</td><td>46A'da talep edildi.</td><td>VAR</td></tr><tr><td>Packing List İçerik</td><td>Bulunan: GROSS WEIGHT, NET WEIGHT, CBM, PACKAGE DETAILS, NUMBER OF PACKAGES, PALLET, MARKS, PACKING LIST | Eksik: MEASUREMENT, CARTON</td><td>UYUMLU</td></tr></table>
+<h2>Tespit Edilen Rezervler</h2><ul><li>REZERV — B/L yükleme tarihi tespit edilemedi (Art 20)</li></ul>
+<h2>Rezerv Kategorileri</h2>
+<table><tr><th>Kod</th><th>Kategori</th><th>Puan</th><th>Süre</th></tr><tr><td>mal_tanimi_uyusmazligi</td><td><b>MEDIUM DISCREPANCY</b></td><td>10</td><td>1 Gün</td></tr><tr><td>yukleme_tarihi_ihlali</td><td><b>MAJOR DISCREPANCY</b></td><td>25</td><td>Akreditif değişikliği</td></tr></table>
+<h2>Risk Değerlendirmesi</h2><ul><li>Risk Puanı: **35** — ORTA RİSK</li><li>Uyumluluk: **%70**</li><li>1. REZERV — B/L yükleme tarihi tespit edilemedi (Art 20)</li></ul>
+<h2>SWIFT Rezerv Simülatörü</h2><p style="color:#276749">SWIFT ret metni üretilmedi.</p>
 </div></body></html>
