@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 27.06.2026 23:04 | Motor: UCP 600 & ISBP 821
+**Tarih:** 27.06.2026 23:17 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -9,7 +9,6 @@
 | Dosya | Var | OCR | Sınıf | Parse | Puan |
 |:---|:---|:---|:---|:---|:---|
 | Kusat.txt | V | V | KUSAT | V | 999 |
-| BILL OF LADING.txt | V | V | KONSIMENTO | V | 999 |
 | slinecek.txt | V | X | - | X | 0 |
 | COMMERCIAL INVOICE.txt | V | V | FATURA | V | 999 |
 | insurance certificate.txt | V | V | SIGORTA | V | 999 |
@@ -22,10 +21,10 @@
 | Metrik | Değer |
 |:---|:---|
 | LC No | **LC-AMEX-2026-7890** |
-| Belgeler | KUSAT, FATURA, KONSIMENTO, CEKI_LISTESI, SIGORTA |
-| Rezerv | 1 (MAJOR: 1) |
-| Uyumluluk | **%70** |
-| Banka Kabul | **%65** |
+| Belgeler | KUSAT, FATURA, CEKI_LISTESI, SIGORTA |
+| Rezerv | 2 (MAJOR: 1) |
+| Uyumluluk | **%45** |
+| Banka Kabul | **%55** |
 | Risk | ORTA RİSK |
 
 ---
@@ -162,7 +161,9 @@
 
 **İlgili Madde:** UCP 600 Art 14(a) / Art 17(a) / ISBP 821 A21
 
-**Risk / Sonuç:** **✓ UYUMLU**
+**Karşılaştırma:** Eksik: Konşimento
+
+**Risk / Sonuç:** **⚠ EKSİK BELGE — REZERV**
 
 ---
 
@@ -172,9 +173,9 @@
 | Belgeler | Detay | Durum |
 |:---|:---|:---|
 | Tutar LC vs Fatura (Art 30) | LC:23,940.00 | Fatura CIF:23,940.00 | Sapma:+0.0% | Tolerans:±%5 | **UYUMLU** |
-| Kilo: Fatura vs B/L | Tespit edilemedi: Fatura | **MANUEL KONTROL** |
+| Kilo: Fatura vs B/L | Tespit edilemedi: Fatura, B/L | **MANUEL KONTROL** |
 | Kilo: Fatura vs Packing List | Tespit edilemedi: Fatura | **MANUEL KONTROL** |
-| Kilo: Packing List vs B/L | Eşleşti: 3,420.00 KG | **UYUMLU** |
+| Kilo: Packing List vs B/L | Tespit edilemedi: B/L | **MANUEL KONTROL** |
 | Mal Tanımı LC vs Fatura (Art 18c) | LC:TEXTILE FABRICS (100% COTTON, DYED) HS Code: 5208.31.00.00.0 | Fatura:12 PALLETS TEXTILE FABRICS (100% COTTON, DYED) | %67 | **DÜŞÜK BENZERLİK - MANUEL KONTROL** |
 | B/L Tarihi vs 44C (Art 20) | B/L:- | 44C:05.07.2026 | **MANUEL KONTROL** |
 | Sigorta ≥ CIF × 110% (Art 28f-ii) | CIF:23,940.00 | Min(×110%):26,334.00 | Sigorta:26,334.00 | **UYUMLU** |
@@ -224,34 +225,6 @@ Art 18 faturada kilo zorunlu kılmaz. PL/BL doğrulaması yeterli. Bulunamadı�
 
 ---
 
-### Art 27 — Temiz Konşimento
-
-**BULGU:** Olumsuz kloz bulunamadı.
-
-**HUKUKİ DEĞERLENDİRME:**
-
-Temiz taşıma belgesi (Clean Bill of Lading) şartı. Malda hasar ibaresi olmamalı.
-
-Art 27 şartı karşılandı.
-
-**SONUÇ: ✓ UYUMLU**
-
----
-
-### Art 20 — Shipped on Board
-
-**BULGU:** On Board şerhi mevcut.
-
-**HUKUKİ DEĞERLENDİRME:**
-
-Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
-
-Art 20(a)(ii): Şart karşılandı.
-
-**SONUÇ: ✓ UYUMLU**
-
----
-
 ### Art 20 — Yükleme Tarihi
 
 **BULGU:** Tespit edilemedi: B/L Tarihi
@@ -263,20 +236,6 @@ Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
 Veri eksikliği rezerv değil. Manuel doğrulama.
 
 **SONUÇ: ⚠ MANUEL KONTROL**
-
----
-
-### Art 18 — Kilo (B/L)
-
-**BULGU:** B/L Gross Weight:3,420.00 KG (Fatura kilo içermiyor)
-
-**HUKUKİ DEĞERLENDİRME:**
-
-Ticari fatura lehtar adına düzenlenmeli ve akreditif döviz cinsinden olmalıdır.
-
-Art 18 faturada kilo zorunlu kılmaz. B/L referans alındı.
-
-**SONUÇ: ⚠ BİLGİ**
 
 ---
 
@@ -295,8 +254,7 @@ Art 28(f)(ii): CIF×110% karşılandı. Incoterms 2020 CIF: satıcı yükümlüs
 
 ## Konşimento
 
-* [TAMAM] 'Shipped on Board' şerhi mevcut (Art 20a-ii).
-* [TAMAM] Kirli/klozlu ifade bulunamadı (Art 27 uyumlu).
+* [REZERV] Konşimento belgesi yok!
 
 ## 46A Belge Şartları
 
@@ -304,24 +262,50 @@ Art 28(f)(ii): CIF×110% karşılandı. Incoterms 2020 CIF: satıcı yükümlüs
 |:---|:---|:---|
 | Ticari Fatura | 46A'da talep edildi. | **VAR** |
 | Ticari Fatura | 46A'da talep edildi. | **VAR** |
-| Konşimento | 46A'da talep edildi. | **VAR** |
+| Konşimento | 46A'da talep edildi. | **EKSİK** |
 | Packing List | 46A'da talep edildi. | **VAR** |
 | Sigorta Poliçesi | 46A'da talep edildi. | **VAR** |
 | Packing List İçerik | Bulunan: GROSS WEIGHT, NET WEIGHT, CBM, PACKAGE DETAILS, NUMBER OF PACKAGES, PALLET, MARKS, PACKING LIST | Eksik: MEASUREMENT, CARTON | **UYUMLU** |
 
+**⚠ Eksik Belgeler:** Konşimento
+
+UCP 600 Art 14(a): 46A alanında talep edilen belgelerin eksiksiz ibraz edilmesi zorunludur. Eksik belge doğrudan ret sebebidir.
+
 ## Tespit Edilen Rezervler
 
-* REZERV — B/L yükleme tarihi tespit edilemedi (Art 20)
+* REZERV — Konşimento ibraz edilmemiş (Art 20)
+* REZERV — 46A gereği 'Konşimento' belgesi eksik
 
 ## Rezerv Kategorileri
 
 | Kod | Kategori | Puan | Süre |
 |:---|:---|:---|:---|
 | mal_tanimi_uyusmazligi | **MEDIUM DISCREPANCY** | 10 | 1 Gün |
-| yukleme_tarihi_ihlali | **MAJOR DISCREPANCY** | 25 | Akreditif değişikliği |
+| konsimento_eksik | **MAJOR DISCREPANCY** | 25 | 3-5 Gün |
+| 46a_belge_eksigi | **MEDIUM DISCREPANCY** | 10 | 1-2 Gün |
 
 ## Risk Değerlendirmesi
 
-* Risk Puanı: **35** — ORTA RİSK
-* Uyumluluk: **%70**
-* 1. REZERV — B/L yükleme tarihi tespit edilemedi (Art 20)
+* Risk Puanı: **45** — ORTA RİSK
+* Uyumluluk: **%45**
+* 1. REZERV — Konşimento ibraz edilmemiş (Art 20)
+* 2. REZERV — 46A gereği 'Konşimento' belgesi eksik
+
+## SWIFT Rezerv Simülatörü
+
+### Ret Metni 1
+
+```
+DOCUMENTS REJECTED.
+FULL SET ORIGINAL B/L NOT PRESENTED.
+UCP 600 ART 20.
+```
+
+### Ret Metni 2
+
+```
+DOCUMENTS REJECTED.
+REQUIRED DOCUMENTS MISSING PER FIELD 46A.
+UCP 600 ART 14(A).
+```
+
