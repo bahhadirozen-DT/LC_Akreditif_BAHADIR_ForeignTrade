@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 30.06.2026 23:14 | Motor: UCP 600 & ISBP 821
+**Tarih:** 30.06.2026 23:22 | Motor: UCP 600 & ISBP 821
 
 ---
 
@@ -75,13 +75,13 @@
 
 ### Art 14 — Belge İnceleme Standardı
 
-**BULGU:** Belgeler UCP 600 Art 14 kapsamında incelendi.
+**BULGU:** Belgeler UCP 600 Art 14 kapsamında yüz değerinden incelendi.
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Belge inceleme standardı. İbraz süresi belirtilmemişse en fazla 21 gündür.
 
-Art 14(b): 5 iş günü. Art 14(d): Çelişki olmamalı; birebir aynı olmak zorunda değil.
+UCP 600 Art 14(b): İnceleme süresi en fazla 5 iş günüdür. Art 14(d): Belgeler arasındaki veriler çelişmemelidir; birebir aynı olmak zorunda değildir. NOT: Bu satır bilgilendirme amaçlıdır; sistem gerçek zamanlı banka incelemesi yapmaz.
 
 **SONUÇ: ⚠ BİLGİ**
 
@@ -89,25 +89,25 @@ Art 14(b): 5 iş günü. Art 14(d): Çelişki olmamalı; birebir aynı olmak zor
 
 ### Art 18/30 — Tutar Uyumsuzluğu
 
-**BULGU:** CIF:14,700.00 | LC:25,000.00 | Sapma:%-41.2
+**BULGU:** CIF: 14,700.00 | LC: 25,000.00 | Sapma: %-41.2
 
 **HUKUKİ DEĞERLENDİRME:**
 
-Tolerans aşıldı: %41.2 > %5. MAJOR DISCREPANCY.
+Fatura tutarı standart %5 toleransı aşmaktadır. Sapma: %41.2. Bu durum Art 18 / Art 30 kapsamında rezerv sebebidir.
 
 **SONUÇ: ✗ REZERV**
 
 ---
 
-### Art 18 — Fatura Ağırlık
+### Art 18 — Fatura Ağırlık Bilgisi
 
-**BULGU:** Faturada gross weight bulunamadı.
+**BULGU:** Faturada gross weight ifadesi bulunamadı.
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Ticari fatura lehtar adına düzenlenmeli ve akreditif döviz cinsinden olmalıdır.
 
-Art 18 faturada kilo zorunlu kılmaz. PL/BL doğrulaması yeterli. Bulunamadı≠Yok.
+UCP 600 Art 18, commercial invoice için ağırlık bilgisini zorunlu kılmaz. Kilo bilgisi Packing List ve Bill of Lading üzerinden doğrulanabiliyorsa faturada bulunmaması rezerv sebebi değildir. Muhakeme: veri yok ≠ rezerv (Talimat #4).
 
 **SONUÇ: ⚠ BİLGİ**
 
@@ -115,27 +115,27 @@ Art 18 faturada kilo zorunlu kılmaz. PL/BL doğrulaması yeterli. Bulunamadı�
 
 ### Art 27 — Temiz Konşimento
 
-**BULGU:** Olumsuz kloz bulunamadı.
+**BULGU:** Konşimentoda olumsuz kloz veya hasar şerhi bulunamadı.
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Temiz taşıma belgesi (Clean Bill of Lading) şartı. Malda hasar ibaresi olmamalı.
 
-Art 27 şartı karşılandı.
+UCP 600 Art 27: Konşimentoda malın veya ambalajın hasarlı durumunu belirten herhangi bir kloz bulunmamaktadır. Temiz konşimento şartı karşılanmıştır.
 
 **SONUÇ: ✓ UYUMLU**
 
 ---
 
-### Art 20 — Shipped on Board
+### Art 20 — Shipped on Board Şerhi
 
-**BULGU:** On Board şerhi mevcut.
+**BULGU:** On Board şerhi konşimentoda mevcut.
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
 
-Art 20(a)(ii): Şart karşılandı.
+UCP 600 Art 20(a)(ii): Konşimenton 'Shipped on Board' şerhi veya ön baskı ile yüklemeyi göstermesi zorunludur. Şart karşılanmıştır.
 
 **SONUÇ: ✓ UYUMLU**
 
@@ -149,21 +149,21 @@ Art 20(a)(ii): Şart karşılandı.
 
 Deniz konşimentosu (Kaptan/Acente imzası, On Board notu).
 
-Veri eksikliği rezerv değil. Manuel doğrulama.
+Veri eksikliği tek başına rezerv sebebi değildir. 44C ve B/L tarihi manuel doğrulanmalıdır.
 
 **SONUÇ: ⚠ MANUEL KONTROL**
 
 ---
 
-### Art 18 — Kilo (B/L)
+### Art 18 — Kilo (B/L Bilgisi)
 
-**BULGU:** B/L Gross Weight:2,000.00 KG (Fatura kilo içermiyor)
+**BULGU:** B/L Gross Weight: 2,000.00 KG (Fatura kilo içermiyor — Art 18 zorunlu kılmaz)
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Ticari fatura lehtar adına düzenlenmeli ve akreditif döviz cinsinden olmalıdır.
 
-Art 18 faturada kilo zorunlu kılmaz. B/L referans alındı.
+UCP 600 Art 18 faturada kilo bilgisi zorunlu kılmaz. B/L ağırlığı 2,000.00 KG olarak tespit edildi. Packing List ile karşılaştırma yapılabiliyorsa yeterlidir.
 
 **SONUÇ: ⚠ BİLGİ**
 
@@ -171,19 +171,16 @@ Art 18 faturada kilo zorunlu kılmaz. B/L referans alındı.
 
 ### Art 16 — Rezerv Bildirimi
 
-**BULGU:** Rezerv: 1 adet
+**BULGU:** Tespit edilen rezerv: 1 adet
 
 **HUKUKİ DEĞERLENDİRME:**
 
 Rezervli belgelerin reddedilme bildirimi kuralları (en geç 5 iş günü).
 
-Art 16(c): Ret hakkı. Bildirim 5. iş günü sonuna kadar (Art 16(d)).
+UCP 600 Art 16(c): Banka uygunsuz ibrazı reddetme hakkına sahiptir. Ret bildirimi en geç 5. iş günü sonuna kadar yapılmalıdır (Art 16(d)). Bildirim ret kararını, her uyumsuzluğu ve belgelerin akıbetini içermelidir.
 
 Uyumsuzluklar:
-  [Art 18/30] CIF:14,700.00 | LC:25,000.00 | Sapma:%-41.2
-
-Düzeltme Önerileri:
-  • Art 18/30: Fatura CIF tutarı LC 32B alanındaki tutarla uyumlu olacak şekilde yeniden düzenlenmeli veya LC değişikliği talep edilmelidir.
+  [Art 18/30] CIF: 14,700.00 | LC: 25,000.00 | Sapma: %-41.2
 
 **SONUÇ: ⚠ UYARI**
 
