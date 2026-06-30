@@ -1,6 +1,6 @@
 # AKREDİTİF GELİŞMİŞ HUKUKİ VE SAYISAL UZMAN DENETİM RAPORU v9.0
 
-**Tarih:** 30.06.2026 23:22 | Motor: UCP 600 & ISBP 821
+**Tarih:** 30.06.2026 23:44 | Motor: UCP 600 & ISBP 821
 
 ---
 
